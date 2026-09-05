@@ -1,0 +1,43 @@
+.developer-desk { max-width: 1240px; margin-inline: auto; padding: 1.25rem; }
+.developer-desk *, .developer-desk *::before, .developer-desk *::after { box-sizing: border-box; }
+.developer-panel { padding: clamp(1rem, 2.4vw, 1.8rem); margin-block: 1.25rem; border: 1px solid var(--theme-control-border); border-radius: .75rem; background: var(--theme-surface); color: var(--ink); }
+.developer-panel h2 { margin-top: 0; }
+.developer-panel h3 { margin-block: .5rem; }
+.developer-muted { font-size: .92rem; opacity: .82; }
+.developer-toolbar, .developer-filters { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; }
+.developer-toolbar > div { flex: 1 1 24rem; }
+.developer-toolbar label, .developer-filters label { display: grid; gap: .45rem; font-weight: 650; flex: 1 1 13rem; }
+.developer-toolbar label { flex-grow: 0; }
+.developer-filters label:last-child { flex-grow: 2; }
+.developer-desk input, .developer-desk select { width: 100%; min-height: 46px; padding: .65rem; font: inherit; max-width: 100%; }
+.developer-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-block: 1.5rem; }
+.developer-metric { display: grid; gap: .35rem; padding: 1rem; background: color-mix(in srgb, currentColor 6%, transparent); border-radius: .5rem; }
+.developer-metric strong { font-size: clamp(1.5rem, 3vw, 2.35rem); line-height: 1.1; }
+.developer-metric span { font-size: .9rem; }
+.developer-notice { padding: .85rem 1rem; border-inline-start: 3px solid #72bfca; background: color-mix(in srgb, #72bfca 8%, transparent); }
+.developer-news, .developer-change { padding-block: 1rem; border-top: 1px solid var(--border, #758592); }
+.developer-values { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; margin-block: .8rem; }
+.developer-values > div { min-width: 0; }
+.developer-values h4 { margin-block: .3rem; font-size: .9rem; }
+.developer-desk pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; max-height: 20rem; overflow: auto; padding: .8rem; background: color-mix(in srgb, currentColor 6%, transparent); border-radius: .35rem; font: .9rem/1.5 ui-monospace, Consolas, monospace; }
+.developer-path { display: block; overflow-wrap: anywhere; font-size: .9rem; }
+.developer-detail { padding-block: .8rem; border-top: 1px solid var(--border, #758592); }
+.developer-detail summary { cursor: pointer; font-weight: 650; overflow-wrap: anywhere; }
+.developer-detail > :not(summary) { margin-top: 1rem; }
+.developer-pair { display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(0, 2fr); gap: .8rem; padding-block: .35rem; }
+.developer-pair dt { font-weight: 650; }
+.developer-pair dd { margin: 0; overflow-wrap: anywhere; }
+.developer-pagination { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1rem; }
+.developer-pagination button { min-height: 44px; padding: .6rem 1rem; }
+.developer-desk a { overflow-wrap: anywhere; }
+@media (max-width: 700px) {
+  .developer-desk { padding: .65rem; }
+  .developer-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .developer-values { grid-template-columns: minmax(0, 1fr); }
+  .developer-pair { grid-template-columns: minmax(0, 1fr); gap: .2rem; }
+  .developer-filters label, .developer-toolbar label { flex-basis: 100%; }
+  .developer-toolbar .button { width: 100%; text-align: center; }
+}
+@media (forced-colors: active) {
+  .developer-panel, .developer-metric, .developer-notice { border: 1px solid CanvasText; }
+}

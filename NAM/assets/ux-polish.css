@@ -1,0 +1,2518 @@
+:root {
+  --ux-surface: var(--paper-strong, #ffffff);
+  --ux-surface-muted: var(--theme-card-inset, #f3f6f8);
+  --ux-text: var(--ink, #17212b);
+  --ux-muted: var(--muted, #52616d);
+  --ux-border: var(--line, #b8c2ca);
+  --ux-accent: var(--theme-link, #075985);
+  --ux-accent-hover: var(--theme-link-hover, #0c4a6e);
+  --ux-focus: var(--theme-focus, #0b74de);
+  --ux-focus-offset: var(--theme-focus-offset, #ffffff);
+  --ux-control-bg: var(--theme-input-bg, #ffffff);
+  --ux-control-border: var(--theme-control-border, #748391);
+  --ux-positive: var(--theme-success, #18723a);
+  --ux-warning: var(--theme-warning, #9a6700);
+  --ux-space-1: 0.35rem;
+  --ux-space-2: 0.65rem;
+  --ux-space-3: 1rem;
+  --ux-space-4: 1.4rem;
+  --ux-radius: 0.45rem;
+}
+
+html[data-theme="light"] {
+  --ux-surface: var(--paper-strong, #ffffff);
+  --ux-surface-muted: var(--theme-card-inset, #f3f6f8);
+  --ux-text: var(--ink, #17212b);
+  --ux-border: var(--line, #b8c2ca);
+}
+
+html[data-theme="dark"] {
+  --ux-surface: var(--paper-strong, #172531);
+  --ux-surface-muted: var(--theme-card-inset, #1d303e);
+  --ux-text: var(--ink, #f1f5f8);
+  --ux-border: var(--line, #6f8290);
+}
+
+.ux-toolbar,
+.ux-quick-edit,
+.ux-sticky-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+}
+
+.ux-toolbar {
+  padding: var(--ux-space-2);
+  color: var(--ux-text);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.ux-toolbar > *,
+.ux-quick-edit > *,
+.ux-sticky-actions > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.ux-search-field {
+  display: grid;
+  flex: 1 1 18rem;
+  gap: var(--ux-space-1);
+  min-inline-size: min(100%, 12rem);
+}
+
+.ux-search:is(input, select, textarea),
+.ux-search-field :is(input[type="search"], input:not([type]), select) {
+  inline-size: 100%;
+  min-inline-size: 0;
+  color: var(--ux-text);
+  background: var(--ux-control-bg);
+  border-color: var(--ux-control-border);
+}
+
+.ux-match-count,
+.ux-copy-status {
+  min-block-size: 1.5em;
+  color: var(--ux-muted);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.ux-favourite-toggle,
+.ux-copy-button {
+  min-block-size: 2.75rem;
+  max-inline-size: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.ux-favourite-toggle[aria-pressed="true"] {
+  font-weight: 800;
+  text-decoration-line: underline;
+  text-decoration-style: double;
+  text-decoration-thickness: 0.12em;
+  border-width: 2px;
+}
+
+.ux-quick-edit {
+  padding: var(--ux-space-2);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.ux-quick-edit[hidden] {
+  display: none;
+}
+
+.ux-section-nav {
+  min-inline-size: 0;
+}
+
+.ux-section-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ux-space-1) var(--ux-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ux-section-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  padding: var(--ux-space-1) var(--ux-space-2);
+  color: var(--ux-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  border: 1px solid transparent;
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+.ux-section-nav a:hover {
+  color: var(--ux-accent-hover);
+  border-color: currentColor;
+}
+
+.ux-section-nav a[aria-current="page"],
+.ux-section-nav a[aria-current="true"] {
+  color: var(--ux-text);
+  font-weight: 800;
+  text-decoration-style: double;
+  border-color: currentColor;
+}
+
+.ux-section-nav > :is([data-workflow-ux-density], [data-workflow-ux-view]) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ux-space-1) var(--ux-space-2);
+  min-inline-size: 0;
+  margin-block-start: var(--ux-space-2);
+  padding: var(--ux-space-2);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.ux-section-nav > :is([data-workflow-ux-density], [data-workflow-ux-view]) legend {
+  padding-inline: var(--ux-space-1);
+  font-weight: 750;
+}
+
+.ux-section-nav > :is([data-workflow-ux-density], [data-workflow-ux-view]) label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ux-space-1);
+}
+
+[data-workflow-ux-advanced-count] {
+  flex: 1 1 15rem;
+  margin: 0;
+  color: var(--ux-muted);
+  overflow-wrap: anywhere;
+}
+
+.ux-quick-start {
+  padding: var(--ux-space-3);
+  color: var(--ux-text);
+  background: var(--ux-surface-muted);
+  border: 2px solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+}
+
+.ux-quick-start > :first-child {
+  margin-block-start: 0;
+}
+
+.ux-quick-start > :last-child {
+  margin-block-end: 0;
+}
+
+.ux-quick-start ol {
+  display: grid;
+  gap: var(--ux-space-1);
+  padding-inline-start: 1.5rem;
+}
+
+.handbook-header {
+  padding-bottom: var(--ux-space-4);
+}
+
+.handbook-quick-start {
+  margin-bottom: var(--ux-space-5);
+}
+
+.handbook-quick-start h2,
+.handbook-section-heading h2 {
+  margin-block: 0;
+}
+
+.handbook-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ux-space-2);
+  margin-top: var(--ux-space-3);
+}
+
+.handbook-section-heading {
+  margin-bottom: var(--ux-space-3);
+}
+
+.handbook-topics {
+  display: grid;
+  gap: var(--ux-space-2);
+  margin-bottom: var(--ux-space-2);
+}
+
+.handbook-topic {
+  overflow: clip;
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.handbook-topic > summary {
+  display: grid;
+  gap: .25rem;
+  padding: var(--ux-space-3);
+  color: var(--ux-text);
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.handbook-topic > summary:hover {
+  background: var(--ux-surface-muted);
+}
+
+.handbook-topic > summary:focus-visible {
+  outline: 3px solid var(--ux-focus);
+  outline-offset: -3px;
+}
+
+.handbook-topic > summary span {
+  font-family: Georgia, serif;
+  font-size: 1.22rem;
+  font-weight: 800;
+}
+
+.handbook-topic > summary small {
+  margin-inline-start: 1.35rem;
+  color: var(--ux-muted);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.handbook-topic[open] > summary {
+  background: var(--ux-surface-muted);
+  border-bottom: 1px solid var(--ux-border);
+}
+
+.handbook-topic-body {
+  padding: var(--ux-space-3);
+}
+
+.handbook-topic-body > ol {
+  display: grid;
+  gap: var(--ux-space-2);
+  margin-block: 0;
+  padding-inline-start: 1.5rem;
+  line-height: 1.65;
+}
+
+.handbook-note,
+.handbook-independent {
+  padding: var(--ux-space-2) var(--ux-space-3);
+  color: var(--ux-text);
+  background: var(--ux-surface-muted);
+  border-inline-start: 4px solid var(--ux-accent);
+  border-radius: .35rem;
+  line-height: 1.6;
+}
+
+.handbook-method {
+  margin-bottom: var(--ux-space-5);
+}
+
+.handbook-method .prose-grid,
+.handbook-method .section-heading {
+  margin-top: var(--ux-space-3);
+}
+
+.home-tool-grid {
+  display: grid;
+  gap: var(--ux-space-3);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: var(--ux-space-4) 0 var(--ux-space-3);
+}
+
+.home-tool-card {
+  background: var(--theme-surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.home-tool-card h2 {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: .45rem 0 .7rem;
+}
+
+.home-tool-card > p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+body[data-page-family="home"] .home-tool-card > .home-tool-links {
+  align-content: center;
+  align-items: center;
+  border: 1px solid var(--theme-brass-line-soft);
+  border-radius: calc(var(--ux-radius) - 0.15rem);
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-top: auto;
+  min-block-size: 4.25rem;
+  padding: .75rem;
+}
+
+.home-tool-links a { font-weight: 750; }
+
+@media (max-width: 58rem) {
+  .home-tool-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 40rem) {
+  .handbook-topic > summary small {
+    margin-inline-start: 0;
+  }
+}
+
+[data-workflow-ux-cell-label] {
+  display: none;
+}
+
+.ux-sticky-actions {
+  position: static;
+  padding: var(--ux-space-2);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+@supports (position: sticky) {
+  @media (min-width: 48rem) and (min-height: 36rem) {
+    .ux-sticky-actions {
+      position: sticky;
+      inset-block-start: 0.5rem;
+      z-index: 2;
+      background: var(--ux-surface);
+    }
+  }
+}
+
+.ux-fix-link {
+  color: var(--ux-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+
+.ux-fix-link:hover {
+  color: var(--ux-accent-hover);
+  text-decoration-thickness: 0.16em;
+}
+
+.ux-copy-status[data-state="error"],
+.ux-copy-status[role="alert"] {
+  color: var(--ux-text);
+  font-weight: 700;
+  border-inline-start: 0.25rem solid currentColor;
+  padding-inline-start: var(--ux-space-1);
+}
+
+.ux-status-legend {
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-2) var(--ux-space-3);
+  color: var(--ux-text);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+.ux-status-legend > :first-child {
+  margin-block-start: 0;
+}
+
+.ux-status-legend > :last-child {
+  margin-block-end: 0;
+}
+
+.ux-status-legend ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--ux-space-2) var(--ux-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ux-status-legend li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+}
+
+.ux-status-legend-cue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 2.25rem;
+  min-block-size: 2.25rem;
+  color: var(--ux-text);
+  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", monospace;
+  font-weight: 800;
+  line-height: 1;
+  background: var(--ux-surface);
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+}
+
+:is(
+  .ux-favourite-toggle,
+  .ux-copy-button,
+  .ux-fix-link,
+  .ux-search,
+  .ux-section-nav a,
+  .ux-section-nav input,
+  .ux-toolbar a,
+  .ux-toolbar button,
+  .ux-toolbar input,
+  .ux-toolbar select,
+  .ux-toolbar textarea,
+  .ux-quick-edit a,
+  .ux-quick-edit button,
+  .ux-quick-edit input,
+  .ux-quick-edit select,
+  .ux-quick-edit textarea,
+  .ux-sticky-actions a,
+  .ux-sticky-actions button
+):focus-visible {
+  outline: 3px solid var(--ux-focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--ux-focus-offset);
+}
+
+html[data-density="compact"] {
+  --ux-space-1: 0.25rem;
+  --ux-space-2: 0.45rem;
+  --ux-space-3: 0.7rem;
+}
+
+html[data-density="compact"] :is(
+  .ux-toolbar,
+  .ux-quick-edit,
+  .ux-sticky-actions,
+  .ux-status-legend
+) {
+  padding: var(--ux-space-2);
+}
+
+html[data-density="compact"] :is(.notice, .filter-panel, .card) {
+  gap: var(--ux-space-2);
+}
+
+html[data-density="compact"] .table-shell :is(th, td) {
+  padding-block: var(--ux-space-1);
+  padding-inline: var(--ux-space-2);
+}
+
+/* Crafting Projects: keep the guided workflow readable without hiding detail. */
+main:has(#crafting-guided-workflow) > .page-header,
+main:has(#shopping-planner) > .page-header {
+  padding-block: clamp(1.5rem, 3vw, 3rem) clamp(1.25rem, 2vw, 2rem);
+}
+
+.crafting-guided-workflow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ux-space-4);
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.crafting-workflow-nav,
+.crafting-workflow-nav > *,
+.crafting-guided-workflow > *,
+.crafting-workflow-step,
+.crafting-workflow-disclosure,
+.crafting-workflow-disclosure > *,
+.crafting-workflow-step-content,
+.crafting-workflow-step-content > *,
+.crafting-project-kind-panel,
+.crafting-review-group,
+.crafting-review-group-body,
+.crafting-wood-shortlist,
+.crafting-wood-matrix-disclosure,
+.crafting-wood-matrix-disclosure > * {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.crafting-workflow-nav ol {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.crafting-workflow-nav [data-workflow-ux-density] {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.crafting-workflow-disclosure-summary {
+  min-block-size: 3rem;
+  overflow-wrap: anywhere;
+}
+
+.crafting-workflow-disclosure-title {
+  margin-inline-end: var(--ux-space-2);
+}
+
+.crafting-workflow-disclosure-state {
+  display: inline-block;
+  float: inline-end;
+  max-inline-size: 100%;
+  margin-block: -0.15rem 0.15rem;
+  margin-inline-start: var(--ux-space-2);
+  padding: 0.2rem 0.55rem;
+  color: var(--ux-muted);
+  font-size: 0.86rem;
+  font-weight: 750;
+  line-height: 1.35;
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: 999px;
+}
+
+.crafting-project-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
+  gap: var(--ux-space-2);
+  margin: 0;
+  padding: var(--ux-space-2);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.crafting-project-summary > .crafting-next-action {
+  grid-column: 1 / -1;
+}
+
+.crafting-project-summary > article,
+#shopping-metrics > article {
+  display: grid;
+  align-content: start;
+  gap: var(--ux-space-1);
+  min-inline-size: 0;
+  padding: var(--ux-space-2);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+.crafting-project-summary strong,
+#shopping-metrics strong {
+  color: var(--ux-text);
+  font-size: clamp(1.05rem, 1rem + 0.45vw, 1.35rem);
+  font-variant-numeric: tabular-nums;
+}
+
+.crafting-workflow-step {
+  min-inline-size: 0;
+  padding: clamp(var(--ux-space-2), 2vw, var(--ux-space-4));
+  scroll-margin-block-start: 6rem;
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: calc(var(--ux-radius) + 0.2rem);
+}
+
+.crafting-workflow-step > h2 {
+  margin-block-start: 0;
+  padding-block-end: var(--ux-space-2);
+  border-block-end: 1px solid var(--ux-border);
+}
+
+.crafting-workflow-step[data-step-state="waiting"] {
+  border-style: dashed;
+}
+
+.crafting-workflow-nav a[data-step-state="current"] {
+  border-width: 2px;
+  text-decoration: underline double;
+  text-underline-offset: 0.18em;
+}
+
+.crafting-workflow-nav a[data-step-state="complete"]::before {
+  content: "✓ ";
+}
+
+.crafting-workflow-step[data-step-state="current"] {
+  border-inline-start: 0.35rem solid var(--ux-accent);
+}
+
+.crafting-workflow-step[data-step-state="complete"] > h2::after {
+  content: " \2713";
+  color: var(--ux-positive);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.8em;
+}
+
+.crafting-project-kind {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.crafting-project-kind > legend {
+  padding-inline: var(--ux-space-1);
+  font-weight: 750;
+}
+
+.crafting-project-kind-choice {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  padding: var(--ux-space-2);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.crafting-project-kind-choice:focus-within {
+  border-color: var(--ux-focus);
+  box-shadow: 0 0 0 2px var(--ux-focus-offset), 0 0 0 4px var(--ux-focus);
+}
+
+.crafting-project-kind-choice:has(input:checked) {
+  font-weight: 750;
+  border-width: 2px;
+  border-color: var(--ux-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+}
+
+.crafting-project-kind-panel {
+  min-inline-size: 0;
+  padding: var(--ux-space-3);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.crafting-selector-search {
+  display: grid;
+  align-content: end;
+  gap: var(--ux-space-1);
+  min-inline-size: 0;
+}
+
+.crafting-selector-search > small {
+  min-block-size: 1.25em;
+  color: var(--ux-text);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.crafting-selector-search > input {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+#crafting-step-choose :is(
+  #crafter-consumable-controls,
+  #crafter-project-controls
+),
+#crafting-step-configure :is(
+  #crafter-planning-mode,
+  #crafter-warehouse-source
+) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  align-items: end;
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+#crafting-step-choose :is(
+  #crafter-consumable-controls,
+  #crafter-project-controls
+) > *,
+#crafting-step-configure :is(
+  #crafter-planning-mode,
+  #crafter-warehouse-source
+) > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#crafting-step-choose :is(
+  #crafter-consumable-controls,
+  #crafter-project-controls
+) :is(input, select),
+#crafting-step-configure :is(
+  #crafter-planning-mode,
+  #crafter-warehouse-source
+) :is(input:not([type="radio"]), select) {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+#crafting-step-configure #crafter-planning-mode > label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "radio title"
+    ". help";
+  align-content: start;
+  align-items: start;
+  gap: var(--ux-space-1) var(--ux-space-2);
+  min-inline-size: 0;
+  padding: var(--ux-space-2);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+#crafting-step-configure #crafter-planning-mode {
+  align-items: stretch;
+}
+
+#crafting-step-configure #crafter-warehouse-source {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+#crafting-step-configure #crafter-warehouse-source > h2 {
+  margin-block-start: 0;
+  padding-inline-start: 1.75rem;
+}
+
+#crafting-step-configure #crafter-planning-mode > legend {
+  margin-block-end: var(--ux-space-1);
+}
+
+#crafting-step-configure #crafter-planning-mode > label > input[type="radio"] {
+  grid-area: radio;
+  margin-block-start: 0.15rem;
+}
+
+#crafting-step-configure #crafter-planning-mode > label > span {
+  grid-area: title;
+  line-height: 1.35;
+}
+
+#crafting-step-configure #crafter-planning-mode > label > small {
+  grid-area: help;
+  margin: 0;
+  line-height: 1.45;
+}
+
+#crafting-step-configure #crafter-planning-mode > label:focus-within {
+  border-color: var(--ux-focus);
+  box-shadow: 0 0 0 2px var(--ux-focus-offset), 0 0 0 4px var(--ux-focus);
+}
+
+.crafting-wood-shortlist {
+  min-inline-size: 0;
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.crafting-wood-shortlist > h3 {
+  margin-block-start: 0;
+}
+
+.crafting-wood-shortlist-rows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: var(--ux-space-2);
+  list-style: none;
+  counter-reset: crafting-wood-choice;
+  min-inline-size: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.crafting-wood-shortlist-rows > li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: start;
+  gap: var(--ux-space-1) var(--ux-space-2);
+  counter-increment: crafting-wood-choice;
+  min-inline-size: 0;
+  padding: var(--ux-space-2);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+.crafting-wood-shortlist-rows > li::before {
+  content: counter(crafting-wood-choice) ".";
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  color: var(--ux-accent);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.crafting-wood-shortlist-rows > li > * {
+  display: block;
+  grid-column: 2;
+}
+
+.crafting-wood-matrix-disclosure > summary {
+  margin-block: var(--ux-space-2);
+  padding: var(--ux-space-2);
+  color: var(--ux-accent);
+  font-weight: 750;
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  cursor: pointer;
+}
+
+.crafting-review-group {
+  min-inline-size: 0;
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-2);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.crafting-review-group > :is(h3, summary) {
+  margin-block-start: 0;
+  color: var(--ux-text);
+  font-weight: 750;
+}
+
+#crafting-step-review .crafting-review-group .section-heading.spaced {
+  margin-block-start: var(--ux-space-2);
+}
+
+.crafter-project-quantity-cell {
+  min-inline-size: 13rem;
+  text-align: start;
+}
+
+.crafter-project-quantity-controls {
+  display: grid;
+  grid-template-columns: minmax(6rem, 1fr) auto;
+  align-items: center;
+  gap: var(--ux-space-2);
+}
+
+.crafter-project-quantity-controls > input {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.crafter-project-quantity-cell > .result-line {
+  display: block;
+  margin-block: var(--ux-space-1) 0;
+}
+
+.crafter-project-actions .table-tools {
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.crafting-material-coverage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ux-space-1);
+  margin-block-start: var(--ux-space-1);
+}
+
+.crafting-material-coverage > span {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 1.75rem;
+  padding: .2rem .55rem;
+  color: var(--ux-muted);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.crafting-configuration-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ux-space-3);
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-inline-start: .3rem solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+}
+
+.crafting-configuration-confirm > p {
+  margin: 0;
+  color: var(--ux-muted);
+  line-height: 1.5;
+}
+
+.crafting-configuration-confirm > button {
+  flex: 0 0 auto;
+}
+
+.crafter-production-chain-list {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.crafter-production-chain-list > li {
+  position: relative;
+  padding-inline-start: 0;
+}
+
+.crafter-production-chain-list > li[data-chain-depth="1"] { margin-inline-start: 1.25rem; }
+.crafter-production-chain-list > li[data-chain-depth="2"] { margin-inline-start: 2.5rem; }
+.crafter-production-chain-list > li[data-chain-depth="3"] { margin-inline-start: 3.75rem; }
+.crafter-production-chain-list > li[data-chain-depth="4"] { margin-inline-start: 5rem; }
+
+.crafter-production-chain-list > li:not([data-chain-depth="0"])::before {
+  content: "↳";
+  position: absolute;
+  inset-inline-start: -1rem;
+  inset-block-start: 1rem;
+  color: var(--ux-accent);
+  font-weight: 900;
+}
+
+.crafter-production-chain-card {
+  display: grid;
+  gap: var(--ux-space-2);
+  padding: var(--ux-space-3);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-inline-start: .3rem solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+}
+
+.crafter-production-chain-card-heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--ux-space-2);
+}
+
+.crafter-production-chain-role,
+.crafter-production-chain-yield {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 1.75rem;
+  padding: .2rem .55rem;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.crafter-production-chain-role {
+  color: var(--ux-accent);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+}
+
+.crafter-production-chain-yield {
+  color: var(--ux-text);
+  background: var(--ux-surface-muted);
+}
+
+.crafter-production-chain-used-by,
+.crafter-production-chain-inputs {
+  margin: 0;
+}
+
+.crafter-production-chain-used-by,
+.crafter-production-chain-input-label {
+  color: var(--ux-muted);
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.crafter-production-chain-inputs > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ux-space-1);
+  margin: var(--ux-space-1) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.crafter-production-chain-inputs li {
+  display: grid;
+  gap: .1rem;
+  padding: .45rem .65rem;
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius-sm);
+}
+
+.crafter-production-chain-inputs li[data-chain-input-kind="raw"] {
+  border-color: var(--ux-accent);
+}
+
+.crafter-production-chain-inputs li > span {
+  color: var(--ux-muted);
+  font-size: .72rem;
+}
+
+.crafter-profile-readiness {
+  min-inline-size: 0;
+  margin-block-start: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-inline-start: .3rem solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+}
+
+.crafter-profile-readiness > summary,
+.trade-validation-panel > summary {
+  color: var(--ux-text);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.crafter-profile-readiness > .button {
+  margin-block: var(--ux-space-2);
+}
+
+.crafter-profile-readiness-results,
+.trade-validation-history {
+  display: grid;
+  gap: var(--ux-space-2);
+  margin-block: var(--ux-space-2) 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.crafter-profile-readiness-card,
+.trade-validation-history-item > details {
+  padding: var(--ux-space-2);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.crafter-profile-readiness-card > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ux-space-1) var(--ux-space-2);
+  cursor: pointer;
+}
+
+.crafter-profile-readiness-best {
+  padding: .2rem .55rem;
+  color: var(--ux-text);
+  background: color-mix(in srgb, var(--ux-accent) 10%, var(--ux-surface));
+  border: 1px solid var(--ux-accent);
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.crafter-profile-readiness-card > :is(h4, ul) {
+  margin-block: var(--ux-space-2) 0;
+}
+
+.trade-route-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ux-space-2);
+}
+
+.trade-validation-panel {
+  min-inline-size: 0;
+  margin-block-start: var(--ux-space-4);
+  padding: var(--ux-space-3);
+  border-inline-start: .3rem solid var(--ux-warning);
+}
+
+.trade-validation-panel::before {
+  content: none;
+}
+
+.trade-validation-draft {
+  min-inline-size: 0;
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.trade-validation-route {
+  margin-block-end: var(--ux-space-1);
+  color: var(--ux-text);
+  font-weight: 800;
+}
+
+.trade-validation-table-shell {
+  margin-block: var(--ux-space-3);
+}
+
+.trade-validation-table th,
+.trade-validation-table td {
+  vertical-align: top;
+}
+
+.trade-validation-table td:first-child {
+  min-inline-size: 13rem;
+}
+
+.trade-validation-table td:first-child > * {
+  display: block;
+}
+
+.trade-validation-table input {
+  min-inline-size: 7rem;
+  inline-size: 100%;
+}
+
+.trade-validation-controls {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  margin-block: var(--ux-space-2);
+}
+
+.trade-validation-controls textarea {
+  min-block-size: 5.5rem;
+  resize: vertical;
+}
+
+.trade-validation-history-item > details > summary {
+  color: var(--ux-text);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.trade-validation-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--ux-space-1) var(--ux-space-3);
+  margin-block: var(--ux-space-2);
+}
+
+.trade-validation-comparison dt {
+  color: var(--ux-muted);
+  font-weight: 700;
+}
+
+.trade-validation-comparison dd {
+  margin: 0;
+  color: var(--ux-text);
+  font-weight: 800;
+  text-align: end;
+}
+
+.trade-validation-notes {
+  padding: var(--ux-space-2);
+  background: var(--ux-surface-muted);
+  border-radius: var(--ux-radius);
+}
+
+.market-sync-rhythm {
+  border-top: 1px solid var(--theme-hero-border);
+  display: grid;
+  gap: .55rem .7rem;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.35fr);
+  margin-top: .35rem;
+  padding-top: .8rem;
+}
+
+.freshness .market-sync-rhythm-label {
+  color: var(--theme-hero-accent);
+  font-size: .72rem;
+  font-weight: 800;
+  grid-column: 1 / -1;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.market-sync-rhythm-point {
+  display: grid;
+  gap: .12rem;
+}
+
+.freshness .market-sync-rhythm-point strong {
+  color: white;
+  font-size: .9rem;
+}
+
+.freshness .market-sync-rhythm-point small {
+  color: var(--theme-secondary-muted);
+  font-size: .78rem;
+  line-height: 1.35;
+}
+
+.freshness .market-sync-rhythm-arrow {
+  align-self: center;
+  color: var(--theme-hero-accent);
+  font-size: 1.15rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.crafting-review-group[data-review-group="attention"][data-attention-count]:not([data-attention-count="0"]) {
+  border-inline-start: 0.3rem solid var(--ux-warning);
+}
+
+.crafting-review-advanced > summary {
+  padding: var(--ux-space-2);
+  color: var(--ux-accent);
+  cursor: pointer;
+}
+
+.crafting-review-group-body {
+  min-inline-size: 0;
+  padding-block-start: var(--ux-space-2);
+}
+
+#crafting-guided-workflow :is(.table-shell, .table-scroll),
+#shopping-list-shell,
+#shopping-source-shell {
+  max-height: none;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.crafting-next-action,
+.crafter-execution-progress,
+.shopping-cargo-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ux-space-2) var(--ux-space-3);
+  padding: var(--ux-space-3);
+  color: var(--ux-text);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.crafting-next-action {
+  box-shadow: 0 0.25rem 0.7rem color-mix(in srgb, var(--ux-text) 12%, transparent);
+}
+
+@supports (position: sticky) {
+  @media (min-width: 48rem) and (min-height: 36rem) {
+    .crafting-next-action,
+    .shopping-list-actions.ux-sticky-actions {
+      position: sticky;
+      inset-block-start: 0.5rem;
+      z-index: 2;
+    }
+  }
+}
+
+.crafting-next-action-label,
+.crafter-execution-progress-text {
+  font-weight: 750;
+}
+
+.crafting-next-action-context {
+  flex: 1 1 16rem;
+  min-inline-size: 0;
+  color: var(--ux-muted);
+  overflow-wrap: anywhere;
+}
+
+.crafting-review-search,
+.shopping-attention-tools,
+.crafter-execution-bulk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  margin-block: var(--ux-space-2);
+}
+
+.crafting-review-search-field,
+.shopping-product-filter-field {
+  display: grid;
+  flex: 1 1 18rem;
+  gap: var(--ux-space-1);
+  min-inline-size: min(100%, 12rem);
+}
+
+.crafting-review-search-input,
+.shopping-product-filter {
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.crafting-review-search-count,
+.shopping-product-filter-count,
+.shopping-attention-count,
+.shopping-route-source-mix-status {
+  margin: 0;
+  color: var(--ux-muted);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.crafter-execution-progress progress {
+  flex: 1 1 14rem;
+  min-inline-size: min(100%, 10rem);
+  accent-color: var(--ux-accent);
+}
+
+/* Supply & Cargo: actions stay compact and status remains visible without colour alone. */
+#shopping-planner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ux-space-4);
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#shopping-planner > *,
+#shopping-planner > .ux-section-nav,
+#shopping-planner > .ux-handoff-banner,
+#shopping-planner > :is(.shopping-data-notes, .shopping-route-map-section),
+#shopping-data-notes,
+#shopping-route-map-details {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#shopping-planner .ux-section-nav > [data-workflow-ux-links] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ux-space-1) var(--ux-space-2);
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#shopping-planner .ux-section-nav > :is(
+  [data-workflow-ux-links],
+  [data-workflow-ux-density],
+  [data-workflow-ux-view]
+) > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#shopping-route-map-details > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#shopping-planner > :is(
+  #shopping-controls,
+  .shopping-sourcing,
+  .shopping-list-actions,
+  #shopping-list-shell,
+  #shopping-source-shell,
+  .shopping-pickup-plan
+) {
+  min-inline-size: 0;
+  scroll-margin-block-start: 6rem;
+}
+
+#shopping-controls,
+.shopping-sourcing,
+.shopping-list-actions,
+.shopping-pickup-plan {
+  padding: clamp(var(--ux-space-2), 2vw, var(--ux-space-4));
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: calc(var(--ux-radius) + 0.2rem);
+}
+
+#shopping-controls,
+.shopping-sourcing-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  align-items: start;
+  gap: var(--ux-space-2);
+}
+
+#shopping-controls > .shopping-add-control {
+  align-content: start;
+  display: grid;
+  gap: .35rem;
+}
+
+#shopping-controls > .shopping-add-control::before {
+  content: "\00a0";
+  font-size: .78rem;
+  font-weight: 750;
+  line-height: normal;
+}
+
+#shopping-controls > .shopping-add-control > #shopping-add {
+  block-size: 2.55rem;
+  inline-size: 100%;
+  min-block-size: 2.55rem;
+  margin: 0;
+}
+
+#shopping-controls > *,
+.shopping-sourcing-controls > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#shopping-controls :is(input, select),
+.shopping-sourcing-controls :is(input, select) {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.shopping-list-actions,
+.shopping-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ux-space-2) var(--ux-space-3);
+}
+
+.shopping-list-actions > *,
+.shopping-action-buttons > * {
+  min-inline-size: 0;
+}
+
+#shopping-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--ux-space-2);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.shopping-list-actions.ux-sticky-actions {
+  color: var(--ux-text);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  box-shadow: 0 0.25rem 0.7rem color-mix(in srgb, var(--ux-text) 12%, transparent);
+}
+
+.shopping-attention-tools {
+  justify-content: space-between;
+  padding: var(--ux-space-2);
+  background: var(--ux-surface-muted);
+  border-block-end: 1px solid var(--ux-border);
+}
+
+.shopping-item-row[data-attention="true"] > :first-child,
+.shopping-item-row[data-attention="required"] > :first-child {
+  border-inline-start: 0.3rem solid var(--ux-accent);
+  font-weight: 750;
+}
+
+.shopping-item-row[data-attention="true"] > :first-child::before,
+.shopping-item-row[data-attention="required"] > :first-child::before {
+  content: "! ";
+}
+
+.shopping-item-row[data-attention="complete"] {
+  background: color-mix(in srgb, var(--ux-positive) 7%, transparent);
+}
+
+.shopping-item-row > :is(:first-child, .shopping-cost-total) {
+  font-weight: 750;
+}
+
+.shopping-item-row .shopping-offer {
+  display: grid;
+  gap: var(--ux-space-1);
+  min-inline-size: 0;
+  padding-block: var(--ux-space-1);
+}
+
+.shopping-use-origin {
+  min-block-size: 2.4rem;
+  max-inline-size: 14rem;
+  padding: 0.45rem 0.65rem;
+  white-space: normal;
+}
+
+.shopping-route-start-cell {
+  min-inline-size: 9rem;
+}
+
+.shopping-source-row:focus-within {
+  outline: 2px solid var(--ux-focus);
+  outline-offset: -2px;
+}
+
+.shopping-cargo-breakdown {
+  justify-content: flex-start;
+  font-weight: 700;
+}
+
+.shopping-plan-strategy {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ux-space-2);
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-2);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.shopping-plan-strategy > legend {
+  max-inline-size: 100%;
+  padding-inline: var(--ux-space-1);
+  color: var(--ux-text);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.shopping-plan-strategy > label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  min-block-size: 3rem;
+  padding: var(--ux-space-2);
+  color: var(--ux-text);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.shopping-plan-strategy > label:has(input:checked) {
+  border-width: 3px;
+  border-style: double;
+  border-color: var(--ux-accent);
+  font-weight: 800;
+}
+
+.shopping-plan-strategy > label:has(input:disabled) {
+  color: var(--ux-muted);
+  border-style: dashed;
+  cursor: not-allowed;
+}
+
+.shopping-plan-strategy input[type="radio"] {
+  order: -1;
+  flex: 0 0 auto;
+  margin-block-start: 0.15rem;
+  accent-color: var(--ux-accent);
+}
+
+.shopping-plan-restriction {
+  grid-column: 1 / -1;
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--ux-space-2);
+  color: var(--ux-muted);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-inline-start: 0.3rem solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+.shopping-plan-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  margin-block: var(--ux-space-3);
+}
+
+.shopping-plan-comparison > h3,
+.shopping-plan-simplifier,
+.shopping-plan-comparison-unavailable {
+  grid-column: 1 / -1;
+}
+
+.shopping-plan-comparison > h3 {
+  margin: 0;
+  padding-block-end: var(--ux-space-1);
+  border-block-end: 1px solid var(--ux-border);
+}
+
+.shopping-plan-option {
+  display: grid;
+  align-content: start;
+  gap: var(--ux-space-1);
+  min-inline-size: 0;
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+.shopping-plan-option[data-selected="true"] {
+  border-width: 3px;
+  border-style: double;
+  border-color: var(--ux-accent);
+}
+
+.shopping-plan-option > :is(h4, p) {
+  margin: 0;
+}
+
+.shopping-plan-option > p {
+  font-variant-numeric: tabular-nums;
+}
+
+.shopping-plan-simplifier,
+.shopping-plan-comparison-unavailable {
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--ux-space-2) var(--ux-space-3);
+  border: 1px solid var(--ux-border);
+  border-inline-start-width: 0.35rem;
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+.shopping-plan-simplifier {
+  background: color-mix(in srgb, var(--ux-positive) 9%, var(--ux-surface));
+  border-inline-start-color: var(--ux-positive);
+  font-weight: 800;
+}
+
+.shopping-plan-comparison-unavailable {
+  color: var(--ux-muted);
+  background: color-mix(in srgb, var(--ux-warning) 8%, var(--ux-surface));
+  border-inline-start-color: var(--ux-warning);
+}
+
+.shopping-pickup-stops {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  margin-block: var(--ux-space-3);
+}
+
+.shopping-pickup-stop {
+  display: grid;
+  align-content: start;
+  gap: var(--ux-space-1);
+  min-inline-size: 0;
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-inline-start: 0.3rem solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+.shopping-pickup-stop > :first-child {
+  margin-block-start: 0;
+}
+
+.shopping-pickup-stop > :last-child {
+  margin-block-end: 0;
+}
+
+.ux-handoff-banner[data-workflow-ux-handoff="crafting-supply"] {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: var(--ux-space-2) var(--ux-space-3);
+  min-inline-size: 0;
+  padding: var(--ux-space-3);
+  color: var(--ux-text);
+  background: var(--ux-surface-muted);
+  border: 2px solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+/* Warehouse task views and review-first inventory actions. */
+.inventory-section-nav a[aria-current="page"] {
+  border-width: 2px;
+  box-shadow: inset 0 -0.2rem 0 var(--ux-accent);
+}
+
+.inventory-stale-filter {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ux-space-1);
+  margin-block-start: var(--ux-space-2);
+  color: var(--ux-muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.inventory-freshness {
+  grid-column: 1 / -1;
+  color: var(--ux-muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.inventory-freshness.is-stale {
+  color: var(--ux-warning);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.inventory-inline-editor {
+  display: flex;
+  flex: 1 1 24rem;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--ux-space-1);
+  min-inline-size: 0;
+  padding: var(--ux-space-1);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+}
+
+.inventory-inline-editor label {
+  display: grid;
+  flex: 1 1 8rem;
+  gap: 0.2rem;
+  min-inline-size: 0;
+  font-weight: 750;
+}
+
+.inventory-inline-editor input {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.inventory-inline-editor button {
+  min-block-size: 2.6rem;
+}
+
+.inventory-shortage-panel {
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-inline-start: 0.3rem solid var(--ux-warning);
+  border-radius: var(--ux-radius);
+}
+
+.inventory-shortage-panel h3 {
+  margin-block-start: 0;
+}
+
+.inventory-shortage-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--ux-space-1) var(--ux-space-3);
+  margin-block: var(--ux-space-2);
+  padding: 0;
+  list-style: none;
+}
+
+.inventory-shortage-row {
+  display: grid;
+  gap: 0.15rem;
+  min-inline-size: 0;
+}
+
+.inventory-shortage-row label {
+  overflow-wrap: anywhere;
+}
+
+.inventory-ocr-delta {
+  font-variant-numeric: tabular-nums;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.inventory-ocr-delta.is-positive::before,
+.inventory-ocr-delta.is-negative::before {
+  content: "";
+  display: inline-block;
+  inline-size: 0.55rem;
+  block-size: 0.55rem;
+  margin-inline-end: 0.35rem;
+  border: 2px solid currentColor;
+}
+
+.inventory-ocr-delta.is-positive::before {
+  border-radius: 50%;
+}
+
+.inventory-ocr-delta.is-negative::before {
+  transform: rotate(45deg);
+}
+
+/* Browser-local inventory change history. */
+.inventory-history {
+  display: grid;
+  gap: var(--ux-space-3);
+  min-inline-size: 0;
+  margin-block: var(--ux-space-4);
+  padding: clamp(var(--ux-space-2), 2vw, var(--ux-space-4));
+  color: var(--ux-text);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.inventory-history-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ux-space-1) var(--ux-space-3);
+  min-inline-size: 0;
+  padding-block-end: var(--ux-space-2);
+  border-block-end: 1px solid var(--ux-border);
+}
+
+.inventory-history-header > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin-block: 0;
+  overflow-wrap: anywhere;
+}
+
+.inventory-history-list {
+  display: grid;
+  gap: var(--ux-space-2);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inventory-history-entry {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.35fr) minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--ux-space-1) var(--ux-space-3);
+  min-inline-size: 0;
+  padding: var(--ux-space-3);
+  background: var(--ux-surface-muted);
+  border: 1px solid var(--ux-border);
+  border-inline-start: 0.3rem solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+}
+
+.inventory-history-entry:focus-within {
+  border-color: var(--ux-focus);
+  box-shadow: 0 0 0 2px var(--ux-focus-offset), 0 0 0 4px var(--ux-focus);
+}
+
+.inventory-history-entry > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin-block: 0;
+  overflow-wrap: anywhere;
+}
+
+.inventory-history-details {
+  grid-column: 1 / -1;
+  min-inline-size: 0;
+  color: var(--ux-muted);
+}
+
+.inventory-history-details > summary {
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  padding: var(--ux-space-1) 0;
+  color: var(--ux-accent);
+  font-weight: 750;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.inventory-history-details :is(ul, ol, dl) {
+  margin-block: var(--ux-space-1) 0;
+}
+
+.inventory-history-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--ux-space-1);
+  min-inline-size: 0;
+}
+
+.inventory-history-actions > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  white-space: normal;
+}
+
+.inventory-history-empty {
+  margin: 0;
+  padding: var(--ux-space-3);
+  color: var(--ux-muted);
+  text-align: center;
+  background: var(--ux-surface-muted);
+  border: 1px dashed var(--ux-border);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+@supports (position: sticky) {
+  @media (min-width: 90rem) and (min-height: 40rem) {
+    .crafting-project-summary {
+      position: sticky;
+      inset-block-start: 0.5rem;
+      z-index: 3;
+      box-shadow: 0 0.35rem 0.9rem color-mix(in srgb, var(--ux-text) 14%, transparent);
+    }
+
+    .crafting-project-summary > .crafting-next-action {
+      grid-column: auto;
+    }
+  }
+}
+
+.ux-handoff-banner[data-workflow-ux-handoff="crafting-supply"] > * {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  margin-block: 0;
+}
+
+.shopping-route-map-section {
+  margin-block-start: clamp(1.5rem, 4vw, 3rem);
+  padding: var(--ux-space-3);
+  border: 1px dashed var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+.shopping-route-map-section[open] {
+  border-style: solid;
+  border-color: var(--ux-accent);
+}
+
+.shopping-data-notes > summary,
+.shopping-route-map-section > summary {
+  padding: var(--ux-space-2);
+  color: var(--ux-accent);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.shopping-data-notes > :not(summary),
+.shopping-route-map-section > :not(summary) {
+  margin-inline: var(--ux-space-2);
+}
+
+@media (max-width: 620px) {
+  .crafting-project-kind,
+  #shopping-controls,
+  .shopping-sourcing-controls,
+  #shopping-metrics,
+  .crafting-wood-shortlist-rows,
+  .shopping-plan-strategy,
+  .shopping-plan-comparison,
+  .shopping-pickup-stops {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inventory-history-header {
+    align-items: stretch;
+  }
+
+  .inventory-history-entry {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inventory-history-details {
+    grid-column: 1;
+  }
+
+  .inventory-history-actions {
+    justify-content: flex-start;
+  }
+
+  .inventory-history-actions > * {
+    inline-size: 100%;
+  }
+
+  .crafting-workflow-nav ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .market-sync-rhythm {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .freshness .market-sync-rhythm-label {
+    grid-column: auto;
+  }
+
+  .freshness .market-sync-rhythm-arrow {
+    justify-self: start;
+    transform: rotate(90deg);
+  }
+
+  .crafting-configuration-confirm {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .crafter-production-chain-list > li[data-chain-depth="1"] { margin-inline-start: .65rem; }
+  .crafter-production-chain-list > li[data-chain-depth="2"] { margin-inline-start: 1.3rem; }
+  .crafter-production-chain-list > li[data-chain-depth="3"],
+  .crafter-production-chain-list > li[data-chain-depth="4"] { margin-inline-start: 1.95rem; }
+
+  .crafter-production-chain-card-heading {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #shopping-controls > .shopping-add-control::before {
+    display: none;
+  }
+
+  .ux-toolbar,
+  .ux-quick-edit,
+  .ux-sticky-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ux-search-field,
+  .ux-search,
+  .ux-toolbar > *,
+  .ux-quick-edit > *,
+  .ux-sticky-actions > *,
+  .ux-favourite-toggle,
+  .ux-copy-button {
+    inline-size: 100%;
+  }
+
+  .ux-section-nav ul,
+  .ux-status-legend ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ux-section-nav ul {
+    display: grid;
+  }
+
+  .ux-section-nav a {
+    inline-size: 100%;
+  }
+
+  .ux-section-nav > :is([data-workflow-ux-density], [data-workflow-ux-view]) {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .workflow-card-table-shell {
+    overflow-x: visible;
+  }
+
+  [data-workflow-ux-card-table] {
+    display: block;
+    inline-size: 100%;
+  }
+
+  [data-workflow-ux-card-table] thead {
+    display: block;
+    inline-size: 100%;
+    block-size: 0;
+    margin: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  [data-workflow-ux-card-table] tbody,
+  [data-workflow-ux-card-table] tr,
+  [data-workflow-ux-card-table] td {
+    display: block;
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  [data-workflow-ux-card-table] tbody tr {
+    margin-block: var(--ux-space-2);
+    padding: var(--ux-space-2);
+    background: var(--ux-surface);
+    border: 1px solid var(--ux-border);
+    border-radius: var(--ux-radius);
+  }
+
+  [data-workflow-ux-card-table] td[data-workflow-ux-cell] {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--ux-space-2);
+    border-block-end: 1px solid var(--ux-border);
+    overflow-wrap: anywhere;
+  }
+
+  [data-workflow-ux-card-table] td[data-workflow-ux-cell]:last-child {
+    border-block-end: 0;
+  }
+
+  [data-workflow-ux-cell-label] {
+    display: block;
+    color: var(--ux-muted);
+    font-weight: 750;
+  }
+
+  .ux-sticky-actions {
+    position: static;
+  }
+
+  .crafting-next-action,
+  .crafter-execution-progress,
+  .crafting-review-search,
+  .shopping-attention-tools,
+  .crafter-execution-bulk-actions,
+  .shopping-list-actions,
+  .shopping-action-buttons {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .crafting-next-action > *,
+  .crafter-execution-progress > *,
+  .crafting-review-search > *,
+  .shopping-attention-tools > *,
+  .crafter-execution-bulk-actions > *,
+  .shopping-list-actions > *,
+  .shopping-action-buttons > * {
+    inline-size: 100%;
+    max-inline-size: 100%;
+  }
+
+  .crafting-next-action,
+  .shopping-list-actions.ux-sticky-actions {
+    position: static;
+  }
+}
+
+/*
+ * Keep native fieldset/legend semantics, but place each visible group title
+ * inside its card. The continuous inset outline avoids the browser's default
+ * "legend cuts through the border" treatment without changing form behavior.
+ */
+main fieldset:not(.crafter-warehouse-source-modes) {
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--ux-border);
+  min-inline-size: 0;
+}
+
+main fieldset:not(.crafter-warehouse-source-modes) > legend {
+  box-sizing: border-box;
+  color: var(--ux-text);
+  float: left;
+  font-weight: 800;
+  grid-column: 1 / -1;
+  inline-size: 100%;
+  line-height: 1.35;
+  margin: 0 0 calc(var(--ux-space-3) + var(--ux-space-2));
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+  padding: 0;
+  transform: translateY(var(--ux-space-3));
+}
+
+main fieldset:not(.crafter-warehouse-source-modes) > legend::after {
+  background: var(--ux-border);
+  block-size: 1px;
+  content: "";
+  display: block;
+  inline-size: 100%;
+  margin-block-start: var(--ux-space-2);
+}
+
+main fieldset:not(.crafter-warehouse-source-modes) > legend + * {
+  clear: left;
+}
+
+/* A spanning legend keeps auto-fit tracks from collapsing, so these known
+   choice groups declare the exact number of visible option columns. */
+main fieldset.crafting-project-kind {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#crafting-step-configure fieldset#crafter-planning-mode {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 620px) {
+  main fieldset.crafting-project-kind,
+  #crafting-step-configure fieldset#crafter-planning-mode {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(
+    .ux-toolbar,
+    .ux-search-field,
+    .ux-search,
+    .ux-favourite-toggle,
+    .ux-quick-edit,
+    .ux-section-nav,
+    .ux-sticky-actions,
+    .ux-fix-link,
+    .ux-copy-button,
+    .ux-copy-status,
+    .ux-status-legend
+  ) {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  main fieldset:not(.crafter-warehouse-source-modes) {
+    box-shadow: none;
+    outline: 1px solid CanvasText;
+    outline-offset: -1px;
+  }
+
+  main fieldset:not(.crafter-warehouse-source-modes) > legend::after {
+    background: CanvasText;
+  }
+
+  .ux-toolbar,
+  .ux-quick-edit,
+  .ux-sticky-actions,
+  .ux-status-legend,
+  .ux-status-legend-cue {
+    color: CanvasText;
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+    forced-color-adjust: auto;
+  }
+
+    .crafting-workflow-step[data-step-state="current"],
+    .crafting-next-action,
+    .crafter-execution-progress,
+    .shopping-attention-tools,
+    .shopping-cargo-breakdown,
+    .shopping-plan-strategy,
+    .shopping-plan-strategy > label,
+    .shopping-plan-restriction,
+    .shopping-plan-option,
+    .shopping-plan-simplifier,
+    .shopping-plan-comparison-unavailable,
+    .shopping-pickup-stop,
+    .ux-handoff-banner[data-workflow-ux-handoff="crafting-supply"],
+    .shopping-data-notes,
+    .shopping-route-map-section,
+    .ux-quick-start,
+    .inventory-history,
+    .inventory-history-header,
+    .inventory-history-entry,
+    .inventory-history-empty,
+    [data-workflow-ux-card-table] tbody tr {
+      color: CanvasText;
+      background: Canvas;
+      border-color: CanvasText;
+  }
+
+  .shopping-plan-strategy > label:has(input:checked),
+  .shopping-plan-option[data-selected="true"],
+  .inventory-history-entry:focus-within {
+    border-color: Highlight;
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ux-favourite-toggle[aria-pressed="true"],
+  .ux-section-nav a[aria-current="page"],
+  .ux-section-nav a[aria-current="true"] {
+    color: HighlightText;
+    background: Highlight;
+    border-color: Highlight;
+    text-decoration: underline double;
+  }
+
+  :is(
+    .ux-favourite-toggle,
+    .ux-copy-button,
+    .ux-fix-link,
+    .ux-search,
+    .ux-section-nav a,
+    .ux-toolbar a,
+    .ux-toolbar button,
+    .ux-toolbar input,
+    .ux-toolbar select,
+    .ux-toolbar textarea,
+    .ux-quick-edit a,
+    .ux-quick-edit button,
+    .ux-quick-edit input,
+    .ux-quick-edit select,
+    .ux-quick-edit textarea,
+    .ux-sticky-actions a,
+    .ux-sticky-actions button
+  ):focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 3px;
+    box-shadow: none;
+  }
+}
+
+@media print {
+  main fieldset:not(.crafter-warehouse-source-modes) {
+    box-shadow: none !important;
+    outline: 1px solid #000000;
+    outline-offset: -1px;
+  }
+
+  main fieldset:not(.crafter-warehouse-source-modes) > legend::after {
+    background: #000000 !important;
+  }
+
+  .ux-toolbar,
+  .ux-search-field,
+  .ux-search,
+  .ux-match-count,
+  .ux-favourite-toggle,
+  .ux-quick-edit,
+  .ux-section-nav,
+  .ux-sticky-actions,
+  .ux-fix-link,
+  .ux-copy-button,
+  .ux-copy-status {
+    display: none !important;
+  }
+
+  .crafting-review-search,
+  .shopping-product-filter-field,
+  .shopping-attention-tools,
+  .crafter-execution-bulk-actions,
+  .shopping-use-origin,
+  .ux-handoff-banner[data-workflow-ux-handoff="crafting-supply"] button {
+    display: none !important;
+  }
+
+  .crafting-next-action,
+  .shopping-list-actions.ux-sticky-actions,
+  .crafting-project-summary {
+    position: static !important;
+    box-shadow: none !important;
+  }
+
+  .shopping-plan-strategy,
+  .shopping-plan-comparison,
+  .shopping-plan-option,
+  .shopping-plan-simplifier,
+  .shopping-plan-comparison-unavailable {
+    break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  .inventory-history,
+  .inventory-history-entry,
+  .inventory-history-details {
+    overflow: visible !important;
+  }
+
+  .inventory-history,
+  .inventory-history-entry {
+    break-inside: avoid;
+    color: #000000 !important;
+    background: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .inventory-history-actions {
+    display: none !important;
+  }
+
+  .crafting-workflow-step,
+  .shopping-pickup-stop,
+  #shopping-controls,
+  .shopping-sourcing,
+  .shopping-list-actions,
+  .shopping-pickup-plan {
+    break-inside: avoid;
+  }
+
+  .shopping-data-notes,
+  .shopping-route-map-section {
+    border-color: #000000 !important;
+  }
+
+  .ux-status-legend,
+  .ux-status-legend-cue {
+    color: #000000 !important;
+    background: #ffffff !important;
+    border-color: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .ux-status-legend {
+    break-inside: avoid;
+  }
+
+  details:not([open]) > :not(summary) {
+    display: block !important;
+  }
+
+  [data-workflow-ux-card-table] {
+    display: table;
+  }
+
+  [data-workflow-ux-card-table] thead {
+    display: table-header-group;
+    inline-size: auto;
+    block-size: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  [data-workflow-ux-card-table] tbody {
+    display: table-row-group;
+  }
+
+  [data-workflow-ux-card-table] tr {
+    display: table-row;
+  }
+
+  [data-workflow-ux-card-table] td {
+    display: table-cell;
+  }
+
+  [data-workflow-ux-cell-label] {
+    display: none !important;
+  }
+}

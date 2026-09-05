@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Corrige l’affichage des prix dans le tableau de bord, le marché, l’atlas, l’historique, les modifications, les achats et la fabrication : le prix unitaire affiché hors taxe reste séparé de la taxe portuaire, et les totaux exacts appliquent l’arrondi du jeu lorsque la quantité et le fournisseur sont connus.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="nam-owner-menu" content="{&quot;schema&quot;:1,&quot;digests&quot;:[&quot;1c7a4bc85477c668710bc688a628574c1e2ffb8c4e8ebb4d6c644688408cde2a&quot;],&quot;checked_utc&quot;:&quot;2026-09-05T11:54:08Z&quot;,&quot;expires_utc&quot;:&quot;2026-09-06T10:00:00Z&quot;,&quot;status&quot;:&quot;ok&quot;}">
+  <meta name="theme-color" content="#102b3f">
+  <meta name="google-site-verification" content="5gpouqjukLFw_-ZCaFuPjT7PvcS5OxkbR8GPeXZUf7Q">
+  <meta name="naval-action-content-sha256" content="c15239011e20265d4555104a832d936458584acb3e3006357f7cf696e355f07f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; style-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://api.ipify.org; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="v0.4.5 — Prix affichés et taxe de transaction corrigés · Naval Action Automation">
+  <meta property="og:description" content="Corrige l’affichage des prix dans le tableau de bord, le marché, l’atlas, l’historique, les modifications, les achats et la fabrication : le prix unitaire affiché hors taxe reste séparé de la taxe portuaire, et les totaux exacts appliquent l’arrondi du jeu lorsque la quantité et le fournisseur sont connus.">
+  <meta property="og:url" content="https://aquaengraved.github.io/NAM/fr/changelog-v0-4-5">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:locale:alternate" content="sv_SE">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image" content="https://aquaengraved.github.io/NAM/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aquaengraved.github.io/NAM/fr/changelog-v0-4-5">
+  <link rel="alternate" hreflang="en" href="https://aquaengraved.github.io/NAM/changelog-v0-4-5">
+  <link rel="alternate" hreflang="nl" href="https://aquaengraved.github.io/NAM/nl/changelog-v0-4-5">
+  <link rel="alternate" hreflang="sv" href="https://aquaengraved.github.io/NAM/sv/changelog-v0-4-5">
+  <link rel="alternate" hreflang="fr" href="https://aquaengraved.github.io/NAM/fr/changelog-v0-4-5">
+  <link rel="alternate" hreflang="de" href="https://aquaengraved.github.io/NAM/de/changelog-v0-4-5">
+  <link rel="alternate" hreflang="es" href="https://aquaengraved.github.io/NAM/es/changelog-v0-4-5">
+  <link rel="alternate" hreflang="x-default" href="https://aquaengraved.github.io/NAM/changelog-v0-4-5">
+  <script src="../assets/theme-init.min.js?v=cc25b3e26e4e65a2"></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=6b662828f110579e">
+  <link rel="stylesheet" href="../assets/ux-polish.css?v=deb3a8751c38d08f">
+  <script src="../assets/common.min.js?v=b16657092734e223" defer></script>
+  
+  <title>v0.4.5 — Prix affichés et taxe de transaction corrigés · Naval Action Automation</title>
+</head>
+<body class="historical-page-shell historical-page-changelog" data-page-family="changelog" data-design-scope="shared-historical">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="site-header">
+    <div class="brand-lockup">
+      <a class="brand" href="./" aria-label="Naval Action Automation · vue d’ensemble">
+        <span class="brand-mark" aria-hidden="true">NA</span>
+        <span><strong>Naval Action Automation</strong><small>EU3 · vérifié chaque jour</small></span>
+      </a>
+      <a class="brand-version" href="changelog.html" rel="nofollow" aria-label="Ouvrir le journal des modifications du projet pour la version 0.4.18">v0.4.18</a>
+    </div>
+    <div class="header-actions">
+      <button class="configurator-global-nav-toggle button compact" type="button" data-global-nav-toggle data-navigation-open="Ouvrir la navigation" data-navigation-close="Fermer la navigation" aria-controls="global-navigation" aria-expanded="false">Ouvrir la navigation</button>
+      <nav id="global-navigation" class="site-nav configurator-global-nav-target" aria-label="Navigation principale"><a href="./">Tableau de bord</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Marché</summary><div class="nav-submenu"><a href="market">Marché actuel</a><a href="changes">Aujourd’hui</a><a href="history">Historique</a></div></details>
+<a href="atlas">Carte des Caraïbes</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Fabrication et approvisionnement</summary><div class="nav-submenu"><a href="crafting">Projets de fabrication</a><a href="planner">Approvisionnement et cargaison</a><a href="configurator">Navires et canons</a></div></details>
+<a href="trade">Planificateur de commerce</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Gestion des entrepôts</summary><div class="nav-submenu"><a href="inventory">Gérer les entrepôts</a><a href="shared-warehouse">Entrepôt partagé</a></div></details>
+<a href="future">Idées pour la suite</a></nav>
+      <div class="preference-controls">
+        <a class="help-nav-link button compact" href="about">Aide et guide</a>
+        <a class="feedback-nav-link button compact" href="feedback" aria-label="Ouvrir le formulaire de contact et de retour">Contact</a>
+        <a class="support-nav-link button compact" href="support">Soutenir</a>
+        <button class="theme-toggle button compact" type="button" data-theme-toggle data-theme-toggle-light="Passer au thème clair" data-theme-toggle-dark="Passer au thème sombre" aria-label="Passer au thème sombre">
+          <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon></span>
+          <span data-theme-toggle-text>Passer au thème sombre</span>
+        </button>
+        <nav class="language-switch" aria-label="Langue"><a href="../changelog-v0-4-5.html" hreflang="en" lang="en" aria-label="English">EN</a><a href="../nl/changelog-v0-4-5.html" hreflang="nl" lang="nl" aria-label="Nederlands">NL</a><a href="../sv/changelog-v0-4-5.html" hreflang="sv" lang="sv" aria-label="Svenska">SV</a><a href="changelog-v0-4-5.html" hreflang="fr" lang="fr" aria-label="Français" aria-current="true">FR</a><a href="../de/changelog-v0-4-5.html" hreflang="de" lang="de" aria-label="Deutsch">DE</a><a href="../es/changelog-v0-4-5.html" hreflang="es" lang="es" aria-label="Español">ES</a></nav>
+      </div>
+    </div>
+  </header>
+  
+<main id="main" class="changelog-detail">
+  <header class="release-hero">
+    <div class="release-hero-copy">
+      <p class="eyebrow">Notes de version</p>
+      <h1><span class="release-version">v0.4.5</span><span class="release-title">Prix affichés et taxe de transaction corrigés</span></h1>
+      <p class="release-summary">Corrige l’affichage des prix dans le tableau de bord, le marché, l’atlas, l’historique, les modifications, les achats et la fabrication : le prix unitaire affiché hors taxe reste séparé de la taxe portuaire, et les totaux exacts appliquent l’arrondi du jeu lorsque la quantité et le fournisseur sont connus.</p>
+    </div>
+    <dl class="release-meta">
+      <div><dt>Date</dt><dd><time datetime="2026-08-30">30-08-2026</time></dd></div>
+      <div><dt>Vues</dt><dd><span class="changelog-view-unavailable">Indisponible</span></dd></div>
+    </dl>
+  </header>
+  <div class="release-layout">
+    <div class="release-content">
+      
+      <section class="release-notes"><h2>Modifications</h2><ul><li>Le tableau de bord, le marché actuel, l’atlas, l’historique, les modifications et l’export de prix utilisent désormais le BuyPrice brut comme prix unitaire affiché hors taxe. Le PortTax correspondant est affiché séparément ; le sens de vente opposé reste inchangé.</li><li>Les achats calculent chaque transaction objet-port sur la quantité complète : le sous-total est la quantité multipliée par le prix affiché, la taxe est l’arrondi inférieur du sous-total multiplié par PortTax, et le total final est leur somme. Les preuves en jeu comprennent 15 Teak Logs à 10 Reals, avec 7 Reals de taxe et un total de 157 Reals.</li><li>La répartition prioritaire par prix affiche le total exact du plan produit, mais ne prétend plus que des achats fractionnés et arrondis séparément constituent le minimum global.</li><li>La fabrication qualifie les valeurs proportionnelles de sous-totaux aux prix affichés avant taxe portuaire. La taxe et le total exacts n’apparaissent que pour une quantité entière couverte par un fournisseur vérifié ; toute preuve absente, fractionnaire, incorrecte ou insuffisante reste indisponible et ne peut désigner de gagnant entre fabriquer et acheter.</li><li>Le guide d’aide explique la différence simplement. Les prix bruts et taux de taxe absents ou incorrects sont refusés au lieu de devenir 0 ou l’ancienne valeur unitaire arrondie.</li></ul></section>
+    </div>
+    <aside class="release-aside">
+      <div class="notice release-privacy"><p>Les vues affichées ne sont acceptées qu’à partir d’un instantané agrégé après filtrage des robots connus. Les totaux n’identifient personne, n’utilisent pas de cookies et ne correspondent pas à des visiteurs uniques.</p></div>
+      <a class="button compact release-back" href="changelog.html" rel="nofollow">← Retour à tous les journaux des modifications</a>
+    </aside>
+  </div>
+</main>
+  <footer class="site-footer">
+    <p><strong>Naval Action Automation</strong> est un outil indépendant destiné aux joueurs de Naval Action. Il n’est pas affilié à Bermuda Computer Club et n’est pas approuvé par celui-ci.</p>
+    <p>Aucun cookie, compte ni suivi intersites. Cloudflare Web Analytics fournit des statistiques de trafic agrégées.</p>
+    <p class="footer-feedback"><a href="feedback">Retours et contact</a></p>
+    <p class="footer-support"><a href="support">Soutenir le développement</a></p>
+    <p>Copyright © 2026 Aquaengraved. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Informations légales"><a href="privacy">Politique de confidentialité</a><a href="terms">Conditions d’utilisation</a></nav>
+  </footer>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{&quot;token&quot;:&quot;24bcaca218604c8f91a3f90c11a8d535&quot;,&quot;spa&quot;:false}'></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Für jeden Gegenstand den täglichen niedrigsten, Median- und höchsten Preis in NPC-Hafenläden anzeigen.">
+  
+  <meta name="nam-owner-menu" content="{&quot;schema&quot;:1,&quot;digests&quot;:[&quot;1c7a4bc85477c668710bc688a628574c1e2ffb8c4e8ebb4d6c644688408cde2a&quot;],&quot;checked_utc&quot;:&quot;2026-09-05T11:54:08Z&quot;,&quot;expires_utc&quot;:&quot;2026-09-06T10:00:00Z&quot;,&quot;status&quot;:&quot;ok&quot;}">
+  <meta name="theme-color" content="#102b3f">
+  <meta name="google-site-verification" content="5gpouqjukLFw_-ZCaFuPjT7PvcS5OxkbR8GPeXZUf7Q">
+  <meta name="naval-action-content-sha256" content="c15239011e20265d4555104a832d936458584acb3e3006357f7cf696e355f07f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; style-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://api.ipify.org; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Preisverlauf · Naval Action Automation">
+  <meta property="og:description" content="Für jeden Gegenstand den täglichen niedrigsten, Median- und höchsten Preis in NPC-Hafenläden anzeigen.">
+  <meta property="og:url" content="https://aquaengraved.github.io/NAM/de/history">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:locale:alternate" content="sv_SE">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image" content="https://aquaengraved.github.io/NAM/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aquaengraved.github.io/NAM/de/history">
+  <link rel="alternate" hreflang="en" href="https://aquaengraved.github.io/NAM/history">
+  <link rel="alternate" hreflang="nl" href="https://aquaengraved.github.io/NAM/nl/history">
+  <link rel="alternate" hreflang="sv" href="https://aquaengraved.github.io/NAM/sv/history">
+  <link rel="alternate" hreflang="fr" href="https://aquaengraved.github.io/NAM/fr/history">
+  <link rel="alternate" hreflang="de" href="https://aquaengraved.github.io/NAM/de/history">
+  <link rel="alternate" hreflang="es" href="https://aquaengraved.github.io/NAM/es/history">
+  <link rel="alternate" hreflang="x-default" href="https://aquaengraved.github.io/NAM/history">
+  <script src="../assets/theme-init.min.js?v=cc25b3e26e4e65a2"></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=6b662828f110579e">
+  <link rel="stylesheet" href="../assets/ux-polish.css?v=deb3a8751c38d08f">
+  <script src="../assets/common.min.js?v=b16657092734e223" defer></script>
+  
+  <title>Preisverlauf · Naval Action Automation</title>
+</head>
+<body class="historical-page-shell historical-page-market-data" data-page-family="market-data" data-design-scope="shared-historical">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <div class="brand-lockup">
+      <a class="brand" href="./" aria-label="Naval Action Automation · Übersicht">
+        <span class="brand-mark" aria-hidden="true">NA</span>
+        <span><strong>Naval Action Automation</strong><small>EU3 · täglich geprüft</small></span>
+      </a>
+      <a class="brand-version" href="changelog.html" rel="nofollow" aria-label="Projektänderungsprotokoll für Version 0.4.18 öffnen">v0.4.18</a>
+    </div>
+    <div class="header-actions">
+      <button class="configurator-global-nav-toggle button compact" type="button" data-global-nav-toggle data-navigation-open="Navigation öffnen" data-navigation-close="Navigation schließen" aria-controls="global-navigation" aria-expanded="false">Navigation öffnen</button>
+      <nav id="global-navigation" class="site-nav configurator-global-nav-target" aria-label="Hauptnavigation"><a href="./">Übersicht</a>
+<details class="nav-disclosure nav-section-current" name="site-navigation"><summary>Markt</summary><div class="nav-submenu"><a href="market">Aktueller Markt</a><a href="changes">Heute</a><a href="history" aria-current="page">Verlauf</a></div></details>
+<a href="atlas">Karibikkarte</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Herstellung &amp; Versorgung</summary><div class="nav-submenu"><a href="crafting">Herstellungsprojekte</a><a href="planner">Versorgung &amp; Fracht</a><a href="configurator">Schiffe und Geschütze</a></div></details>
+<a href="trade">Handelsplaner</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Lagerverwaltung</summary><div class="nav-submenu"><a href="inventory">Lager verwalten</a><a href="shared-warehouse">Geteiltes Lager</a></div></details>
+<a href="future">Ideen für später</a></nav>
+      <div class="preference-controls">
+        <a class="help-nav-link button compact" href="about">Hilfe &amp; Anleitung</a>
+        <a class="feedback-nav-link button compact" href="feedback" aria-label="Feedback- und Kontaktformular öffnen">Feedback</a>
+        <a class="support-nav-link button compact" href="support">Unterstützen</a>
+        <button class="theme-toggle button compact" type="button" data-theme-toggle data-theme-toggle-light="Zum hellen Modus wechseln" data-theme-toggle-dark="Zum dunklen Modus wechseln" aria-label="Zum dunklen Modus wechseln">
+          <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon></span>
+          <span data-theme-toggle-text>Zum dunklen Modus wechseln</span>
+        </button>
+        <nav class="language-switch" aria-label="Sprache"><a href="../history" hreflang="en" lang="en" aria-label="English">EN</a><a href="../nl/history" hreflang="nl" lang="nl" aria-label="Nederlands">NL</a><a href="../sv/history" hreflang="sv" lang="sv" aria-label="Svenska">SV</a><a href="../fr/history" hreflang="fr" lang="fr" aria-label="Français">FR</a><a href="history" hreflang="de" lang="de" aria-label="Deutsch" aria-current="true">DE</a><a href="../es/history" hreflang="es" lang="es" aria-label="Español">ES</a></nav>
+      </div>
+    </div>
+  </header>
+  
+<main id="main" data-history-app data-source="../data/history.json">
+  <header class="page-header"><p class="eyebrow">Täglicher Preisverlauf</p><h1>Preisverlauf in Zahlen</h1><p>Der niedrigste, Median- und höchste ausgewiesene Stückpreis vor Transaktionssteuer über alle Häfen an jedem Tag. Später ergänzte ältere Tage sind klar gekennzeichnet.</p><p>Jede Nationsspalte zeigt die tatsächlichen Häfen mit dem niedrigsten, dem Median- und dem höchsten ausgewiesenen Preis vor Steuer sowie die zugehörige Hafensteuer. Bei einer geraden Anzahl von Häfen mit Preis werden beide mittleren Häfen angezeigt.</p></header>
+  <section class="filter-panel history-filter"><label>Produkt<select id="history-item"><option value="">Produkt auswählen</option></select></label><label>Gruppe<select id="history-group"><option value="all">Alle</option><option value="craft">Herstellungszutaten</option><option value="other">Andere Produkte</option></select></label></section>
+  <section class="metrics compact-metrics" id="history-metrics" hidden><article><span>Aktuell niedrigster ausgewiesener Preis (vor Steuer)</span><strong id="history-min">—</strong></article><article><span>Aktueller ausgewiesener Medianpreis (vor Steuer)</span><strong id="history-median">—</strong></article><article><span>Häfen mit Preis</span><strong id="history-ports">—</strong></article><article><span>Gespeicherte Tage</span><strong id="history-days">—</strong></article></section>
+  <p class="empty-state" id="history-empty">Wählen Sie ein Produkt, um seine Tageswerte anzuzeigen.</p>
+  <div class="table-shell history-table-shell" id="history-table-shell" hidden><table><thead><tr><th>Markttag</th><th>Art der Erfassung</th><th>Piraten</th><th>España</th><th>Frankreich</th><th>Großbritannien</th><th class="number">Niedrigster</th><th class="number">Median</th><th class="number">Höchster</th><th class="number">Häfen</th></tr></thead><tbody id="history-rows"></tbody></table></div>
+</main>
+  <footer class="site-footer">
+    <p><strong>Naval Action Automation</strong> ist ein unabhängiges Spielerwerkzeug für Naval Action und weder mit Bermuda Computer Club verbunden noch von diesem unterstützt.</p>
+    <p>Keine Cookies, Konten oder websiteübergreifende Nachverfolgung. Cloudflare Web Analytics liefert aggregierte Zugriffsstatistiken.</p>
+    <p class="footer-feedback"><a href="feedback">Feedback und Kontakt</a></p>
+    <p class="footer-support"><a href="support">Entwicklung unterstützen</a></p>
+    <p>Copyright © 2026 Aquaengraved. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Rechtliche Hinweise"><a href="privacy">Datenschutzerklärung</a><a href="terms">Nutzungsbedingungen</a></nav>
+  </footer>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{&quot;token&quot;:&quot;24bcaca218604c8f91a3f90c11a8d535&quot;,&quot;spa&quot;:false}'></script>
+</body>
+</html>

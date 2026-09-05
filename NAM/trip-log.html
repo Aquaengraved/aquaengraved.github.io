@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Create a private, machine-readable Naval Action port-to-port trip log entirely in your browser.">
+  
+  
+  <meta name="theme-color" content="#102b3f">
+  <meta name="google-site-verification" content="5gpouqjukLFw_-ZCaFuPjT7PvcS5OxkbR8GPeXZUf7Q">
+  <meta name="naval-action-content-sha256" content="c15239011e20265d4555104a832d936458584acb3e3006357f7cf696e355f07f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Record a Naval Action trip · Private downloadable log">
+  <meta property="og:description" content="Create a private, machine-readable Naval Action port-to-port trip log entirely in your browser.">
+  <meta property="og:url" content="https://aquaengraved.github.io/NAM/trip-log">
+  <meta property="og:locale" content="en_US">
+  
+  <meta property="og:image" content="https://aquaengraved.github.io/NAM/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aquaengraved.github.io/NAM/trip-log">
+  <link rel="alternate" hreflang="en" href="https://aquaengraved.github.io/NAM/trip-log">
+  <link rel="alternate" hreflang="x-default" href="https://aquaengraved.github.io/NAM/trip-log">
+  <script src="assets/theme-init.min.js?v=cc25b3e26e4e65a2"></script>
+  <link rel="stylesheet" href="assets/styles.css?v=6b662828f110579e">
+  <link rel="stylesheet" href="assets/ux-polish.css?v=deb3a8751c38d08f">
+  <script src="assets/common.min.js?v=b16657092734e223" defer></script>
+  <script src="assets/page-trip-log.min.js?v=348dce1b35e205d2" defer></script>
+  <title>Record a Naval Action trip · Private downloadable log</title>
+</head>
+<body class="historical-page-shell historical-page-trip-log" data-page-family="trip-log" data-design-scope="shared-historical">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="brand-lockup">
+      <a class="brand" href="./" aria-label="Naval Action Automation — overview">
+        <span class="brand-mark" aria-hidden="true">NA</span>
+        <span><strong>Naval Action Automation</strong><small>EU3 · checked daily</small></span>
+      </a>
+      <a class="brand-version" href="changelog.html" rel="nofollow" aria-label="Open the project changelog for version 0.4.18">v0.4.18</a>
+    </div>
+    <div class="header-actions">
+      <button class="configurator-global-nav-toggle button compact" type="button" data-global-nav-toggle data-navigation-open="Open navigation" data-navigation-close="Close navigation" aria-controls="global-navigation" aria-expanded="false">Open navigation</button>
+      <nav id="global-navigation" class="site-nav configurator-global-nav-target" aria-label="Main navigation"><a href="./">Dashboard</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Market</summary><div class="nav-submenu"><a href="market">Current market</a><a href="changes">Today</a><a href="history">History</a><a href="market-intelligence">Market intelligence</a></div></details>
+<a href="atlas">Caribbean Map</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Craft &amp; Supply</summary><div class="nav-submenu"><a href="crafting">Crafting Projects</a><a href="planner">Supply &amp; Cargo</a><a href="configurator">Ships &amp; Cannons</a><a href="crafting-chances">Crafting chances</a></div></details>
+<a href="trade">Trade Planner</a>
+<details class="nav-disclosure nav-section-current" name="site-navigation"><summary>Record data</summary><div class="nav-submenu"><a href="trip-log" aria-current="page">Record trip</a><a href="crafting-log">Record crafting</a></div></details>
+<details class="nav-disclosure" name="site-navigation"><summary>Warehouse Manager</summary><div class="nav-submenu"><a href="inventory">Manage warehouses</a><a href="shared-warehouse">Shared warehouse</a></div></details>
+<a href="future">Things to come</a></nav>
+      <div class="preference-controls">
+        <a class="help-nav-link button compact" href="about">Help &amp; Guide</a>
+        <a class="feedback-nav-link button compact" href="feedback" aria-label="Open the feedback and contact form">Feedback</a>
+        <a class="support-nav-link button compact" href="support">Support</a>
+        <button class="theme-toggle button compact" type="button" data-theme-toggle data-theme-toggle-light="Switch to light mode" data-theme-toggle-dark="Switch to dark mode" aria-label="Switch to dark mode">
+          <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon></span>
+          <span data-theme-toggle-text>Switch to dark mode</span>
+        </button>
+        <nav class="language-switch" aria-label="Language"><a href="trip-log" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a></nav>
+      </div>
+    </div>
+  </header>
+  
+<main id="main" class="feedback-page">
+  <header class="page-header feedback-page-header">
+    <p class="eyebrow">Community travel measurement</p>
+    <h1>Record one port-to-port trip</h1>
+    <p>Fill in one uninterrupted trip. Your browser creates a small file for you to send to the project owner.</p>
+    <div class="notice privacy-notice"><strong>Private by design:</strong> nothing you enter is uploaded, stored by this website, or sent to analytics. No name, account, email, or player identity is requested.</div>
+  </header>
+  <div class="feedback-layout">
+    <section class="feedback-form-card" aria-labelledby="trip-log-form-heading">
+      <div class="feedback-card-heading">
+        <h2 id="trip-log-form-heading">Trip details</h2>
+        <p>Required fields are marked. One consistent timing rule keeps everyone’s logs comparable.</p>
+        <div class="notice"><strong>Timing rule:</strong> Start when Open World is visible and your ship can move. Stop when the destination’s <em>Enter Port</em> action becomes available. Use UTC.</div>
+      </div>
+      <form class="feedback-form" id="trip-log-form" data-trip-log-form
+        data-project-version="0.4.18" novalidate>
+        <div class="trip-completion" aria-live="polite">
+          <strong data-trip-completion>0 of 8 required fields complete</strong>
+          <progress data-trip-completion-bar max="8" value="0">0 of 8</progress>
+        </div>
+        <div class="feedback-contact-grid">
+          <div class="feedback-field">
+            <label for="trip-departure-port">Departure port <span class="feedback-requirement">Required</span></label>
+            <input id="trip-departure-port" name="departure_port" type="text" maxlength="100" autocomplete="off" list="trip-port-options" required autofocus>
+          </div>
+          <div class="feedback-field">
+            <label for="trip-arrival-port">Destination port <span class="feedback-requirement">Required</span></label>
+            <input id="trip-arrival-port" name="arrival_port" type="text" maxlength="100" autocomplete="off" list="trip-port-options" required>
+          </div>
+        </div>
+        <div class="feedback-contact-grid">
+          <div class="feedback-field">
+            <label for="trip-departure-utc">Departure date and time (UTC) <span class="feedback-requirement">Required</span></label>
+            <input id="trip-departure-utc" name="departure_utc" type="datetime-local" step="60" required>
+            <button class="button compact" type="button" data-trip-now="departure_utc">Use current UTC time</button>
+          </div>
+          <div class="feedback-field">
+            <label for="trip-arrival-utc">Arrival date and time (UTC) <span class="feedback-requirement">Required</span></label>
+            <input id="trip-arrival-utc" name="arrival_utc" type="datetime-local" step="60" required>
+            <button class="button compact" type="button" data-trip-now="arrival_utc">Use current UTC time</button>
+          </div>
+        </div>
+        <div class="feedback-field">
+          <label for="trip-ship">Ship <span class="feedback-requirement">Required</span></label>
+          <input id="trip-ship" name="ship_name" type="text" maxlength="100" autocomplete="off" list="trip-ship-options" required>
+        </div>
+        <datalist id="trip-port-options"><option value="Aguadilla" data-port-id="113"></option><option value="Almirante" data-port-id="225"></option><option value="Amalienborg" data-port-id="123"></option><option value="Arthur&#x27;s Town" data-port-id="17"></option><option value="Aves" data-port-id="150"></option><option value="Ays" data-port-id="321"></option><option value="Bahía Escocesa" data-port-id="103"></option><option value="Baja" data-port-id="35"></option><option value="Baracoa" data-port-id="50"></option><option value="Barahona" data-port-id="111"></option><option value="Basse-Terre" data-port-id="146"></option><option value="Basseterre Town" data-port-id="137"></option><option value="Belize" data-port-id="253"></option><option value="Bensalem" data-port-id="257"></option><option value="Bimini" data-port-id="10"></option><option value="Black River" data-port-id="243"></option><option value="Bluefields" data-port-id="230"></option><option value="Bonacca" data-port-id="245"></option><option value="Bone Cay" data-port-id="350"></option><option value="Brangman&#x27;s Bluff" data-port-id="237"></option><option value="Bridgetown" data-port-id="161"></option><option value="Brunswick" data-port-id="329"></option><option value="Cabo Cañaveral" data-port-id="318"></option><option value="Cabo de la Vela" data-port-id="208"></option><option value="Calobelo" data-port-id="222"></option><option value="Camp du Roy" data-port-id="149"></option><option value="Campeche" data-port-id="269"></option><option value="Canalete" data-port-id="216"></option><option value="Cap-Français" data-port-id="97"></option><option value="Caracas" data-port-id="193"></option><option value="Cartagena de Indias" data-port-id="212"></option><option value="Casigua" data-port-id="198"></option><option value="Cayman Brac" data-port-id="74"></option><option value="Cayo Biscayno" data-port-id="323"></option><option value="Cayo Romano" data-port-id="44"></option><option value="Caño Araguao" data-port-id="177"></option><option value="Champotón" data-port-id="270"></option><option value="Charleston" data-port-id="333"></option><option value="Chinchorro" data-port-id="258"></option><option value="Christiansted" data-port-id="129"></option><option value="Codrington" data-port-id="134"></option><option value="Concepción" data-port-id="223"></option><option value="Congrios" data-port-id="259"></option><option value="Conil" data-port-id="264"></option><option value="Coquibacoa" data-port-id="207"></option><option value="Coro" data-port-id="196"></option><option value="Corrientes" data-port-id="66"></option><option value="Croata" data-port-id="241"></option><option value="Crown Haven" data-port-id="361"></option><option value="Cumaná" data-port-id="189"></option><option value="Dariena" data-port-id="214"></option><option value="Deadman&#x27;s Cay" data-port-id="20"></option><option value="Espíritu Santo" data-port-id="274"></option><option value="Fajardo" data-port-id="116"></option><option value="Fort Baai" data-port-id="135"></option><option value="Fort Oranje" data-port-id="173"></option><option value="Fort Zoutman" data-port-id="175"></option><option value="Fort-Royal" data-port-id="156"></option><option value="Galdonas" data-port-id="183"></option><option value="Gasparilla" data-port-id="311"></option><option value="George Town" data-port-id="72"></option><option value="George&#x27;s Town" data-port-id="18"></option><option value="Georgetown" data-port-id="334"></option><option value="Gibraltar" data-port-id="201"></option><option value="Governor&#x27;s Harbour" data-port-id="16"></option><option value="Gracias a Dios" data-port-id="240"></option><option value="Grand Turk" data-port-id="33"></option><option value="Great Corn" data-port-id="231"></option><option value="Great River" data-port-id="233"></option><option value="Guacata" data-port-id="374"></option><option value="Guayaguayare" data-port-id="179"></option><option value="Guayama" data-port-id="117"></option><option value="Gustavia" data-port-id="133"></option><option value="Guánica" data-port-id="119"></option><option value="Harbour Island" data-port-id="15"></option><option value="Hat Island" data-port-id="130"></option><option value="Higüey" data-port-id="106"></option><option value="Islamorada" data-port-id="316"></option><option value="Island Harbour" data-port-id="370"></option><option value="Jacmel" data-port-id="83"></option><option value="Jérémie" data-port-id="88"></option><option value="Key West" data-port-id="313"></option><option value="Kidd&#x27;s Harbour" data-port-id="357"></option><option value="Kingston / Port Royal" data-port-id="79"></option><option value="Kingstown" data-port-id="162"></option><option value="La Anguila" data-port-id="42"></option><option value="La Blanquilla" data-port-id="170"></option><option value="La Desconocida" data-port-id="363"></option><option value="La Habana" data-port-id="38"></option><option value="La Isabela" data-port-id="100"></option><option value="La Mona" data-port-id="112"></option><option value="La Navasse" data-port-id="85"></option><option value="La Orchilla" data-port-id="171"></option><option value="La Tortue" data-port-id="96"></option><option value="La Tortuga" data-port-id="187"></option><option value="La Trinité" data-port-id="154"></option><option value="Las Aves" data-port-id="172"></option><option value="Las Sabinas" data-port-id="307"></option><option value="Las Tortugas" data-port-id="314"></option><option value="Les Cayes" data-port-id="86"></option><option value="Little Harbour" data-port-id="8"></option><option value="Little Inagua" data-port-id="29"></option><option value="Little Isaac Rocks" data-port-id="362"></option><option value="Léogane" data-port-id="90"></option><option value="Macao" data-port-id="105"></option><option value="Mangrove Cay" data-port-id="358"></option><option value="Manzanillo" data-port-id="55"></option><option value="Maracaibo" data-port-id="204"></option><option value="Marigot" data-port-id="131"></option><option value="Marsh Harbour" data-port-id="9"></option><option value="Matanzas" data-port-id="39"></option><option value="Matina" data-port-id="227"></option><option value="Mayaguana" data-port-id="26"></option><option value="Mimbres" data-port-id="11"></option><option value="Mitara" data-port-id="197"></option><option value="Morgan&#x27;s Bluff" data-port-id="12"></option><option value="Mortimer Town" data-port-id="27"></option><option value="Nassau" data-port-id="14"></option><option value="Nouvelle-Orléans" data-port-id="297"></option><option value="Nuevitas" data-port-id="46"></option><option value="Old Providence" data-port-id="235"></option><option value="Omoa" data-port-id="250"></option><option value="Oranjestad" data-port-id="136"></option><option value="Pampatar" data-port-id="185"></option><option value="Parrot Cay" data-port-id="30"></option><option value="Pedernales" data-port-id="180"></option><option value="Pedro Cay" data-port-id="352"></option><option value="Penzacola" data-port-id="301"></option><option value="Perijá" data-port-id="203"></option><option value="Pinar del Río" data-port-id="65"></option><option value="Pitt&#x27;s Town" data-port-id="23"></option><option value="Placentia" data-port-id="252"></option><option value="Playón" data-port-id="218"></option><option value="Plymouth" data-port-id="369"></option><option value="Pointe-à-Pitre" data-port-id="145"></option><option value="Port Antonio" data-port-id="77"></option><option value="Port-au-Prince" data-port-id="91"></option><option value="Port-de-Paix" data-port-id="95"></option><option value="Portillo" data-port-id="54"></option><option value="Portobelo" data-port-id="220"></option><option value="Puerto Cabello" data-port-id="194"></option><option value="Puerto de España" data-port-id="169"></option><option value="Puerto de Nipe" data-port-id="49"></option><option value="Puerto Escondido" data-port-id="51"></option><option value="Puerto Plata" data-port-id="101"></option><option value="Puerto Real" data-port-id="271"></option><option value="Píritu" data-port-id="191"></option><option value="Ragged Cay" data-port-id="21"></option><option value="Remedios" data-port-id="43"></option><option value="Road Rocks" data-port-id="5"></option><option value="Roseau" data-port-id="152"></option><option value="Ruatan" data-port-id="246"></option><option value="Río Chico" data-port-id="192"></option><option value="Río de la Hacha" data-port-id="209"></option><option value="Saint George" data-port-id="164"></option><option value="Saint George&#x27;s Town" data-port-id="355"></option><option value="Saint John&#x27;s" data-port-id="140"></option><option value="Saint-Malo" data-port-id="296"></option><option value="Saint-Marc" data-port-id="92"></option><option value="Saint-Nicolas" data-port-id="94"></option><option value="Salamanca" data-port-id="256"></option><option value="Sale-Trou" data-port-id="82"></option><option value="Samaná" data-port-id="104"></option><option value="San Agustín" data-port-id="326"></option><option value="San Andrés" data-port-id="236"></option><option value="San José" data-port-id="303"></option><option value="San Juan" data-port-id="115"></option><option value="San Juan del Norte" data-port-id="228"></option><option value="San Lazaro" data-port-id="62"></option><option value="San Marcos" data-port-id="305"></option><option value="Santa Cruz" data-port-id="56"></option><option value="Santa Fe" data-port-id="68"></option><option value="Santa Marta" data-port-id="210"></option><option value="Santa María" data-port-id="57"></option><option value="Santanillas" data-port-id="348"></option><option value="Santiago de Cuba" data-port-id="52"></option><option value="Santo Domingo" data-port-id="108"></option><option value="Santo Tomé de Guayana" data-port-id="176"></option><option value="Savanna la Mar" data-port-id="81"></option><option value="Savannah" data-port-id="331"></option><option value="Scarborough" data-port-id="165"></option><option value="Selam" data-port-id="266"></option><option value="Serrana" data-port-id="349"></option><option value="Shroud Cay" data-port-id="366"></option><option value="Siguanea" data-port-id="71"></option><option value="Sisal" data-port-id="268"></option><option value="Spanish Town" data-port-id="127"></option><option value="Tampa" data-port-id="309"></option><option value="Tantun Cuzamil" data-port-id="263"></option><option value="Tolú" data-port-id="213"></option><option value="Trinidad" data-port-id="59"></option><option value="Truxillo" data-port-id="244"></option><option value="Tumbado" data-port-id="343"></option><option value="Turneffe" data-port-id="254"></option><option value="Turtle Cay" data-port-id="6"></option><option value="Vera Cruz" data-port-id="276"></option><option value="Victoria" data-port-id="273"></option><option value="Vieux-Fort" data-port-id="159"></option><option value="Walker&#x27;s Cay" data-port-id="3"></option><option value="Water Bay" data-port-id="360"></option><option value="Watlings" data-port-id="22"></option><option value="West End" data-port-id="4"></option><option value="Willemstad" data-port-id="174"></option><option value="William&#x27;s Bay" data-port-id="364"></option><option value="Wilmington" data-port-id="335"></option><option value="Xpu Ha" data-port-id="262"></option><option value="Yaguaraparo" data-port-id="181"></option></datalist>
+        <datalist id="trip-ship-options"><option value="3rd Rate" data-ship-id="359"></option><option value="Admiraal de Ruyter" data-ship-id="2318"></option><option value="Agamemnon" data-ship-id="694"></option><option value="Basic Brig" data-ship-id="413"></option><option value="Basic Lynx" data-ship-id="275"></option><option value="Bellona" data-ship-id="265"></option><option value="Brig" data-ship-id="266"></option><option value="Cerberus" data-ship-id="269"></option><option value="Christian" data-ship-id="1664"></option><option value="Constitution" data-ship-id="1674"></option><option value="Cutter" data-ship-id="271"></option><option value="Diana" data-ship-id="1665"></option><option value="Diana (i)" data-ship-id="2352"></option><option value="Duke of Kent" data-ship-id="2898"></option><option value="Endymion" data-ship-id="768"></option><option value="Essex" data-ship-id="272"></option><option value="Frigate" data-ship-id="273"></option><option value="Galeon (i)" data-ship-id="2963"></option><option value="GunBoat" data-ship-id="695"></option><option value="Hercules (i)" data-ship-id="1675"></option><option value="Hulk Indiaman" data-ship-id="2223"></option><option value="Implacable" data-ship-id="2235"></option><option value="Indefatigable" data-ship-id="787"></option><option value="Indiaman" data-ship-id="425"></option><option value="Ingermanland" data-ship-id="395"></option><option value="L&#x27;Hermione (i)" data-ship-id="986"></option><option value="L&#x27;Océan" data-ship-id="650"></option><option value="La Belle-Poule" data-ship-id="264"></option><option value="La Renommée" data-ship-id="285"></option><option value="Le Bucentaure" data-ship-id="268"></option><option value="Le Gros Ventre" data-ship-id="396"></option><option value="Le Gros Ventre Refit" data-ship-id="1561"></option><option value="Le Requin (i)" data-ship-id="1676"></option><option value="Leopard (i)" data-ship-id="2078"></option><option value="Lynx" data-ship-id="274"></option><option value="Mercury" data-ship-id="276"></option><option value="Montanes (i)" data-ship-id="3223"></option><option value="Mortar Brig" data-ship-id="267"></option><option value="Navy Brig" data-ship-id="277"></option><option value="Niagara" data-ship-id="278"></option><option value="Pandora (i)" data-ship-id="1020"></option><option value="Pickle" data-ship-id="280"></option><option value="Pirate Frigate" data-ship-id="281"></option><option value="Prince de Neufchâtel" data-ship-id="1125"></option><option value="Privateer" data-ship-id="282"></option><option value="Rattlesnake" data-ship-id="283"></option><option value="Rattlesnake Heavy" data-ship-id="284"></option><option value="Redoutable (i)" data-ship-id="2229"></option><option value="Rookie Snow" data-ship-id="1536"></option><option value="Rotterdam (i)" data-ship-id="2895"></option><option value="Rättvisan (i)" data-ship-id="1938"></option><option value="San Pedro (i)" data-ship-id="2487"></option><option value="Santa Ana (i)" data-ship-id="2892"></option><option value="Santa Cecilia" data-ship-id="592"></option><option value="Santísima Trinidad" data-ship-id="286"></option><option value="Snow" data-ship-id="287"></option><option value="St. Pavel" data-ship-id="279"></option><option value="Surprise" data-ship-id="288"></option><option value="Traders Brig" data-ship-id="289"></option><option value="Traders Cutter" data-ship-id="290"></option><option value="Traders Lynx" data-ship-id="291"></option><option value="Traders Snow" data-ship-id="292"></option><option value="Travel Balloon (i)" data-ship-id="2483"></option><option value="Trincomalee" data-ship-id="293"></option><option value="Tutorial Brig" data-ship-id="1535"></option><option value="Tutorial Brig" data-ship-id="2343"></option><option value="Tutorial Brig" data-ship-id="2454"></option><option value="Tutorial Cerberus" data-ship-id="2338"></option><option value="Tutorial Trader" data-ship-id="2339"></option><option value="USS United States" data-ship-id="270"></option><option value="Victory" data-ship-id="294"></option><option value="Victory 1765 (i)" data-ship-id="2350"></option><option value="Wapen von Hamburg" data-ship-id="970"></option><option value="Wasa" data-ship-id="1021"></option><option value="Yacht (i)" data-ship-id="295"></option><option value="Yacht Silver (i)" data-ship-id="393"></option></datalist>
+
+        <div class="feedback-contact-grid">
+          <div class="feedback-field">
+            <label for="trip-direct">Was this trip reasonably direct and uninterrupted? <span class="feedback-requirement">Required</span></label>
+            <select id="trip-direct" name="direct_uninterrupted" required>
+              <option value="" selected disabled>Choose one</option>
+              <option value="yes">Yes</option>
+              <option value="no">No — there was a detour, stop, battle, disconnect, or other delay</option>
+              <option value="unknown">Not sure</option>
+            </select>
+          </div>
+          <div class="feedback-field">
+            <label for="trip-travel-mode">Did you sail alone or with fleet ships? <span class="feedback-requirement">Required</span></label>
+            <select id="trip-travel-mode" name="travel_mode" required>
+              <option value="" selected disabled>Choose one</option>
+              <option value="solo">Alone — no fleet ships</option>
+              <option value="fleet">With fleet ships</option>
+              <option value="unknown">Not sure</option>
+            </select>
+          </div>
+        </div>
+        <div class="feedback-field">
+          <label for="trip-speed">Displayed ship speed (kn) <span class="feedback-requirement">Required</span></label>
+          <input id="trip-speed" name="displayed_speed_kn" type="number" min="0.01" max="100" step="0.01" inputmode="decimal" required aria-describedby="trip-speed-help">
+          <p class="feedback-field-help" id="trip-speed-help">Use the speed shown for this ship setup. This lets us compare different builds of the same ship.</p>
+        </div>
+        <p class="feedback-field-help">Every honest log is useful. Direct solo trips form the baseline; other trips are retained separately so delays or fleets do not distort it.</p>
+
+        <details class="feedback-bug-fields">
+          <summary><strong>Add useful details</strong> <span class="feedback-requirement">Optional</span></summary>
+          <p>These details help explain why two trips on the same route may take different amounts of time. Unknown is always acceptable.</p>
+          <div class="feedback-contact-grid">
+            <div class="feedback-field">
+              <label for="trip-load">Cargo load</label>
+              <select id="trip-load" name="cargo_load" aria-describedby="trip-load-help"><option value="unknown">Unknown</option><option value="empty">Empty</option><option value="max_65_percent_filled">Max 65% hold filled</option><option value="over_65_percent_filled">More than 65% hold filled</option></select>
+              <p class="feedback-field-help" id="trip-load-help">For analysis: Empty is modelled at 85% speed; up to 65% filled at 100%; and more than 65% filled as a range from 85% to 100%.</p>
+            </div>
+            <div class="feedback-field">
+              <label for="trip-fleet">Fleet ships travelling with you</label>
+              <input id="trip-fleet" name="fleet_ship_count" type="number" min="0" max="20" step="1" inputmode="numeric" placeholder="Unknown">
+            </div>
+            <div class="feedback-field">
+              <label for="trip-server">Server</label>
+              <input id="trip-server" name="server" type="text" maxlength="80" autocomplete="off" placeholder="Unknown">
+            </div>
+          </div>
+          <div class="notice" id="trip-compass-help">
+            <strong>Copy the open-world compass reading.</strong>
+            For example, W-1 means one tick to the left of W; W+1 means one tick to the right. For wind, use the direction where the blue wind line starts, not where its arrow points.
+            <div class="trip-compass-guide">
+              <div class="trip-compass-dial" aria-hidden="true"><span class="is-n">N</span><span class="is-e">E</span><span class="is-s">S</span><span class="is-w">W</span><i></i></div>
+              <p><strong>Read one tick around a letter:</strong> <span class="trip-compass-example"><span>W-1</span><span>W</span><span>W+1</span></span></p>
+            </div>
+          </div>
+          <div class="feedback-contact-grid">
+            <div class="feedback-field">
+              <label for="trip-heading-start">Ship heading at departure</label>
+              <select id="trip-heading-start" name="departure_heading" aria-describedby="trip-compass-help"><option value="unknown">Unknown / not recorded</option><option value="N-1">N-1</option><option value="N">N</option><option value="N+1">N+1</option><option value="NE-1">NE-1</option><option value="NE">NE</option><option value="NE+1">NE+1</option><option value="E-1">E-1</option><option value="E">E</option><option value="E+1">E+1</option><option value="SE-1">SE-1</option><option value="SE">SE</option><option value="SE+1">SE+1</option><option value="S-1">S-1</option><option value="S">S</option><option value="S+1">S+1</option><option value="SW-1">SW-1</option><option value="SW">SW</option><option value="SW+1">SW+1</option><option value="W-1">W-1</option><option value="W">W</option><option value="W+1">W+1</option><option value="NW-1">NW-1</option><option value="NW">NW</option><option value="NW+1">NW+1</option></select>
+            </div>
+            <div class="feedback-field">
+              <label for="trip-wind-start">Wind comes from at departure</label>
+              <select id="trip-wind-start" name="departure_wind_from" aria-describedby="trip-compass-help"><option value="unknown">Unknown / not recorded</option><option value="N-1">N-1</option><option value="N">N</option><option value="N+1">N+1</option><option value="NE-1">NE-1</option><option value="NE">NE</option><option value="NE+1">NE+1</option><option value="E-1">E-1</option><option value="E">E</option><option value="E+1">E+1</option><option value="SE-1">SE-1</option><option value="SE">SE</option><option value="SE+1">SE+1</option><option value="S-1">S-1</option><option value="S">S</option><option value="S+1">S+1</option><option value="SW-1">SW-1</option><option value="SW">SW</option><option value="SW+1">SW+1</option><option value="W-1">W-1</option><option value="W">W</option><option value="W+1">W+1</option><option value="NW-1">NW-1</option><option value="NW">NW</option><option value="NW+1">NW+1</option></select>
+            </div>
+          </div>
+          <div class="feedback-contact-grid">
+            <div class="feedback-field">
+              <label for="trip-heading-end">Ship heading at arrival</label>
+              <select id="trip-heading-end" name="arrival_heading" aria-describedby="trip-compass-help"><option value="unknown">Unknown / not recorded</option><option value="N-1">N-1</option><option value="N">N</option><option value="N+1">N+1</option><option value="NE-1">NE-1</option><option value="NE">NE</option><option value="NE+1">NE+1</option><option value="E-1">E-1</option><option value="E">E</option><option value="E+1">E+1</option><option value="SE-1">SE-1</option><option value="SE">SE</option><option value="SE+1">SE+1</option><option value="S-1">S-1</option><option value="S">S</option><option value="S+1">S+1</option><option value="SW-1">SW-1</option><option value="SW">SW</option><option value="SW+1">SW+1</option><option value="W-1">W-1</option><option value="W">W</option><option value="W+1">W+1</option><option value="NW-1">NW-1</option><option value="NW">NW</option><option value="NW+1">NW+1</option></select>
+            </div>
+            <div class="feedback-field">
+              <label for="trip-wind-end">Wind comes from at arrival</label>
+              <select id="trip-wind-end" name="arrival_wind_from" aria-describedby="trip-compass-help"><option value="unknown">Unknown / not recorded</option><option value="N-1">N-1</option><option value="N">N</option><option value="N+1">N+1</option><option value="NE-1">NE-1</option><option value="NE">NE</option><option value="NE+1">NE+1</option><option value="E-1">E-1</option><option value="E">E</option><option value="E+1">E+1</option><option value="SE-1">SE-1</option><option value="SE">SE</option><option value="SE+1">SE+1</option><option value="S-1">S-1</option><option value="S">S</option><option value="S+1">S+1</option><option value="SW-1">SW-1</option><option value="SW">SW</option><option value="SW+1">SW+1</option><option value="W-1">W-1</option><option value="W">W</option><option value="W+1">W+1</option><option value="NW-1">NW-1</option><option value="NW">NW</option><option value="NW+1">NW+1</option></select>
+            </div>
+          </div>
+          <div class="feedback-field">
+            <label for="trip-boosts">Speed boosts or effects</label>
+            <input id="trip-boosts" name="boosts" type="text" maxlength="300" autocomplete="off" placeholder="None, Unknown, or describe them">
+          </div>
+          <div class="feedback-field">
+            <label for="trip-interruptions">Stops, battles, detours, or other delays</label>
+            <textarea id="trip-interruptions" name="interruptions" rows="3" maxlength="500" placeholder="None, Unknown, or describe them"></textarea>
+          </div>
+          <div class="feedback-field">
+            <label for="trip-game-version">Game version or observed update date</label>
+            <input id="trip-game-version" name="game_version" type="text" maxlength="100" autocomplete="off" placeholder="Unknown">
+          </div>
+          <div class="feedback-field">
+            <label for="trip-notes">Other useful notes</label>
+            <textarea id="trip-notes" name="notes" rows="3" maxlength="1000"></textarea>
+          </div>
+        </details>
+
+        <div class="feedback-consent">
+          <p data-trip-duration aria-live="polite">Enter departure and arrival times to calculate the duration.</p>
+          <p>The downloaded JSON file contains only the fields shown here, its format version, and the time when the file was created.</p>
+        </div>
+        <div class="feedback-actions">
+          <button class="button primary" type="submit" data-trip-download disabled>Download trip file</button>
+          <button class="button" type="reset" data-trip-clear disabled>Clear form</button>
+        </div>
+        <p class="feedback-status" data-trip-status tabindex="-1" aria-live="polite"></p>
+      </form>
+    </section>
+    <aside class="feedback-privacy-card" aria-labelledby="trip-log-next-heading">
+      <p class="eyebrow">After downloading</p>
+      <h2 id="trip-log-next-heading">Send the file</h2>
+      <ol>
+        <li>Find the downloaded file beginning with <code>naval-action-trip-</code>.</li>
+        <li>Send that file to the project owner through your usual channel.</li>
+        <li>The file can be analyzed directly. No screenshot is needed.</li>
+      </ol>
+      <p>One file should describe exactly one port-to-port leg. Please start a new form for the next leg.</p>
+      <p>Estimates will only be labelled reliable after held-out trip logs show that at least 80% land within ±20% of the estimate. The form does not claim that accuracy before it has been measured.</p>
+    </aside>
+  </div>
+</main>
+  <footer class="site-footer">
+    <p><strong>Naval Action Automation</strong> is an independent player tool for Naval Action and is not affiliated with or endorsed by Bermuda Computer Club.</p>
+    <p>No cookies, accounts or tracking. A new market day starts after 10:00 UTC maintenance.</p>
+    <p class="footer-feedback"><a href="feedback">Feedback &amp; contact</a></p>
+    <p class="footer-support"><a href="support">Support development</a></p>
+    <p>Copyright © 2026 Aquaengraved. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Legal information"><a href="privacy">Privacy policy</a><a href="terms">Terms of use</a></nav>
+  </footer>
+</body>
+</html>

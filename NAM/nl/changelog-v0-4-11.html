@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Corrigeert de productzoekfunctie in de Trade Planner: Inkopen toont alleen ports met een actueel bronaanbod en een positieve of onbeperkte voorraad; Verkopen toont alleen geverifieerde consumerende ports.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="nam-owner-menu" content="{&quot;schema&quot;:1,&quot;digests&quot;:[&quot;1c7a4bc85477c668710bc688a628574c1e2ffb8c4e8ebb4d6c644688408cde2a&quot;],&quot;checked_utc&quot;:&quot;2026-09-05T11:54:08Z&quot;,&quot;expires_utc&quot;:&quot;2026-09-06T10:00:00Z&quot;,&quot;status&quot;:&quot;ok&quot;}">
+  <meta name="theme-color" content="#102b3f">
+  <meta name="google-site-verification" content="5gpouqjukLFw_-ZCaFuPjT7PvcS5OxkbR8GPeXZUf7Q">
+  <meta name="naval-action-content-sha256" content="c15239011e20265d4555104a832d936458584acb3e3006357f7cf696e355f07f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; style-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://api.ipify.org; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="v0.4.11 — Toon alleen relevante ports in de productzoekfunctie · Naval Action Automation">
+  <meta property="og:description" content="Corrigeert de productzoekfunctie in de Trade Planner: Inkopen toont alleen ports met een actueel bronaanbod en een positieve of onbeperkte voorraad; Verkopen toont alleen geverifieerde consumerende ports.">
+  <meta property="og:url" content="https://aquaengraved.github.io/NAM/nl/changelog-v0-4-11">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="sv_SE">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image" content="https://aquaengraved.github.io/NAM/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aquaengraved.github.io/NAM/nl/changelog-v0-4-11">
+  <link rel="alternate" hreflang="en" href="https://aquaengraved.github.io/NAM/changelog-v0-4-11">
+  <link rel="alternate" hreflang="nl" href="https://aquaengraved.github.io/NAM/nl/changelog-v0-4-11">
+  <link rel="alternate" hreflang="sv" href="https://aquaengraved.github.io/NAM/sv/changelog-v0-4-11">
+  <link rel="alternate" hreflang="fr" href="https://aquaengraved.github.io/NAM/fr/changelog-v0-4-11">
+  <link rel="alternate" hreflang="de" href="https://aquaengraved.github.io/NAM/de/changelog-v0-4-11">
+  <link rel="alternate" hreflang="es" href="https://aquaengraved.github.io/NAM/es/changelog-v0-4-11">
+  <link rel="alternate" hreflang="x-default" href="https://aquaengraved.github.io/NAM/changelog-v0-4-11">
+  <script src="../assets/theme-init.min.js?v=cc25b3e26e4e65a2"></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=6b662828f110579e">
+  <link rel="stylesheet" href="../assets/ux-polish.css?v=deb3a8751c38d08f">
+  <script src="../assets/common.min.js?v=b16657092734e223" defer></script>
+  
+  <title>v0.4.11 — Toon alleen relevante ports in de productzoekfunctie · Naval Action Automation</title>
+</head>
+<body class="historical-page-shell historical-page-changelog" data-page-family="changelog" data-design-scope="shared-historical">
+  <a class="skip-link" href="#main">Direct naar inhoud</a>
+  <header class="site-header">
+    <div class="brand-lockup">
+      <a class="brand" href="./" aria-label="Naval Action Automation — overzicht">
+        <span class="brand-mark" aria-hidden="true">NA</span>
+        <span><strong>Naval Action Automation</strong><small>EU3 · dagelijks gecontroleerd</small></span>
+      </a>
+      <a class="brand-version" href="changelog.html" rel="nofollow" aria-label="Open het projectchangelog voor versie 0.4.18">v0.4.18</a>
+    </div>
+    <div class="header-actions">
+      <button class="configurator-global-nav-toggle button compact" type="button" data-global-nav-toggle data-navigation-open="Navigatie openen" data-navigation-close="Navigatie sluiten" aria-controls="global-navigation" aria-expanded="false">Navigatie openen</button>
+      <nav id="global-navigation" class="site-nav configurator-global-nav-target" aria-label="Hoofdnavigatie"><a href="./">Dashboard</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Markt</summary><div class="nav-submenu"><a href="market">Actuele markt</a><a href="changes">Vandaag</a><a href="history">Historie</a></div></details>
+<a href="atlas">Caribische kaart</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Crafting &amp; bevoorrading</summary><div class="nav-submenu"><a href="crafting">Craftingprojecten</a><a href="planner">Bevoorrading &amp; vracht</a><a href="configurator">Schepen &amp; kanonnen</a></div></details>
+<a href="trade">Handelsplanner</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Warehousebeheer</summary><div class="nav-submenu"><a href="inventory">Warehouses beheren</a><a href="shared-warehouse">Gedeelde warehouse</a></div></details>
+<a href="future">Ideeën voor later</a></nav>
+      <div class="preference-controls">
+        <a class="help-nav-link button compact" href="about">Hulp &amp; uitleg</a>
+        <a class="feedback-nav-link button compact" href="feedback" aria-label="Open het feedback- en contactformulier">Feedback</a>
+        <a class="support-nav-link button compact" href="support">Steunen</a>
+        <button class="theme-toggle button compact" type="button" data-theme-toggle data-theme-toggle-light="Schakel over naar de lichte modus" data-theme-toggle-dark="Schakel over naar de donkere modus" aria-label="Schakel over naar de donkere modus">
+          <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon></span>
+          <span data-theme-toggle-text>Schakel over naar de donkere modus</span>
+        </button>
+        <nav class="language-switch" aria-label="Taal"><a href="../changelog-v0-4-11.html" hreflang="en" lang="en" aria-label="English">EN</a><a href="changelog-v0-4-11.html" hreflang="nl" lang="nl" aria-label="Nederlands" aria-current="true">NL</a><a href="../sv/changelog-v0-4-11.html" hreflang="sv" lang="sv" aria-label="Svenska">SV</a><a href="../fr/changelog-v0-4-11.html" hreflang="fr" lang="fr" aria-label="Français">FR</a><a href="../de/changelog-v0-4-11.html" hreflang="de" lang="de" aria-label="Deutsch">DE</a><a href="../es/changelog-v0-4-11.html" hreflang="es" lang="es" aria-label="Español">ES</a></nav>
+      </div>
+    </div>
+  </header>
+  
+<main id="main" class="changelog-detail">
+  <header class="release-hero">
+    <div class="release-hero-copy">
+      <p class="eyebrow">Release-opmerkingen</p>
+      <h1><span class="release-version">v0.4.11</span><span class="release-title">Toon alleen relevante ports in de productzoekfunctie</span></h1>
+      <p class="release-summary">Corrigeert de productzoekfunctie in de Trade Planner: Inkopen toont alleen ports met een actueel bronaanbod en een positieve of onbeperkte voorraad; Verkopen toont alleen geverifieerde consumerende ports.</p>
+    </div>
+    <dl class="release-meta">
+      <div><dt>Datum</dt><dd><time datetime="2026-09-01">01-09-2026</time></dd></div>
+      <div><dt>Weergaven</dt><dd><span class="changelog-view-unavailable">Niet beschikbaar</span></dd></div>
+    </dl>
+  </header>
+  <div class="release-layout">
+    <div class="release-content">
+      
+      <section class="release-notes"><h2>Wat is er veranderd</h2><ul><li>Wereldwijde zoekopdrachten en zoekopdrachten in geselecteerde ports voor Inkopen tonen nu alleen ports met een actueel bronaanbod en een positieve of onbeperkte voorraad. Ports met een positieve maar onvoldoende voorraad blijven zichtbaar en waarschuwen expliciet dat de gevraagde hoeveelheid groter is dan de actuele voorraad.</li><li>Zoeken voor Verkopen volgt dezelfde selectieregel en toont alleen ports met geverifieerd bewijs dat zij het product consumeren. Ontbrekende prijs- en vraaginformatie blijft niet beschikbaar en wordt niet als nul getoond.</li></ul></section>
+    </div>
+    <aside class="release-aside">
+      <div class="notice release-privacy"><p>Getoonde weergaven worden alleen geaccepteerd uit een geaggregeerde snapshot waaruit bekende bots zijn gefilterd. De totalen identificeren geen personen, gebruiken geen cookies en zijn geen unieke bezoekers.</p></div>
+      <a class="button compact release-back" href="changelog.html" rel="nofollow">← Terug naar alle changelogs</a>
+    </aside>
+  </div>
+</main>
+  <footer class="site-footer">
+    <p><strong>Naval Action Automation</strong> is een onafhankelijke spelerstool voor Naval Action en is niet verbonden aan of goedgekeurd door Bermuda Computer Club.</p>
+    <p>Geen cookies, accounts of tracking tussen websites. Cloudflare Web Analytics levert geaggregeerde verkeersstatistieken.</p>
+    <p class="footer-feedback"><a href="feedback">Feedback &amp; contact</a></p>
+    <p class="footer-support"><a href="support">Ondersteun de ontwikkeling</a></p>
+    <p>Copyright © 2026 Aquaengraved. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Juridische informatie"><a href="privacy">Privacybeleid</a><a href="terms">Gebruiksvoorwaarden</a></nav>
+  </footer>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{&quot;token&quot;:&quot;24bcaca218604c8f91a3f90c11a8d535&quot;,&quot;spa&quot;:false}'></script>
+</body>
+</html>

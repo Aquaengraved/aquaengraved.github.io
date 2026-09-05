@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Configure and compare Naval Action ships, deck guns, woods, upgrades and knowledge from current API data.">
+  
+  <meta name="nam-owner-menu" content="{&quot;schema&quot;:1,&quot;digests&quot;:[&quot;1c7a4bc85477c668710bc688a628574c1e2ffb8c4e8ebb4d6c644688408cde2a&quot;],&quot;checked_utc&quot;:&quot;2026-09-05T11:54:08Z&quot;,&quot;expires_utc&quot;:&quot;2026-09-06T10:00:00Z&quot;,&quot;status&quot;:&quot;ok&quot;}">
+  <meta name="theme-color" content="#102b3f">
+  <meta name="google-site-verification" content="5gpouqjukLFw_-ZCaFuPjT7PvcS5OxkbR8GPeXZUf7Q">
+  <meta name="naval-action-content-sha256" content="c15239011e20265d4555104a832d936458584acb3e3006357f7cf696e355f07f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; style-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://api.ipify.org; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ship &amp; Cannon Configurator · Naval Action Automation">
+  <meta property="og:description" content="Configure and compare Naval Action ships, deck guns, woods, upgrades and knowledge from current API data.">
+  <meta property="og:url" content="https://aquaengraved.github.io/NAM/configurator">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:locale:alternate" content="sv_SE">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image" content="https://aquaengraved.github.io/NAM/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aquaengraved.github.io/NAM/configurator">
+  <link rel="alternate" hreflang="en" href="https://aquaengraved.github.io/NAM/configurator">
+  <link rel="alternate" hreflang="nl" href="https://aquaengraved.github.io/NAM/nl/configurator">
+  <link rel="alternate" hreflang="sv" href="https://aquaengraved.github.io/NAM/sv/configurator">
+  <link rel="alternate" hreflang="fr" href="https://aquaengraved.github.io/NAM/fr/configurator">
+  <link rel="alternate" hreflang="de" href="https://aquaengraved.github.io/NAM/de/configurator">
+  <link rel="alternate" hreflang="es" href="https://aquaengraved.github.io/NAM/es/configurator">
+  <link rel="alternate" hreflang="x-default" href="https://aquaengraved.github.io/NAM/configurator">
+  <script src="assets/theme-init.min.js?v=cc25b3e26e4e65a2"></script>
+  <link rel="stylesheet" href="assets/styles.css?v=6b662828f110579e">
+  <link rel="stylesheet" href="assets/ux-polish.css?v=deb3a8751c38d08f">
+  <script src="assets/common.min.js?v=b16657092734e223" defer></script>
+  <script src="assets/configurator-data.js?v=85822c5a8a34d3b7" defer></script>
+  <script src="assets/crafting-data.js?v=0bf725d718298420" defer></script>
+  <script src="assets/page-configurator.min.js?v=6b14237b43566b0a" defer></script>
+  <title>Ship &amp; Cannon Configurator · Naval Action Automation</title>
+</head>
+<body class="historical-page-shell historical-page-configurator" data-page-family="configurator" data-design-scope="shared-historical">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="brand-lockup">
+      <a class="brand" href="./" aria-label="Naval Action Automation — overview">
+        <span class="brand-mark" aria-hidden="true">NA</span>
+        <span><strong>Naval Action Automation</strong><small>EU3 · checked daily</small></span>
+      </a>
+      <a class="brand-version" href="changelog.html" rel="nofollow" aria-label="Open the project changelog for version 0.4.18">v0.4.18</a>
+    </div>
+    <div class="header-actions">
+      <button class="configurator-global-nav-toggle button compact" type="button" data-global-nav-toggle data-navigation-open="Open navigation" data-navigation-close="Close navigation" aria-controls="global-navigation" aria-expanded="false">Open navigation</button>
+      <nav id="global-navigation" class="site-nav configurator-global-nav-target" aria-label="Main navigation"><a href="./">Dashboard</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Market</summary><div class="nav-submenu"><a href="market">Current market</a><a href="changes">Today</a><a href="history">History</a><a href="market-intelligence">Market intelligence</a></div></details>
+<a href="atlas">Caribbean Map</a>
+<details class="nav-disclosure nav-section-current" name="site-navigation"><summary>Craft &amp; Supply</summary><div class="nav-submenu"><a href="crafting">Crafting Projects</a><a href="planner">Supply &amp; Cargo</a><a href="configurator" aria-current="page">Ships &amp; Cannons</a><a href="crafting-chances">Crafting chances</a></div></details>
+<a href="trade">Trade Planner</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Record data</summary><div class="nav-submenu"><a href="trip-log">Record trip</a><a href="crafting-log">Record crafting</a></div></details>
+<details class="nav-disclosure" name="site-navigation"><summary>Warehouse Manager</summary><div class="nav-submenu"><a href="inventory">Manage warehouses</a><a href="shared-warehouse">Shared warehouse</a></div></details>
+<a href="future">Things to come</a></nav>
+      <div class="preference-controls">
+        <a class="help-nav-link button compact" href="about">Help &amp; Guide</a>
+        <a class="feedback-nav-link button compact" href="feedback" aria-label="Open the feedback and contact form">Feedback</a>
+        <a class="support-nav-link button compact" href="support">Support</a>
+        <button class="theme-toggle button compact" type="button" data-theme-toggle data-theme-toggle-light="Switch to light mode" data-theme-toggle-dark="Switch to dark mode" aria-label="Switch to dark mode">
+          <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon></span>
+          <span data-theme-toggle-text>Switch to dark mode</span>
+        </button>
+        <nav class="language-switch" aria-label="Language"><a href="configurator" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><a href="nl/configurator" hreflang="nl" lang="nl" aria-label="Nederlands">NL</a><a href="sv/configurator" hreflang="sv" lang="sv" aria-label="Svenska">SV</a><a href="fr/configurator" hreflang="fr" lang="fr" aria-label="Français">FR</a><a href="de/configurator" hreflang="de" lang="de" aria-label="Deutsch">DE</a><a href="es/configurator" hreflang="es" lang="es" aria-label="Español">ES</a></nav>
+      </div>
+    </div>
+  </header>
+  
+<main id="main" class="configurator-page">
+  <header class="page-header configurator-hero">
+    <p class="eyebrow">Captain’s comparison room · public alpha</p>
+    <h1>Ship &amp; Cannon Configurator</h1>
+    <p class="lede">Build and compare up to three experimental hull loadouts from current Naval Action API data, or inspect cannons directly. Choose deck guns, construction woods, upgrades and knowledge, then compare transparent raw facts without a universal winner.</p>
+  </header>
+  <section class="configurator-workroom" aria-labelledby="configurator-workroom-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Three-configuration workbench</p><h2 id="configurator-workroom-title">Configure and compare</h2></div>
+      <p>Configuration A is the reference. Compare B or C with accessible absolute and percentage differences, and show only changed facts when needed. Higher and lower never mean universally better or worse.</p>
+    </div>
+    <aside class="configurator-scope configurator-alpha-window" role="note" aria-labelledby="configurator-alpha-title">
+      <div class="configurator-alpha-titlebar">
+        <span class="configurator-alpha-badge">Configurator Alpha 0.2</span>
+        <h3 id="configurator-alpha-title" class="configurator-alpha-heading">Expanded comparison workbench</h3>
+      </div>
+      <p class="configurator-alpha-essential"><strong>Ship-card comparison:</strong> speed and the other card values use the ship and selected construction woods. Rating also uses the selected cannons. Books, upgrades, trims, perks and cargo effects are excluded; their source modifiers remain available separately.</p>
+      <details class="configurator-alpha-details">
+        <summary>Alpha details</summary>
+        <div class="configurator-alpha-copy">
+          <p><strong>Available in this alpha:</strong> three ship configurations, accessible absolute and percentage differences, configuration controls, detailed raw hull and logistics facts, and a dedicated three-cannon comparison with deck compatibility evidence.</p>
+          <p><strong>Source-backed loadouts:</strong> choose individual deck guns, frame and planking woods, permanent upgrades and knowledge. Compatible, incompatible and unknown evidence remains distinct; missing values remain unavailable rather than becoming zero.</p>
+        </div>
+      </details>
+    </aside>
+    <nav class="configurator-quick-start" aria-label="Configurator quick start">
+      <p><strong>Quick start</strong></p>
+      <ol>
+        <li>Choose a ship in A, then fit its decks and optional equipment.</li>
+        <li>Copy A to B or C for a quick variant, or choose another ship.</li>
+        <li>Review differences below, then compare individual cannons if needed.</li>
+      </ol>
+      <p class="subtle">Your configuration choices are not uploaded. Use “Save builds in this browser” only if you want these choices restored on this device.</p>
+    </nav>
+    <nav class="journey-shortcuts" data-journey-nav="configurator" aria-label="Continue planning"><p><strong>Continue planning</strong> Move to the next tool without starting your search again.</p><div class="home-tool-links"><a href="crafting" data-journey-target="crafting">Crafting Projects</a><a href="atlas" data-journey-target="map">Caribbean Map</a><a href="planner" data-journey-target="supply">Supply &amp; Cargo</a></div></nav>
+    <script id="ship-configurator-data" type="application/json"></script><p class="noscript-note"><noscript>Enable JavaScript to use the ship and cannon configurator.</noscript></p>
+    <div data-ship-configurator></div>
+  </section>
+</main>
+  <footer class="site-footer">
+    <p><strong>Naval Action Automation</strong> is an independent player tool for Naval Action and is not affiliated with or endorsed by Bermuda Computer Club.</p>
+    <p>No cookies, accounts or cross-site tracking. Cloudflare Web Analytics provides aggregate traffic statistics.</p>
+    <p class="footer-feedback"><a href="feedback">Feedback &amp; contact</a></p>
+    <p class="footer-support"><a href="support">Support development</a></p>
+    <p>Copyright © 2026 Aquaengraved. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Legal information"><a href="privacy">Privacy policy</a><a href="terms">Terms of use</a></nav>
+  </footer>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{&quot;token&quot;:&quot;24bcaca218604c8f91a3f90c11a8d535&quot;,&quot;spa&quot;:false}'></script>
+</body>
+</html>

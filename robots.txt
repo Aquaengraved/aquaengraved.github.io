@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /NAM/changelog
+Sitemap: https://aquaengraved.github.io/sitemap.xml

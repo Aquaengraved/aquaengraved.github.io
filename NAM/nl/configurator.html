@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Configureer en vergelijk Naval Action-schepen, dekgeschut, houtsoorten, upgrades en kennis met actuele API-gegevens.">
+  
+  
+  <meta name="theme-color" content="#102b3f">
+  <meta name="google-site-verification" content="5gpouqjukLFw_-ZCaFuPjT7PvcS5OxkbR8GPeXZUf7Q">
+  <meta name="naval-action-content-sha256" content="eca0b596bcfdb779648e1092dc9f123c11718a5c81a2ec716d0e0982b0092334">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; style-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="nam-analytics" content="{&quot;token&quot;:&quot;24bcaca218604c8f91a3f90c11a8d535&quot;,&quot;origin&quot;:&quot;https://aquaengraved.github.io&quot;,&quot;pathPrefix&quot;:&quot;/NAM/&quot;}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Scheeps- en kanonnenconfigurator · Naval Action Automation">
+  <meta property="og:description" content="Configureer en vergelijk Naval Action-schepen, dekgeschut, houtsoorten, upgrades en kennis met actuele API-gegevens.">
+  <meta property="og:url" content="https://aquaengraved.github.io/NAM/nl/configurator">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="sv_SE">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image" content="https://aquaengraved.github.io/NAM/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aquaengraved.github.io/NAM/nl/configurator">
+  <link rel="alternate" hreflang="en" href="https://aquaengraved.github.io/NAM/configurator">
+  <link rel="alternate" hreflang="nl" href="https://aquaengraved.github.io/NAM/nl/configurator">
+  <link rel="alternate" hreflang="sv" href="https://aquaengraved.github.io/NAM/sv/configurator">
+  <link rel="alternate" hreflang="fr" href="https://aquaengraved.github.io/NAM/fr/configurator">
+  <link rel="alternate" hreflang="de" href="https://aquaengraved.github.io/NAM/de/configurator">
+  <link rel="alternate" hreflang="es" href="https://aquaengraved.github.io/NAM/es/configurator">
+  <link rel="alternate" hreflang="x-default" href="https://aquaengraved.github.io/NAM/configurator">
+  <script src="../assets/theme-init.min.js?v=cc25b3e26e4e65a2"></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=f032b64fc1da8812">
+  <link rel="stylesheet" href="../assets/ux-polish.css?v=bdf31641aa3dbf5f">
+  <link rel="stylesheet" href="../assets/horizontal-dropdowns.css?v=db8d17429d9d8e4c">
+  
+  <link rel="stylesheet" href="../assets/admiralty-theme.css?v=784f2d9b8f467d1f">
+  <link rel="stylesheet" href="../assets/admiralty-page-worlds.css?v=617b2e8023abaf14">
+  <script src="../assets/common.min.js?v=e935456ef3c49333" defer></script>
+  <script src="../assets/configurator-data.js?v=2d19058de74ce687" defer></script>
+  <script src="../assets/crafting-data.js?v=205337a9bad82c75" defer></script>
+  <script src="../assets/page-configurator.min.js?v=6f85b9562c5424e4" defer></script>
+  <title>Scheeps- en kanonnenconfigurator · Naval Action Automation</title>
+</head>
+<body class="historical-page-shell historical-page-configurator" data-page-family="configurator" data-page-world="configurator" data-design-scope="shared-historical">
+  <a class="skip-link" href="#main">Direct naar inhoud</a>
+  <header class="site-header">
+    <div class="brand-lockup">
+      <a class="brand" href="./" aria-label="Naval Action Automation — overzicht">
+        <span class="brand-mark" aria-hidden="true">NA</span>
+        <span><strong>Naval Action Automation</strong><small>EU3 · dagelijks gecontroleerd</small></span>
+      </a>
+      <a class="brand-version" href="changelog.html" rel="nofollow" aria-label="Open het projectchangelog voor versie 0.4.33">v0.4.33</a>
+    </div>
+    <div class="header-actions">
+      <button class="configurator-global-nav-toggle button compact" type="button" data-global-nav-toggle data-navigation-open="Navigatie openen" data-navigation-close="Navigatie sluiten" aria-controls="global-navigation" aria-expanded="false">Navigatie openen</button>
+      <nav id="global-navigation" class="site-nav configurator-global-nav-target" aria-label="Hoofdnavigatie"><a href="./">Dashboard</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Markt</summary><div class="nav-submenu"><a href="market">Actuele markt</a><a href="shipbuilding-supplies">Scheepsbouwmaterialen</a><a href="changes">Vandaag</a><a href="history">Historie</a></div></details>
+<a href="atlas">Caribische kaart</a>
+<details class="nav-disclosure nav-section-current" name="site-navigation"><summary>Crafting &amp; bevoorrading</summary><div class="nav-submenu"><a href="crafting">Craftingprojecten</a><a href="recipe-cost">Craftingkosten &amp; offerte</a><a href="planner">Bevoorrading &amp; vracht</a><a href="configurator" aria-current="page">Schepen &amp; kanonnen</a></div></details>
+<a href="trade">Handelsplanner</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Warehousebeheer</summary><div class="nav-submenu"><a href="inventory">Warehouses beheren</a><a href="shared-warehouse">Gedeelde warehouse</a></div></details>
+<a href="future">Ideeën voor later</a></nav>
+      <div class="preference-controls">
+        <a class="help-nav-link button compact" href="about">Hulp &amp; uitleg</a>
+        <a class="feedback-nav-link button compact" href="feedback" aria-label="Open het feedback- en contactformulier">Feedback</a>
+        <a class="support-nav-link button compact" href="support">Steunen</a>
+        <button class="theme-toggle button compact" type="button" data-theme-toggle data-theme-toggle-light="Schakel over naar de lichte modus" data-theme-toggle-dark="Schakel over naar de donkere modus" aria-label="Schakel over naar de donkere modus">
+          <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon></span>
+          <span data-theme-toggle-text>Schakel over naar de donkere modus</span>
+        </button>
+        <nav class="language-switch" aria-label="Taal"><a href="../configurator" hreflang="en" lang="en" aria-label="English">EN</a><a href="configurator" hreflang="nl" lang="nl" aria-label="Nederlands" aria-current="true">NL</a><a href="../sv/configurator" hreflang="sv" lang="sv" aria-label="Svenska">SV</a><a href="../fr/configurator" hreflang="fr" lang="fr" aria-label="Français">FR</a><a href="../de/configurator" hreflang="de" lang="de" aria-label="Deutsch">DE</a><a href="../es/configurator" hreflang="es" lang="es" aria-label="Español">ES</a></nav>
+      </div>
+    </div>
+  </header>
+  
+<main id="main" class="configurator-page">
+  <header class="page-header configurator-hero">
+    <p class="eyebrow">Vergelijkingsruimte van de kapitein · openbare alfa</p>
+    <h1>Scheeps- en kanonnenconfigurator</h1>
+    <p class="lede">Stel maximaal drie experimentele scheepsconfiguraties samen en vergelijk ze met actuele Naval Action-API-gegevens, of bekijk kanonnen rechtstreeks. Kies dekgeschut, constructiehout, upgrades en kennis en vergelijk transparante ruwe gegevens zonder algemene winnaar.</p>
+  </header>
+  <section class="configurator-workroom" aria-label="Configureren en vergelijken">
+    <aside class="configurator-scope configurator-alpha-window" role="note" aria-labelledby="configurator-alpha-title">
+      <div class="configurator-alpha-titlebar">
+        <span class="configurator-alpha-badge">Configurator Alpha 0.2</span>
+        <h3 id="configurator-alpha-title" class="configurator-alpha-heading">Uitgebreide vergelijkingswerkbank</h3>
+      </div>
+      <p class="configurator-alpha-essential"><strong>Scheepskaarten vergelijken:</strong> snelheid en de andere kaartwaarden gebruiken het schip en het gekozen constructiehout. Rating telt ook de geselecteerde kanonnen mee. Boeken, upgrades, trims, perks en belading zijn niet meegerekend; hun bronmodificatoren zijn apart te bekijken.</p>
+      <details class="configurator-alpha-details">
+        <summary>Alfadetails</summary>
+        <div class="configurator-alpha-copy">
+          <p>Configuratie A is de referentie. Vergelijk B of C met toegankelijke absolute en procentuele verschillen en toon zo nodig alleen gewijzigde gegevens. Hoger en lager betekenen nooit voor iedereen beter of slechter.</p>
+          <p><strong>Beschikbaar in deze alfa:</strong> drie scheepsconfiguraties, toegankelijke absolute en procentuele verschillen, configuratiebesturing, gedetailleerde ruwe romp- en logistieke gegevens en een aparte vergelijking van drie kanonnen met bewijs voor dekcompatibiliteit.</p>
+          <p><strong>Configuraties op basis van bronnen:</strong> kies per dek kanonnen, hout voor spanten en beplanking, permanente upgrades en kennis. Compatibel, incompatibel en onbekend blijven afzonderlijke bewijsstatussen; ontbrekende waarden blijven niet beschikbaar en worden nooit nul.</p>
+          <nav class="configurator-quick-start" aria-label="Snelstart van de configurator">
+            <p><strong>Snel starten</strong></p>
+            <ol>
+              <li>Kies een schip in A en stel daarna de dekken en optionele uitrusting in.</li>
+              <li>Kopieer A naar B of C voor een snelle variant, of kies een ander schip.</li>
+              <li>Bekijk hieronder de verschillen en vergelijk daarna zo nodig afzonderlijke kanonnen.</li>
+            </ol>
+            <p class="subtle">Je configuratiekeuzes worden niet geüpload. Gebruik ‘Bewaar configuraties in deze browser’ alleen als je deze keuzes op dit apparaat wilt herstellen.</p>
+          </nav>
+        </div>
+      </details>
+    </aside>
+    <script id="ship-configurator-data" type="application/json"></script><p class="noscript-note"><noscript>Enable JavaScript to use the ship and cannon configurator.</noscript></p>
+    <div data-ship-configurator></div>
+    <nav class="journey-shortcuts" data-journey-nav="configurator" aria-label="Ga verder met plannen"><p><strong>Ga verder met plannen</strong> Ga naar het volgende hulpmiddel zonder opnieuw te hoeven zoeken.</p><div class="home-tool-links"><a href="crafting" data-journey-target="crafting">Craftingprojecten</a><a href="atlas" data-journey-target="map">Caribische kaart</a><a href="planner" data-journey-target="supply">Bevoorrading &amp; vracht</a></div></nav>
+  </section>
+</main>
+  <footer class="site-footer">
+    <p><strong>Naval Action Automation</strong> is een onafhankelijke spelerstool voor Naval Action en is niet verbonden aan of goedgekeurd door Bermuda Computer Club.</p>
+    <p>Geen cookies, accounts of tracking tussen websites. Cloudflare Web Analytics levert geaggregeerde verkeersstatistieken.</p>
+    <p class="footer-feedback"><a href="feedback">Feedback &amp; contact</a></p>
+    <p class="footer-support"><a href="support">Ondersteun de ontwikkeling</a></p>
+    <p>Copyright © 2026 Aquaengraved. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Juridische informatie"><a href="privacy">Privacybeleid</a><a href="terms">Gebruiksvoorwaarden</a></nav>
+  </footer>
+</body>
+</html>

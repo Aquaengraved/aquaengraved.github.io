@@ -1,0 +1,341 @@
+/* Crafting's single workflow; load after ux-polish.css. */
+#crafting-guided-workflow[data-crafting-flow="project-lifecycle"] .crafting-project-summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  position: static;
+  box-shadow: none;
+}
+
+#crafting-guided-workflow .crafting-workbench {
+  display: grid;
+  grid-template-areas:
+    "summary"
+    "stages"
+    "active";
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ux-space-3);
+  min-inline-size: 0;
+}
+
+#crafting-guided-workflow :is(
+  .crafting-workbench-stage-rail,
+  .crafting-workbench-active-stage,
+  .crafting-workbench-summary-rail
+) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#crafting-guided-workflow .crafting-workbench-stage-rail { grid-area: stages; }
+#crafting-guided-workflow .crafting-workbench-active-stage { grid-area: active; container: crafting-pane / inline-size; }
+#crafting-guided-workflow .crafting-workbench-summary-rail { grid-area: summary; }
+
+#crafting-guided-workflow .crafting-stage-navigation {
+  margin: 0;
+}
+
+#crafting-guided-workflow .crafting-stage-navigation ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ux-space-2);
+  margin: 0;
+}
+
+#crafting-guided-workflow .crafting-stage-navigation a {
+  display: flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  block-size: 100%;
+}
+
+#crafting-guided-workflow .crafting-workbench-active-stage > .crafting-workflow-step[hidden] {
+  display: none !important;
+}
+
+#crafting-guided-workflow .crafting-workbench-active-stage > .crafting-workflow-step {
+  margin: 0;
+}
+
+#crafting-guided-workflow .crafting-workflow-disclosure[open]
+  > .crafting-workflow-disclosure-summary {
+  cursor: default;
+}
+
+#crafting-guided-workflow .crafting-project-summary > .crafting-next-action {
+  position: static;
+}
+
+#crafting-guided-workflow .crafting-project-summary > :is(
+  .crafting-workspace-overview, .crafting-material-overview,
+  .crafting-secondary-details, .crafting-next-action
+) {
+  grid-column: 1 / -1;
+}
+
+#crafting-guided-workflow .crafting-next-action-context:empty {
+  display: none;
+}
+
+#crafting-guided-workflow .crafting-workspace-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--ux-space-2) var(--ux-space-3);
+}
+
+#crafting-guided-workflow .crafting-workspace-overview h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+#crafting-guided-workflow :is(.crafting-workspace-projects, .crafting-material-shortfalls) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ux-space-2) var(--ux-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+#crafting-guided-workflow .crafting-workspace-projects {
+  flex-direction: column;
+  font-weight: 700;
+}
+
+#crafting-guided-workflow .crafting-project-summary[data-summary-state="empty"] > article {
+  display: none;
+}
+
+#crafting-guided-workflow .crafting-material-overview {
+  display: grid;
+  gap: var(--ux-space-2);
+  justify-items: start;
+}
+
+#crafting-guided-workflow .crafting-material-overview p {
+  margin: 0;
+}
+
+#crafting-guided-workflow .crafting-material-shortfalls li {
+  padding: var(--ux-space-1) var(--ux-space-2);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  background: var(--ux-surface);
+  font-variant-numeric: tabular-nums;
+}
+
+#crafting-guided-workflow .crafting-summary-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--ux-space-3);
+  padding-block-start: var(--ux-space-3);
+}
+
+#crafting-guided-workflow .crafting-summary-facts article {
+  display: grid;
+  align-content: start;
+  gap: var(--ux-space-1);
+  overflow-wrap: anywhere;
+}
+
+#crafting-guided-workflow .crafting-summary-facts strong {
+  font-size: 1rem;
+}
+
+#crafting-guided-workflow .crafting-secondary-details {
+  margin-block: var(--ux-space-3);
+  padding: var(--ux-space-3);
+  color: var(--ux-text);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+  min-inline-size: 0;
+}
+
+#crafting-guided-workflow .crafting-project-summary > .crafting-secondary-details {
+  margin: 0;
+}
+
+#crafting-guided-workflow .crafting-secondary-details > summary,
+.crafting-workflow-nav .crafting-display-options > summary {
+  cursor: pointer;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+#crafting-guided-workflow .crafting-secondary-details > :not(summary) {
+  margin-block-start: var(--ux-space-3);
+}
+
+#crafting-guided-workflow .crafting-project-settings {
+  padding-block: var(--ux-space-3);
+  border-block-start: 1px solid var(--ux-border);
+}
+
+#crafting-guided-workflow .crafting-project-settings > h3 {
+  margin-block: 0 var(--ux-space-3);
+}
+
+#crafting-guided-workflow .crafting-project-kind-panel {
+  padding: var(--ux-space-2);
+}
+
+#crafting-guided-workflow #crafting-calculator {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#crafting-guided-workflow #crafting-controls {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--ux-space-2);
+  margin-block: 0 var(--ux-space-3);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+#crafting-guided-workflow #crafting-controls > *,
+#crafting-guided-workflow #crafting-controls :is(input, select) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#crafting-guided-workflow #crafting-controls :is(input, select) {
+  inline-size: 100%;
+}
+
+#crafting-guided-workflow #crafting-configuration-confirm {
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  padding-inline: 0;
+}
+
+#crafting-guided-workflow #crafter-project-lifecycle:empty {
+  display: none;
+}
+
+.crafting-workflow-nav .crafting-display-options {
+  inline-size: 100%;
+  margin-block-start: var(--ux-space-2);
+  color: var(--ux-muted);
+}
+
+.crafting-workflow-nav .crafting-display-options > [data-workflow-ux-density] {
+  margin-block-start: var(--ux-space-2);
+}
+
+/* An earlier navigation stage does not mean its real-world work is done. */
+.crafting-workflow-nav:has(.crafting-display-options) a[data-step-state="complete"]::before {
+  content: none;
+}
+
+@media (max-width: 45rem) {
+  #crafting-guided-workflow .crafting-next-action-context {
+    flex: 0 1 auto;
+  }
+
+  #crafting-guided-workflow[data-crafting-flow="project-lifecycle"] .crafting-project-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #crafting-guided-workflow .crafting-workspace-overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #crafting-guided-workflow .crafting-workspace-overview > button {
+    justify-self: start;
+  }
+
+  #crafting-guided-workflow .crafting-summary-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #crafting-guided-workflow #crafting-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 72rem) and (min-height: 36rem) {
+  #crafting-guided-workflow .crafting-workbench {
+    grid-template-areas: "stages active summary";
+    grid-template-columns:
+      minmax(10.5rem, .34fr)
+      minmax(0, 1.65fr)
+      minmax(18rem, .72fr);
+    align-items: start;
+    gap: var(--ux-space-4);
+  }
+
+  #crafting-guided-workflow :is(
+    .crafting-workbench-stage-rail,
+    .crafting-workbench-summary-rail
+  ) {
+    position: sticky;
+    inset-block-start: .5rem;
+  }
+
+  #crafting-guided-workflow .crafting-workbench-stage-rail {
+    z-index: 2;
+  }
+
+  #crafting-guided-workflow .crafting-workbench-summary-rail {
+    z-index: 3;
+  }
+
+  #crafting-guided-workflow .crafting-stage-navigation ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #crafting-guided-workflow[data-crafting-flow="project-lifecycle"] .crafting-project-summary,
+  #crafting-guided-workflow .crafting-summary-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #crafting-guided-workflow .crafting-workspace-overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #crafting-guided-workflow .crafting-workspace-overview > button {
+    justify-self: start;
+  }
+}
+
+#crafting-guided-workflow table:not(#crafting-wood-matrix-table) {
+  min-inline-size: 0;
+  min-width: 0;
+  max-inline-size: 100%;
+}
+
+/* Adapt to the active panel, including a laptop with both side rails visible. */
+@container crafting-pane (max-width: 52rem) {
+  #crafting-guided-workflow table[data-workflow-ux-card-table]:not(.project-lifecycle-table):not(#crafting-wood-matrix-table) { display: block; width: 100%; }
+  #crafting-guided-workflow table[data-workflow-ux-card-table]:not(.project-lifecycle-table):not(#crafting-wood-matrix-table) thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  #crafting-guided-workflow table[data-workflow-ux-card-table]:not(.project-lifecycle-table):not(#crafting-wood-matrix-table) :is(tbody, tr) { display: block; width: 100%; }
+  #crafting-guided-workflow table[data-workflow-ux-card-table]:not(.project-lifecycle-table):not(#crafting-wood-matrix-table) tbody tr {
+    margin-block: .65rem; padding: .5rem; background: var(--ux-surface); border: 1px solid var(--ux-border); border-radius: var(--ux-radius);
+  }
+  #crafting-guided-workflow table[data-workflow-ux-card-table]:not(.project-lifecycle-table):not(#crafting-wood-matrix-table) td {
+    display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: .65rem;
+    min-inline-size: 0; width: 100%; padding: .6rem; text-align: start; white-space: normal; overflow-wrap: anywhere;
+  }
+  #crafting-guided-workflow table[data-workflow-ux-card-table]:not(.project-lifecycle-table):not(#crafting-wood-matrix-table) [data-workflow-ux-cell-label] {
+    display: block; color: var(--ux-muted); font-weight: 750;
+  }
+  #crafting-guided-workflow .crafter-project-quantity-controls { grid-template-columns: minmax(0, 1fr) auto; }
+}
+
+@media (forced-colors: active) {
+  #crafting-guided-workflow :is(.crafting-secondary-details, .crafting-material-shortfalls li) {
+    color: CanvasText;
+    background: Canvas;
+    border-color: CanvasText;
+  }
+}

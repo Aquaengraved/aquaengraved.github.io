@@ -1,0 +1,2781 @@
+/*
+ * Admiralty Chart Room — page-world studies.
+ *
+ * These extend the shared Admiralty skin. Each page is
+ * treated as a period working object rather than the same dashboard recoloured.
+ */
+
+/* ------------------------------------------------------------------------- */
+/* TRADE PLANNER — merchant's double-entry voyage ledger                     */
+/* ------------------------------------------------------------------------- */
+
+body[data-page-world="trade"] {
+  --merchant-ink: #2c251b;
+  --merchant-muted: #695c47;
+  --merchant-paper: #ead9ad;
+  --merchant-paper-bright: #f7eac8;
+  --merchant-rule: rgb(55 95 101 / 24%);
+  --merchant-margin: #a95643;
+  --merchant-leather: #4c2922;
+  --merchant-gold: #d0a95b;
+  --paper: var(--merchant-paper);
+  --paper-strong: var(--merchant-paper-bright);
+  --ink: var(--merchant-ink);
+  --muted: var(--merchant-muted);
+  --line: #a58e62;
+  --theme-heading: #253f43;
+  --theme-control-text: #2b2b26;
+  --theme-input-bg: #fbefd0;
+  --theme-table-body-text: #2c251b;
+  --theme-card-inset: #e5d09e;
+  --theme-card-inset-border: #9d8456;
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] {
+  /* A physical ledger stays parchment even inside the site's dark chrome. */
+  --merchant-ink: #2c251b;
+  --merchant-muted: #695c47;
+  --merchant-paper: #dfc98f;
+  --merchant-paper-bright: #f4e5bb;
+  --merchant-rule: rgb(55 95 101 / 24%);
+  --merchant-margin: #a95643;
+  --merchant-leather: #351d19;
+  --paper: var(--merchant-paper);
+  --paper-strong: var(--merchant-paper-bright);
+  --ink: var(--merchant-ink);
+  --muted: var(--merchant-muted);
+  --line: #9f8658;
+  --theme-heading: #253f43;
+  --theme-control-text: #2b2b26;
+  --theme-input-bg: #f8e9c3;
+  --theme-table-body-text: #2c251b;
+  --theme-card-inset: #dbc48d;
+  --theme-card-inset-border: #94794a;
+}
+
+body[data-page-world="trade"] main.trade-page {
+  --theme-surface: var(--merchant-paper);
+  --theme-surface-soft: #e7d4a2;
+  --theme-surface-frost: rgb(247 234 200 / 78%);
+  --theme-chart-wash: linear-gradient(120deg, rgb(255 255 255 / 18%), transparent 46%);
+  --ux-text: var(--merchant-ink);
+  --ux-muted: var(--merchant-muted);
+  --ux-surface: var(--merchant-paper-bright);
+  --ux-surface-muted: #e3cc94;
+  --ux-border: #91784e;
+  --ux-accent: #7d3e31;
+  --ux-accent-hover: #542920;
+  background:
+    linear-gradient(90deg,
+      transparent 0 calc(50% - 3px),
+      rgb(55 37 20 / 10%) calc(50% - 3px) 50%,
+      rgb(255 255 255 / 18%) 50% calc(50% + 2px),
+      transparent calc(50% + 2px)),
+    linear-gradient(100deg,
+      var(--merchant-paper-bright),
+      var(--merchant-paper) 47%,
+      var(--merchant-paper-bright) 53%,
+      var(--merchant-paper));
+  color: var(--merchant-ink);
+  box-shadow:
+    inset 1.35rem 0 1.8rem -2rem rgb(56 34 13 / 52%),
+    inset -1.35rem 0 1.8rem -2rem rgb(56 34 13 / 52%),
+    0 1.25rem 3.5rem rgb(12 7 3 / 42%);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] main.trade-page {
+  background:
+    linear-gradient(90deg,
+      transparent 0 calc(50% - 3px),
+      rgb(55 37 20 / 10%) calc(50% - 3px) 50%,
+      rgb(255 255 255 / 18%) 50% calc(50% + 2px),
+      transparent calc(50% + 2px)),
+    linear-gradient(100deg,
+      var(--merchant-paper-bright),
+      var(--merchant-paper) 47%,
+      var(--merchant-paper-bright) 53%,
+      var(--merchant-paper));
+  color: var(--merchant-ink);
+}
+
+body[data-page-world="trade"] main.trade-page > .trade-page-header {
+  margin-bottom: 1.1rem;
+  border-top-color: var(--merchant-gold);
+  border-bottom: 4px double rgb(208 169 91 / 72%);
+  background:
+    repeating-linear-gradient(105deg,
+      transparent 0 4px,
+      rgb(255 255 255 / 2.5%) 4px 5px),
+    radial-gradient(circle at 85% 20%, rgb(208 169 91 / 16%), transparent 25rem),
+    linear-gradient(115deg, #5c332a, var(--merchant-leather) 58%, #251513);
+  color: #fff0c7;
+  box-shadow: inset 0 -.6rem 1.4rem rgb(0 0 0 / 18%);
+}
+
+body[data-page-world="trade"] main.trade-page > .trade-page-header::before {
+  border-style: double;
+  border-width: 3px;
+  border-color: rgb(218 183 106 / 55%);
+}
+
+body[data-page-world="trade"] main.trade-page > .trade-page-header .eyebrow {
+  color: #e4bd68;
+}
+
+body[data-page-world="trade"] :is(
+  .trade-journey-setup,
+  .trade-planner-modes,
+  .trade-basic-planner,
+  .trade-workbench,
+  .trade-manual-planner,
+  .trade-live-source
+) {
+  position: relative;
+  border: 1px solid #8f784e;
+  border-radius: 1px;
+  background: linear-gradient(100deg, var(--merchant-paper-bright), var(--merchant-paper));
+  box-shadow:
+    .45rem .6rem 1.25rem rgb(44 27 10 / 16%),
+    inset 0 1px rgb(255 255 255 / 34%);
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] :is(
+  .trade-journey-setup,
+  .trade-planner-modes,
+  .trade-basic-planner,
+  .trade-workbench,
+  .trade-manual-planner,
+  .trade-live-source
+) {
+  border-color: #8f784e;
+  background: linear-gradient(100deg, var(--merchant-paper-bright), var(--merchant-paper));
+  box-shadow: .45rem .6rem 1.25rem rgb(0 0 0 / 25%);
+}
+
+body[data-page-world="trade"] :is(
+  .trade-journey-setup,
+  .trade-planner-mode-header,
+  .trade-basic-header,
+  .trade-workbench-title,
+  .trade-live-source-header
+) {
+  padding-inline-start: clamp(1.2rem, 2vw, 1.75rem);
+}
+
+body[data-page-world="trade"] .trade-planner-modes {
+  margin-top: 1rem;
+  overflow: visible;
+}
+
+body[data-page-world="trade"] .trade-planner-mode-header {
+  border-bottom: 3px double #8f784e;
+  background: rgb(255 255 255 / 10%);
+}
+
+body[data-page-world="trade"] .trade-planner-mode-header h2,
+body[data-page-world="trade"] :is(
+  .trade-basic-header h3,
+  .trade-workbench-title h2,
+  .trade-live-source-header h3,
+  .trade-route-card h3,
+  .trade-live-source-card h5
+) {
+  color: var(--theme-heading);
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-weight: 600;
+}
+
+body[data-page-world="trade"] .trade-planner-mode-tabs {
+  gap: 0;
+  padding: .45rem .6rem 0;
+  border-bottom: 1px solid #89734e;
+  background: rgb(92 62 26 / 6%);
+}
+
+body[data-page-world="trade"] .trade-planner-mode-tab {
+  margin-bottom: -1px;
+  border: 1px solid #8d7954;
+  border-bottom-color: #6f5937;
+  border-radius: 4px 4px 0 0;
+  background: color-mix(in srgb, var(--merchant-paper) 86%, #8e6a37);
+  box-shadow: inset 0 1px rgb(255 255 255 / 26%);
+  color: var(--merchant-ink);
+}
+
+body[data-page-world="trade"] .trade-planner-mode-tab[aria-selected="true"] {
+  z-index: 1;
+  border-color: var(--merchant-margin);
+  border-bottom-color: var(--merchant-paper-bright);
+  background: var(--merchant-paper-bright);
+  box-shadow: inset 0 4px var(--merchant-margin);
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .trade-planner-mode-tab {
+  background: #d8c28c;
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .trade-planner-mode-tab[aria-selected="true"] {
+  border-bottom-color: var(--merchant-paper-bright);
+  background: var(--merchant-paper-bright);
+  color: var(--merchant-ink);
+}
+
+body[data-page-world="trade"] :is(
+  .trade-basic-controls,
+  .trade-workbench-panel,
+  .trade-manual-controls,
+  .trade-live-source-step,
+  .trade-live-source-control-group,
+  .trade-corridor-phase
+) {
+  border: 1px solid rgb(112 88 49 / 54%);
+  border-radius: 1px;
+  background: color-mix(in srgb, var(--merchant-paper-bright) 92%, var(--merchant-paper));
+  box-shadow: none;
+}
+
+body[data-page-world="trade"] :is(
+  .trade-route-card,
+  .trade-basic-route-card,
+  .trade-live-source-card,
+  .trade-corridor-card,
+  .trade-port-result
+) {
+  position: relative;
+  border: 1px solid #927a52;
+  border-left: 5px double var(--merchant-margin);
+  border-radius: 1px;
+  background: var(--merchant-paper-bright);
+  box-shadow: .25rem .35rem .8rem rgb(44 27 10 / 15%);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] :is(
+  .trade-route-card,
+  .trade-basic-route-card,
+  .trade-live-source-card,
+  .trade-corridor-card,
+  .trade-port-result
+) {
+  background: var(--merchant-paper-bright);
+}
+
+body[data-page-world="trade"] :is(
+  .trade-route-primary-metric,
+  .trade-live-source-key-metric,
+  .trade-corridor-fact
+) {
+  border: 1px solid rgb(117 91 49 / 52%);
+  border-radius: 0;
+  background: rgb(255 255 255 / 12%);
+  box-shadow: inset 0 -2px rgb(54 102 104 / 13%);
+}
+
+body[data-page-world="trade"] :is(
+  .trade-route-metrics,
+  .trade-live-source-card-details,
+  .trade-corridor-metrics,
+  .trade-facts
+) {
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-page-world="trade"] :is(input, select, textarea) {
+  border-color: #897451;
+  border-radius: 1px;
+  background: color-mix(in srgb, var(--merchant-paper-bright) 90%, white);
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] :is(input, select, textarea) {
+  background: #fbefd0;
+  color: var(--merchant-ink);
+}
+
+body[data-page-world="trade"] .journey-shortcuts {
+  border: 1px dashed #9d7d49;
+  border-left: 5px solid var(--merchant-margin);
+  border-radius: 0;
+  background: var(--merchant-paper-bright);
+}
+
+body[data-page-world="trade"] .nam-journey-ship {
+  border-color: #927a52;
+  background: var(--merchant-paper-bright);
+}
+
+body[data-page-world="trade"] .nam-journey-ship > legend {
+  padding-inline: .55rem;
+  background: var(--merchant-paper-bright);
+}
+
+body[data-page-world="trade"] .trade-journey-setup :is(
+  .nam-journey-help,
+  .nam-journey-reference,
+  .result-line
+) {
+  font-size: .875rem;
+  line-height: 1.55;
+}
+
+/* ------------------------------------------------------------------------- */
+/* PRICE HISTORY — port accountant's ruled daybook                           */
+/* ------------------------------------------------------------------------- */
+
+body[data-page-world="history"] {
+  --accounts-ink: #263430;
+  --accounts-paper: #edf0dc;
+  --accounts-paper-bright: #f7f5df;
+  --accounts-blue-rule: rgb(48 101 105 / 24%);
+  --accounts-red-rule: #a85b4c;
+  --accounts-green: #315f58;
+  --paper: var(--accounts-paper);
+  --paper-strong: var(--accounts-paper-bright);
+  --ink: var(--accounts-ink);
+  --muted: #58665f;
+  --line: #9ca68e;
+  --theme-heading: #244b48;
+  --theme-control-text: #263430;
+  --theme-input-bg: #fbf9e8;
+  --theme-table-body-text: #263430;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] {
+  /* The account book remains a pale ruled folio in either site mode. */
+  --accounts-ink: #263430;
+  --accounts-paper: #dfe5ce;
+  --accounts-paper-bright: #f4f2dc;
+  --accounts-blue-rule: rgb(48 101 105 / 24%);
+  --accounts-red-rule: #a85b4c;
+  --accounts-green: #315f58;
+  --paper: var(--accounts-paper);
+  --paper-strong: var(--accounts-paper-bright);
+  --ink: var(--accounts-ink);
+  --muted: #58665f;
+  --line: #9ca68e;
+  --theme-heading: #244b48;
+  --theme-control-text: #263430;
+  --theme-input-bg: #fbf9e8;
+  --theme-table-body-text: #263430;
+}
+
+body[data-page-world="history"] main[data-history-app] {
+  --theme-surface: var(--accounts-paper);
+  --theme-surface-soft: #dfe5ce;
+  --theme-surface-frost: rgb(247 245 223 / 80%);
+  --theme-card-inset: #e5e8d2;
+  --theme-card-inset-border: #889785;
+  --ux-text: var(--accounts-ink);
+  --ux-muted: #58665f;
+  --ux-surface: var(--accounts-paper-bright);
+  --ux-surface-muted: #e4e8d3;
+  --ux-border: #7c8b79;
+  --ux-accent: var(--accounts-green);
+  --ux-accent-hover: #203f3b;
+  background:
+    linear-gradient(90deg,
+      transparent 0 1.1rem,
+      rgb(168 91 76 / 55%) 1.1rem calc(1.1rem + 2px),
+      transparent calc(1.1rem + 2px)),
+    repeating-linear-gradient(90deg,
+      transparent 0 12.5rem,
+      rgb(49 95 88 / 5%) 12.5rem calc(12.5rem + 1px)),
+    linear-gradient(105deg, var(--accounts-paper-bright), var(--accounts-paper));
+  color: var(--accounts-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] {
+  background:
+    linear-gradient(90deg,
+      transparent 0 1.1rem,
+      rgb(168 91 76 / 55%) 1.1rem calc(1.1rem + 2px),
+      transparent calc(1.1rem + 2px)),
+    repeating-linear-gradient(90deg,
+      transparent 0 12.5rem,
+      rgb(49 95 88 / 5%) 12.5rem calc(12.5rem + 1px)),
+    linear-gradient(105deg, var(--accounts-paper-bright), var(--accounts-paper));
+  color: var(--accounts-ink);
+}
+
+body[data-page-world="history"] main[data-history-app] > .page-header {
+  border-top: 8px solid var(--accounts-green);
+  border-bottom: 3px double #71816d;
+  background:
+    linear-gradient(90deg,
+      transparent 0 1.1rem,
+      rgb(168 91 76 / 68%) 1.1rem calc(1.1rem + 2px),
+      transparent calc(1.1rem + 2px)),
+    linear-gradient(105deg, #f7f3d7, #dfe5ce);
+  color: #253c38;
+  text-shadow: none;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .page-header {
+  background:
+    linear-gradient(90deg,
+      transparent 0 1.1rem,
+      rgb(168 91 76 / 68%) 1.1rem calc(1.1rem + 2px),
+      transparent calc(1.1rem + 2px)),
+    linear-gradient(105deg, #f7f3d7, #dfe5ce);
+  color: #253c38;
+}
+
+body[data-page-world="history"] main[data-history-app] > .page-header::before {
+  border: 0;
+  border-left: 1px solid rgb(168 91 76 / 28%);
+}
+
+body[data-page-world="history"] main[data-history-app] > .page-header :is(h1, p, .eyebrow) {
+  color: inherit;
+  text-shadow: none;
+}
+
+body[data-page-world="history"] main[data-history-app] > .page-header .eyebrow {
+  color: var(--accounts-red-rule);
+}
+
+body[data-page-world="history"] .history-filter {
+  box-sizing: border-box;
+  min-width: 0;
+  width: auto;
+  max-width: none;
+  margin-inline: 3.7rem 0;
+  border: 3px double #72816e;
+  border-radius: 0;
+  background: var(--accounts-paper-bright);
+  box-shadow: .35rem .45rem .9rem rgb(35 34 20 / 13%);
+}
+
+body[data-page-world="history"] .compact-metrics {
+  box-sizing: border-box;
+  min-width: 0;
+  width: auto;
+  margin-inline: 3.7rem 0;
+  gap: 0;
+  border: 1px solid #83917c;
+  border-radius: 0;
+  background: var(--accounts-paper-bright);
+  box-shadow: .35rem .45rem .9rem rgb(35 34 20 / 12%);
+}
+
+body[data-page-world="history"] .compact-metrics article {
+  min-height: 6.5rem;
+  border: 0;
+  border-right: 1px solid #96a18c;
+  border-top: 4px solid var(--accounts-green);
+  border-radius: 0;
+  background: var(--accounts-paper-bright);
+  box-shadow: none;
+}
+
+body[data-page-world="history"] .compact-metrics article:last-child {
+  border-right: 0;
+}
+
+body[data-page-world="history"] .compact-metrics strong {
+  color: var(--theme-heading);
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-page-world="history"] .compact-metrics span {
+  font-size: .875rem;
+  line-height: 1.4;
+}
+
+body[data-page-world="history"] .history-table-shell {
+  box-sizing: border-box;
+  min-width: 0;
+  width: auto;
+  margin-inline: 3.7rem 0;
+  border: 3px double #667766;
+  border-radius: 0;
+  background: var(--accounts-paper-bright);
+  box-shadow: .5rem .7rem 1.4rem rgb(31 29 17 / 18%);
+}
+
+body[data-page-world="history"] .history-table-shell table {
+  background: var(--accounts-paper-bright);
+  font-size: .875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-page-world="history"] .history-table-shell thead th {
+  border-right: 1px solid #788676;
+  border-bottom: 4px double #b6a66c;
+  background: var(--accounts-green);
+  color: #fff5d4;
+  letter-spacing: .08em;
+}
+
+body[data-page-world="history"] .history-table-shell tbody td {
+  border-right: 1px solid rgb(77 104 94 / 28%);
+  border-bottom: 1px solid var(--accounts-blue-rule);
+  background: var(--accounts-paper-bright);
+}
+
+body[data-page-world="history"] .history-table-shell tbody tr:nth-child(even) td {
+  background: #e9ead4;
+}
+
+body[data-page-world="history"] .history-nation-fact {
+  grid-template-columns: minmax(4.6rem, auto) minmax(6rem, 1fr);
+  gap: .12rem .5rem;
+  min-height: 2.6rem;
+  padding: .3rem .35rem .42rem;
+  border-bottom: 1px solid rgb(62 88 80 / 25%);
+}
+
+body[data-page-world="history"] .history-nation-fact > .number {
+  grid-column: 1;
+  text-align: right;
+}
+
+body[data-page-world="history"] .history-nation-fact > small:last-child {
+  grid-column: 2;
+}
+
+body[data-page-world="history"] .empty-state {
+  box-sizing: border-box;
+  margin-inline: 3.7rem 0;
+  border: 1px dashed #74836f;
+  border-left: 5px solid var(--accounts-red-rule);
+  border-radius: 0;
+  background: var(--accounts-paper-bright);
+}
+
+/* ------------------------------------------------------------------------- */
+/* SUPPLY & CARGO — dockside cargo manifest and loading tally                 */
+/* ------------------------------------------------------------------------- */
+
+body[data-page-world="supply"] {
+  --manifest-ink: #273139;
+  --manifest-paper: #e4d2aa;
+  --manifest-paper-bright: #f3e6c8;
+  --manifest-rule: rgb(44 82 94 / 20%);
+  --manifest-stamp: #964936;
+  --manifest-navy: #1a4351;
+  --paper: var(--manifest-paper);
+  --paper-strong: var(--manifest-paper-bright);
+  --ink: var(--manifest-ink);
+  --muted: #615a4c;
+  --line: #aa966e;
+  --theme-heading: #213f49;
+  --theme-control-text: #26343a;
+  --theme-input-bg: #fbefd4;
+  --theme-table-body-text: #273139;
+  --theme-card-inset: #dec89b;
+  --theme-card-inset-border: #9b855d;
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] {
+  /* Cargo manifests are working paper laid over the site's dark dock. */
+  --manifest-ink: #273139;
+  --manifest-paper: #d9c08b;
+  --manifest-paper-bright: #f0dfba;
+  --manifest-rule: rgb(44 82 94 / 20%);
+  --manifest-stamp: #964936;
+  --manifest-navy: #1a4351;
+  --paper: var(--manifest-paper);
+  --paper-strong: var(--manifest-paper-bright);
+  --ink: var(--manifest-ink);
+  --muted: #615a4c;
+  --line: #aa966e;
+  --theme-heading: #213f49;
+  --theme-control-text: #26343a;
+  --theme-input-bg: #fbefd4;
+  --theme-table-body-text: #273139;
+  --theme-card-inset: #dec89b;
+  --theme-card-inset-border: #9b855d;
+}
+
+body[data-page-world="supply"] main {
+  --theme-surface: var(--manifest-paper);
+  --theme-surface-soft: #dfca9c;
+  --theme-surface-frost: rgb(243 230 200 / 80%);
+  --theme-chart-wash: linear-gradient(120deg, rgb(255 255 255 / 16%), transparent 46%);
+  --ux-text: var(--manifest-ink);
+  --ux-muted: #615a4c;
+  --ux-surface: var(--manifest-paper-bright);
+  --ux-surface-muted: #ddc691;
+  --ux-border: #917a54;
+  --ux-accent: var(--manifest-navy);
+  --ux-accent-hover: #102f39;
+  background: linear-gradient(105deg, var(--manifest-paper-bright), var(--manifest-paper));
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main {
+  background: linear-gradient(105deg, var(--manifest-paper-bright), var(--manifest-paper));
+  color: var(--manifest-ink);
+}
+
+body[data-page-world="supply"] main > .page-header {
+  border-top: 8px solid var(--manifest-navy);
+  border-bottom: 5px double #b28a47;
+  background:
+    linear-gradient(90deg, rgb(5 22 27 / 34%), transparent 34% 72%, rgb(6 21 25 / 38%)),
+    repeating-linear-gradient(90deg,
+      #173f4a 0 12rem,
+      #102f38 12rem calc(12rem + 2px),
+      #0b242c calc(12rem + 2px) calc(12rem + 5px));
+  color: #fff1cf;
+  box-shadow:
+    inset 0 .35rem .7rem rgb(0 0 0 / 17%),
+    inset 0 -.55rem 1rem rgb(0 0 0 / 24%);
+}
+
+body[data-page-world="supply"] main#main > .page-header {
+  background:
+    linear-gradient(90deg, rgb(5 22 27 / 34%), transparent 34% 72%, rgb(6 21 25 / 38%)),
+    repeating-linear-gradient(90deg,
+      #173f4a 0 12rem,
+      #102f38 12rem calc(12rem + 2px),
+      #0b242c calc(12rem + 2px) calc(12rem + 5px));
+}
+
+body[data-page-world="supply"] main#main > .page-header h1 {
+  letter-spacing: .015em;
+}
+
+body[data-page-world="supply"] :is(
+  .filter-panel,
+  .shopping-flow-step,
+  .shopping-list-shell,
+  .shopping-list-actions,
+  .shopping-journey-setup,
+  .shopping-recent,
+  .shopping-sourcing,
+  .shopping-pickup-plan,
+  .supply-runs,
+  .shopping-route-map-section,
+  .table-shell
+) {
+  border: 1px solid #95805a;
+  border-top: 4px solid var(--manifest-navy);
+  border-radius: 1px;
+  background: var(--manifest-paper-bright);
+  box-shadow: .35rem .48rem 1rem rgb(43 30 12 / 14%);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] :is(
+  .filter-panel,
+  .shopping-flow-step,
+  .shopping-list-shell,
+  .shopping-list-actions,
+  .shopping-journey-setup,
+  .shopping-recent,
+  .shopping-sourcing,
+  .shopping-pickup-plan,
+  .supply-runs,
+  .shopping-route-map-section,
+  .table-shell
+) {
+  background: var(--manifest-paper-bright);
+}
+
+body[data-page-world="supply"] .shopping-journey-setup {
+  margin-block: 1rem;
+  padding: 1.15rem 1.2rem 1.25rem;
+}
+
+body[data-page-world="supply"] .shopping-journey-setup > h2 {
+  margin: 0 0 .8rem;
+}
+
+body[data-page-world="supply"] .shopping-journey-setup .nam-journey-setup {
+  margin-block: 0;
+}
+
+body[data-page-world="supply"] .shopping-journey-setup > .subtle {
+  min-height: 1.35rem;
+  font-size: .875rem;
+  line-height: 1.55;
+}
+
+body[data-page-world="supply"] :is(
+  .shopping-recent-row,
+  .shopping-pickup-stop,
+  .shopping-plan-option,
+  .supply-run-current,
+  .supply-run-preview
+) {
+  border: 1px dashed #8f7953;
+  border-radius: 0;
+  background: rgb(255 255 255 / 9%);
+  box-shadow: inset 0 0 0 1px rgb(150 73 54 / 7%);
+}
+
+body[data-page-world="supply"] :is(
+  .shopping-pickup-status,
+  .shopping-pickup-warning,
+  .shopping-route-source-mix-status
+) {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 2px;
+  font-family: Georgia, "Palatino Linotype", serif;
+  letter-spacing: .025em;
+  text-transform: none;
+}
+
+body[data-page-world="supply"] :is(input, select, textarea) {
+  border-radius: 1px;
+  background: color-mix(in srgb, var(--manifest-paper-bright) 92%, white);
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] :is(input, select, textarea) {
+  background: #fbefd4;
+  color: var(--manifest-ink);
+}
+
+body[data-page-world="supply"] .journey-shortcuts {
+  border: 1px dashed #9a8050;
+  border-left: 6px double var(--manifest-stamp);
+  border-radius: 0;
+  background: var(--manifest-paper-bright);
+}
+
+body[data-page-world="supply"] .nam-journey-ship {
+  border-color: #95805a;
+  background: var(--manifest-paper-bright);
+}
+
+body[data-page-world="supply"] .nam-journey-ship > legend {
+  padding-inline: .55rem;
+  background: var(--manifest-paper-bright);
+}
+
+body[data-page-world="supply"] :is(
+  .nam-journey-help,
+  .nam-journey-reference,
+  .shopping-distance-note,
+  #shopping-sourcing-status
+) {
+  min-height: 1.35rem;
+  font-size: .875rem;
+  line-height: 1.55;
+}
+
+body[data-page-world="supply"] .shopping-sourcing-controls label {
+  font-size: .875rem;
+}
+
+body[data-page-world="supply"] table {
+  font-variant-numeric: tabular-nums;
+}
+
+body[data-page-world="supply"] thead th {
+  background: var(--manifest-navy);
+  color: #fff2d2;
+}
+
+/* In dark site mode the surrounding room stays dark, but the three working
+   objects remain real paper. These rules also keep inherited dark-theme card
+   colours from reducing contrast on those sheets. */
+html[data-theme="dark"] body[data-page-world="trade"] [data-trade-planner] :is(
+  .filter-panel,
+  .trade-basic-planner,
+  .trade-basic-controls,
+  .trade-basic-results,
+  .trade-corridor-results,
+  .trade-corridor-home-status,
+  .trade-workbench-panel,
+  .trade-manual-planner,
+  .trade-live-source-step,
+  .trade-voyage-library,
+  .trade-voyage-preview,
+  .trade-voyage-active,
+  .nam-journey-ship
+) {
+  background: var(--merchant-paper-bright);
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] [data-trade-planner] :is(
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  label,
+  legend,
+  summary,
+  dt,
+  dd,
+  li
+) {
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] [data-trade-planner] .subtle {
+  color: var(--merchant-muted);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] [data-trade-planner] :is(input, select, textarea) {
+  border-color: #806c4b;
+  background-color: #fbefd0;
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] [data-trade-planner] .button {
+  border-color: #7f6138;
+  background: #4c2922;
+  color: #fff0c7;
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] [data-trade-planner] .button.primary {
+  border-color: #825b20;
+  background: #c79840;
+  color: #241b0e;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] :is(
+  .history-filter,
+  .compact-metrics,
+  .history-table-shell,
+  .empty-state
+) {
+  background: var(--accounts-paper-bright);
+  color: var(--accounts-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-filter {
+  background: var(--accounts-paper-bright) !important;
+  color: var(--accounts-ink) !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-filter label {
+  color: var(--accounts-ink) !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-filter :is(input, select, textarea) {
+  background: #fbf9e8 !important;
+  color: var(--accounts-ink) !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-table-shell {
+  background: var(--accounts-paper-bright) !important;
+  color: var(--accounts-ink) !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-table-shell :is(table, tbody, tr) {
+  background-color: transparent !important;
+  color: var(--accounts-ink) !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-table-shell tbody td {
+  background-color: var(--accounts-paper-bright) !important;
+  color: var(--accounts-ink) !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-table-shell tbody tr:nth-child(even) td {
+  background-color: #e9ead4 !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-table-shell tbody tr:hover td {
+  background-color: rgb(49 95 88 / 11%) !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] .compact-metrics article {
+  background-color: var(--accounts-paper-bright);
+  color: var(--accounts-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] :is(input, select, textarea) {
+  border-color: #758274;
+  background-color: #fbf9e8;
+  color: var(--accounts-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main :is(
+  [data-workflow-ux-density],
+  [data-workflow-ux-view],
+  [data-workflow-ux-quick-start],
+  .filter-panel,
+  .shopping-flow-step,
+  .shopping-list-shell,
+  .shopping-list-actions,
+  .shopping-journey-setup,
+  .shopping-sourcing,
+  .shopping-pickup-plan,
+  .shopping-recent,
+  .shopping-metrics,
+  .shopping-route-map-section,
+  .supply-runs,
+  .nam-journey-ship
+) {
+  background: var(--manifest-paper-bright);
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main :is(
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  label,
+  legend,
+  summary,
+  dt,
+  dd,
+  li
+) {
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main .subtle {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main :is(input, select, textarea) {
+  border-color: #7e735b;
+  background-color: #fbefd4;
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main .button {
+  border-color: #315c68;
+  background: var(--manifest-navy);
+  color: #fff2d2;
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main .button.primary {
+  border-color: #7d5721;
+  background: #c3933d;
+  color: #241b0e;
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main .shopping-alert {
+  border: 1px dashed #8f7953;
+  border-left: 6px double var(--manifest-stamp);
+  background: var(--manifest-paper-bright);
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .trade-advisories {
+  --ink: #eee0bd;
+  --muted: #c5b99d;
+  --theme-heading: #f4dfab;
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .trade-advisories :is(h2, h3, h4) {
+  color: #f4dfab;
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .trade-advisories p {
+  color: #c5b99d;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ART DIRECTION PASS 2 — daylight documents / midnight watch                */
+/* ------------------------------------------------------------------------- */
+
+/* Merchant ledger: brass-bound sections, indexed leaves and receipt cards. */
+body[data-page-world="trade"] main.trade-page {
+  color-scheme: light;
+}
+
+body[data-page-world="trade"] :is(
+  .trade-journey-setup,
+  .trade-basic-planner,
+  .trade-workbench,
+  .trade-manual-planner,
+  .trade-live-source
+) {
+  border-top: 4px double var(--merchant-gold);
+}
+
+body[data-page-world="trade"] :is(
+  .trade-planner-mode-header,
+  .trade-basic-header,
+  .trade-workbench-title,
+  .trade-live-source-header
+) {
+  background: linear-gradient(90deg, rgb(76 41 34 / 9%), transparent 72%);
+}
+
+body[data-page-world="trade"] :is(
+  .trade-planner-mode-header h2,
+  .trade-basic-header h3,
+  .trade-workbench-title h2,
+  .trade-live-source-header h3
+) {
+  letter-spacing: .015em;
+}
+
+body[data-page-world="trade"] :is(
+  input,
+  select,
+  textarea,
+  .nam-dropdown-trigger
+) {
+  min-height: 2.72rem;
+  border-width: 1px;
+  border-bottom-width: 2px;
+  border-color: #90764a;
+  border-radius: 2px;
+  background: #fbefd0;
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 55%),
+    inset 0 -2px rgb(69 92 91 / 9%);
+}
+
+body[data-page-world="trade"] :is(
+  .trade-route-card,
+  .trade-basic-route-card,
+  .trade-live-source-card,
+  .trade-corridor-card,
+  .trade-port-result
+)::after {
+  position: absolute;
+  top: .55rem;
+  right: .55rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-top: 2px solid rgb(169 86 67 / 45%);
+  border-right: 2px solid rgb(169 86 67 / 45%);
+  content: "";
+  pointer-events: none;
+}
+
+body[data-page-world="trade"] .trade-planner-mode-tabs {
+  background: linear-gradient(180deg, #c7ad75, #b99b60);
+  box-shadow: inset 0 1px rgb(255 255 255 / 28%);
+}
+
+body[data-page-world="trade"] .trade-planner-mode-tab {
+  border-radius: 5px 5px 0 0;
+  background: #d7c28f;
+}
+
+body[data-page-world="trade"] .trade-planner-mode-tab[aria-selected="true"] {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 4px var(--merchant-margin),
+    0 -2px 6px rgb(54 34 14 / 12%);
+}
+
+/* Accountant's daybook: ruled by actual rows, with a strong dated spine. */
+body[data-page-world="history"] main[data-history-app] {
+  position: relative;
+  color-scheme: light;
+}
+
+body[data-page-world="history"] main[data-history-app]::after {
+  position: absolute;
+  z-index: 0;
+  top: 15rem;
+  bottom: 3rem;
+  left: .38rem;
+  width: .5rem;
+  background: radial-gradient(circle, rgb(45 65 59 / 34%) 0 2px, transparent 2.5px) 0 0 / .5rem 2.6rem repeat-y;
+  content: "";
+  pointer-events: none;
+}
+
+body[data-page-world="history"] main[data-history-app] > * {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-page-world="history"] .history-filter {
+  border-top: 5px solid var(--accounts-green);
+  box-shadow:
+    .35rem .45rem .9rem rgb(35 34 20 / 13%),
+    inset 0 1px rgb(255 255 255 / 46%);
+}
+
+body[data-page-world="history"] :is(
+  input,
+  select,
+  textarea,
+  .nam-dropdown-trigger
+) {
+  min-height: 2.72rem;
+  border-color: #758274;
+  border-bottom-width: 2px;
+  border-radius: 2px;
+  background: #fbf9e8;
+  box-shadow: inset 0 -2px rgb(49 95 88 / 8%);
+}
+
+body[data-page-world="history"] .compact-metrics article {
+  position: relative;
+  padding-top: 1.35rem;
+}
+
+body[data-page-world="history"] .compact-metrics article::before {
+  position: absolute;
+  top: .55rem;
+  left: 1.3rem;
+  width: 2.25rem;
+  height: 2px;
+  background: var(--accounts-red-rule);
+  content: "";
+}
+
+body[data-page-world="history"] .compact-metrics strong {
+  letter-spacing: -.02em;
+}
+
+body[data-page-world="history"] .history-table-shell tbody td:nth-child(-n + 2) {
+  background-image: linear-gradient(90deg, rgb(49 95 88 / 5%), transparent);
+  font-family: Georgia, "Palatino Linotype", serif;
+}
+
+body[data-page-world="history"] .history-nation-fact > small:first-child {
+  letter-spacing: .025em;
+  text-transform: uppercase;
+}
+
+body[data-page-world="history"] .history-nation-fact > strong {
+  color: var(--theme-heading);
+}
+
+/* Cargo manifest: docket headers, clipped tally tags and stamped states. */
+body[data-page-world="supply"] main {
+  color-scheme: light;
+}
+
+body[data-page-world="supply"] :is(
+  .shopping-flow-step,
+  .shopping-journey-setup,
+  .shopping-sourcing,
+  .shopping-pickup-plan,
+  .shopping-recent,
+  .supply-runs
+) {
+  position: relative;
+  border-top-width: 5px;
+}
+
+body[data-page-world="supply"] :is(
+  .shopping-flow-step,
+  .shopping-journey-setup,
+  .shopping-sourcing,
+  .shopping-pickup-plan,
+  .shopping-recent,
+  .supply-runs
+)::after {
+  position: absolute;
+  top: -5px;
+  right: 1.1rem;
+  width: 3.4rem;
+  height: 5px;
+  background: var(--manifest-stamp);
+  content: "";
+  pointer-events: none;
+}
+
+body[data-page-world="supply"] :is(
+  .shopping-flow-step > h2,
+  .shopping-journey-setup > h2,
+  .shopping-sourcing > h2,
+  .shopping-pickup-plan > h2,
+  .supply-runs h2
+) {
+  color: var(--theme-heading);
+  letter-spacing: .015em;
+}
+
+body[data-page-world="supply"] :is(
+  input,
+  select,
+  textarea,
+  .nam-dropdown-trigger
+) {
+  min-height: 2.72rem;
+  border-color: #827252;
+  border-bottom-width: 2px;
+  border-radius: 2px;
+  background: #fbefd4;
+  box-shadow: inset 0 -2px rgb(26 67 81 / 10%);
+}
+
+body[data-page-world="supply"] #shopping-metrics article {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  clip-path: polygon(0 0, calc(100% - .65rem) 0, 100% .65rem, 100% 100%, 0 100%);
+  background: linear-gradient(145deg, #f8eccf, #e3cea0);
+  box-shadow:
+    inset 0 3px var(--manifest-navy),
+    .2rem .28rem .55rem rgb(48 34 14 / 15%);
+}
+
+body[data-page-world="supply"] :is(
+  .shopping-pickup-status,
+  .shopping-pickup-warning,
+  .shopping-route-source-mix-status
+) {
+  border-left-width: 6px;
+  font-weight: 700;
+}
+
+/* True dark mode: the same working rooms after sunset, lit by brass lamps. */
+html[data-theme="dark"] body[data-page-world="trade"] {
+  --merchant-ink: #f3e6c3;
+  --merchant-muted: #c5b894;
+  --merchant-paper: #141b1c;
+  --merchant-paper-bright: #1d2828;
+  --merchant-rule: rgb(113 165 160 / 17%);
+  --merchant-margin: #c56c58;
+  --merchant-leather: #291514;
+  --merchant-gold: #d8ad58;
+  --paper: var(--merchant-paper);
+  --paper-strong: var(--merchant-paper-bright);
+  --ink: var(--merchant-ink);
+  --muted: var(--merchant-muted);
+  --line: #6f6246;
+  --theme-heading: #f0d69a;
+  --theme-control-text: #f3e6c3;
+  --theme-input-bg: #0e181a;
+  --theme-table-body-text: #f3e6c3;
+  --theme-card-inset: #202b2b;
+  --theme-card-inset-border: #706344;
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] main.trade-page {
+  --theme-surface: #151d1e;
+  --theme-surface-soft: #1b2525;
+  --theme-surface-frost: rgb(24 34 34 / 92%);
+  --theme-chart-wash: linear-gradient(120deg, rgb(216 173 88 / 5%), transparent 46%);
+  --ux-text: var(--merchant-ink);
+  --ux-muted: var(--merchant-muted);
+  --ux-surface: var(--merchant-paper-bright);
+  --ux-surface-muted: #263231;
+  --ux-border: #766744;
+  --ux-accent: #c56c58;
+  --ux-accent-hover: #dd8b73;
+  color-scheme: dark;
+  background:
+    linear-gradient(90deg,
+      transparent 0 calc(50% - 3px),
+      rgb(0 0 0 / 35%) calc(50% - 3px) 50%,
+      rgb(216 173 88 / 8%) 50% calc(50% + 2px),
+      transparent calc(50% + 2px)),
+    radial-gradient(circle at 82% 5%, rgb(216 173 88 / 8%), transparent 24rem),
+    linear-gradient(100deg, #1c2626, #111819 47%, #1b2525 53%, #101718);
+  color: var(--merchant-ink);
+  box-shadow:
+    inset 1.35rem 0 1.8rem -2rem #000,
+    inset -1.35rem 0 1.8rem -2rem #000,
+    0 1.25rem 3.5rem rgb(0 0 0 / 60%);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] :is(
+  .trade-journey-setup,
+  .trade-planner-modes,
+  .trade-basic-planner,
+  .trade-workbench,
+  .trade-manual-planner,
+  .trade-live-source
+) {
+  border-color: #786945;
+  background: linear-gradient(100deg, #202b2b, #151d1e);
+  box-shadow:
+    .45rem .6rem 1.25rem rgb(0 0 0 / 34%),
+    inset 0 1px rgb(255 232 180 / 6%);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] :is(
+  .trade-planner-mode-header,
+  .trade-basic-header,
+  .trade-workbench-title,
+  .trade-live-source-header
+) {
+  background: linear-gradient(90deg, rgb(197 108 88 / 13%), transparent 72%);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .trade-planner-mode-tabs {
+  border-color: #6f6141;
+  background: linear-gradient(180deg, #35241d, #201918);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .trade-planner-mode-tab {
+  border-color: #675b40;
+  border-bottom-color: #4e4635;
+  background: #263130;
+  color: #d8caa7;
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .trade-planner-mode-tab[aria-selected="true"] {
+  border-color: var(--merchant-margin);
+  border-bottom-color: var(--merchant-paper-bright);
+  background: var(--merchant-paper-bright);
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] [data-trade-planner] :is(
+  .filter-panel,
+  .trade-basic-planner,
+  .trade-basic-controls,
+  .trade-basic-results,
+  .trade-corridor-results,
+  .trade-corridor-home-status,
+  .trade-workbench-panel,
+  .trade-manual-planner,
+  .trade-live-source-step,
+  .trade-voyage-library,
+  .trade-voyage-preview,
+  .trade-voyage-active,
+  .nam-journey-ship
+) {
+  border-color: #6d6042;
+  background: var(--merchant-paper-bright);
+  color: var(--merchant-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] :is(
+  .trade-route-card,
+  .trade-basic-route-card,
+  .trade-live-source-card,
+  .trade-corridor-card,
+  .trade-port-result
+) {
+  border-color: #776745;
+  border-left-color: var(--merchant-margin);
+  background: #202b2b;
+  box-shadow: .25rem .35rem .8rem rgb(0 0 0 / 28%);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] :is(
+  .trade-route-primary-metric,
+  .trade-live-source-key-metric,
+  .trade-corridor-fact
+) {
+  border-color: #6b6046;
+  background: #121d1f;
+  box-shadow: inset 0 -2px rgb(216 173 88 / 11%);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] :is(
+  input,
+  select,
+  textarea,
+  .nam-dropdown-trigger
+) {
+  border-color: #7d6b45;
+  background: #0d1719;
+  color: var(--merchant-ink);
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 4%),
+    inset 0 -2px rgb(216 173 88 / 11%);
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .journey-shortcuts {
+  border-color: #756544;
+  border-left-color: var(--merchant-margin);
+  background: #1b2626;
+}
+
+html[data-theme="dark"] body[data-page-world="trade"] .nam-journey-ship > legend {
+  background: var(--merchant-paper-bright);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] {
+  --accounts-ink: #e8ead5;
+  --accounts-paper: #0d211f;
+  --accounts-paper-bright: #15302d;
+  --accounts-blue-rule: rgb(128 188 178 / 23%);
+  --accounts-red-rule: #d17a64;
+  --accounts-green: #1b4c45;
+  --paper: var(--accounts-paper);
+  --paper-strong: var(--accounts-paper-bright);
+  --ink: var(--accounts-ink);
+  --muted: #b2c2b6;
+  --line: #4f6860;
+  --theme-heading: #f0dba6;
+  --theme-control-text: #e8ead5;
+  --theme-input-bg: #0a1c1b;
+  --theme-table-body-text: #e8ead5;
+  --theme-card-inset: #193531;
+  --theme-card-inset-border: #557068;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] {
+  --theme-surface: #102724;
+  --theme-surface-soft: #15302d;
+  --theme-surface-frost: rgb(17 41 38 / 92%);
+  --theme-card-inset: #193531;
+  --theme-card-inset-border: #557068;
+  --ux-text: var(--accounts-ink);
+  --ux-muted: #b2c2b6;
+  --ux-surface: var(--accounts-paper-bright);
+  --ux-surface-muted: #1a3834;
+  --ux-border: #57716a;
+  --ux-accent: #d17a64;
+  --ux-accent-hover: #e09a85;
+  color-scheme: dark;
+  background:
+    linear-gradient(90deg,
+      transparent 0 1.1rem,
+      rgb(209 122 100 / 72%) 1.1rem calc(1.1rem + 2px),
+      transparent calc(1.1rem + 2px)),
+    repeating-linear-gradient(90deg,
+      transparent 0 12.5rem,
+      rgb(128 188 178 / 5%) 12.5rem calc(12.5rem + 1px)),
+    radial-gradient(circle at 82% 4%, rgb(225 184 103 / 6%), transparent 22rem),
+    linear-gradient(105deg, #16302d, #0b1d1c);
+  color: var(--accounts-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .page-header {
+  border-top-color: #b9934f;
+  border-bottom-color: #58736b;
+  background:
+    linear-gradient(90deg,
+      transparent 0 1.1rem,
+      rgb(209 122 100 / 78%) 1.1rem calc(1.1rem + 2px),
+      transparent calc(1.1rem + 2px)),
+    radial-gradient(circle at 85% 25%, rgb(225 184 103 / 8%), transparent 24rem),
+    linear-gradient(105deg, #1a3b36, #0d2523);
+  color: var(--accounts-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .page-header .eyebrow {
+  color: #e59a83;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] :is(
+  .history-filter,
+  .compact-metrics,
+  .history-table-shell,
+  .empty-state
+) {
+  border-color: #587169;
+  background: var(--accounts-paper-bright) !important;
+  color: var(--accounts-ink) !important;
+  box-shadow: .4rem .55rem 1.1rem rgb(0 0 0 / 30%);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] .compact-metrics article {
+  border-right-color: #4e6961;
+  border-top-color: #b9934f;
+  background: #17332f;
+  color: var(--accounts-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] .compact-metrics :is(span, strong),
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-filter label {
+  color: inherit !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] :is(
+  input,
+  select,
+  textarea,
+  .nam-dropdown-trigger
+),
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-filter :is(input, select, textarea) {
+  border-color: #688078;
+  background: #091b1a !important;
+  color: var(--accounts-ink) !important;
+  box-shadow: inset 0 -2px rgb(185 147 79 / 12%);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-table-shell tbody td {
+  border-color: rgb(128 188 178 / 18%);
+  background-color: #122b28 !important;
+  color: var(--accounts-ink) !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-table-shell tbody tr:nth-child(even) td {
+  background-color: #183530 !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] main[data-history-app] > .history-table-shell tbody tr:hover td {
+  background-color: #21443e !important;
+}
+
+html[data-theme="dark"] body[data-page-world="history"] .history-table-shell tbody td:nth-child(-n + 2) {
+  background-image: linear-gradient(90deg, rgb(209 122 100 / 7%), transparent);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] .history-nation-fact {
+  border-bottom-color: rgb(128 188 178 / 22%);
+}
+
+html[data-theme="dark"] body[data-page-world="history"] .history-nation-fact :is(small, strong, span) {
+  color: inherit;
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] {
+  --manifest-ink: #f0e7cf;
+  --manifest-paper: #0b2027;
+  --manifest-paper-bright: #14323a;
+  --manifest-rule: rgb(105 163 169 / 18%);
+  --manifest-stamp: #d07960;
+  --manifest-navy: #0b262f;
+  --paper: var(--manifest-paper);
+  --paper-strong: var(--manifest-paper-bright);
+  --ink: var(--manifest-ink);
+  --muted: #c1b99f;
+  --line: #52696c;
+  --theme-heading: #f0d7a0;
+  --theme-control-text: #f0e7cf;
+  --theme-input-bg: #081b21;
+  --theme-table-body-text: #f0e7cf;
+  --theme-card-inset: #193a43;
+  --theme-card-inset-border: #5a7072;
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main {
+  --theme-surface: #102a31;
+  --theme-surface-soft: #17343b;
+  --theme-surface-frost: rgb(16 42 49 / 92%);
+  --theme-chart-wash: linear-gradient(120deg, rgb(220 176 89 / 5%), transparent 46%);
+  --ux-text: var(--manifest-ink);
+  --ux-muted: #c1b99f;
+  --ux-surface: var(--manifest-paper-bright);
+  --ux-surface-muted: #1a3a42;
+  --ux-border: #5e7272;
+  --ux-accent: #d07960;
+  --ux-accent-hover: #e39178;
+  color-scheme: dark;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 18rem,
+      rgb(105 163 169 / 3%) 18rem calc(18rem + 1px)),
+    radial-gradient(circle at 80% 3%, rgb(220 176 89 / 7%), transparent 23rem),
+    linear-gradient(105deg, #14323a, #091c22);
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main :is(
+  [data-workflow-ux-density],
+  [data-workflow-ux-view],
+  [data-workflow-ux-quick-start],
+  .filter-panel,
+  .shopping-flow-step,
+  .shopping-list-shell,
+  .shopping-list-actions,
+  .shopping-journey-setup,
+  .shopping-sourcing,
+  .shopping-pickup-plan,
+  .shopping-recent,
+  .shopping-metrics,
+  .shopping-route-map-section,
+  .supply-runs,
+  .nam-journey-ship,
+  .table-shell
+) {
+  border-color: #586e70;
+  background: var(--manifest-paper-bright);
+  color: var(--manifest-ink);
+  box-shadow: .4rem .55rem 1.1rem rgb(0 0 0 / 31%);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main :is(
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  label,
+  legend,
+  summary,
+  dt,
+  dd,
+  li
+) {
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main .subtle {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main :is(
+  input,
+  select,
+  textarea,
+  .nam-dropdown-trigger
+) {
+  border-color: #677d7d;
+  background: #081a20;
+  color: var(--manifest-ink);
+  box-shadow: inset 0 -2px rgb(208 121 96 / 11%);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] #shopping-metrics article {
+  border-color: #657776;
+  background: linear-gradient(145deg, #1a3b43, #102b32);
+  box-shadow:
+    inset 0 3px #b9904d,
+    .2rem .28rem .55rem rgb(0 0 0 / 28%);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main :is(
+  .shopping-recent-row,
+  .shopping-pickup-stop,
+  .shopping-plan-option,
+  .supply-run-current,
+  .supply-run-preview
+) {
+  border-color: #687b78;
+  background: #102b32;
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main .shopping-alert {
+  border-color: #6b7d78;
+  border-left-color: var(--manifest-stamp);
+  background: #102b32;
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main .button {
+  border-color: #78908c;
+  background: #153942;
+  color: var(--manifest-ink);
+}
+
+html[data-theme="dark"] body[data-page-world="supply"] main .button.primary {
+  border-color: #b58b42;
+  background: #c5953d;
+  color: #17130c;
+}
+
+/* Shared responsive adjustments for the three document worlds. */
+@media (max-width: 900px) {
+  body[data-page-world="trade"] :is(
+    .trade-journey-setup,
+    .trade-planner-mode-header,
+    .trade-basic-header,
+    .trade-workbench-title,
+    .trade-live-source-header
+  ) {
+    padding-inline-start: 1.2rem;
+  }
+
+  body[data-page-world="trade"] :is(
+    .trade-journey-setup,
+    .trade-planner-modes,
+    .trade-basic-planner,
+    .trade-workbench,
+    .trade-manual-planner,
+    .trade-live-source
+  ) {
+    background: var(--merchant-paper-bright);
+  }
+
+  body[data-page-world="trade"] .trade-planner-mode-tabs {
+    padding-left: .6rem;
+  }
+
+  body[data-page-world="history"] :is(
+    .history-filter,
+    .compact-metrics,
+    .history-table-shell,
+    .empty-state
+  ) {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  body[data-page-world="history"] main[data-history-app],
+  body[data-page-world="history"] main[data-history-app] > .page-header {
+    background: var(--accounts-paper);
+  }
+
+  body[data-page-world="history"] main[data-history-app] > .page-header {
+    padding-inline-start: 1rem;
+    background: var(--accounts-paper) !important;
+    color: var(--accounts-ink);
+  }
+}
+
+@media (forced-colors: active) {
+  body[data-page-world="trade"] :is(
+    .trade-journey-setup,
+    .trade-planner-modes,
+    .trade-basic-planner,
+    .trade-workbench,
+    .trade-manual-planner,
+    .trade-live-source
+  ),
+  body[data-page-world="history"] main[data-history-app],
+  body[data-page-world="supply"] main {
+    background: Canvas;
+    color: CanvasText;
+  }
+}
+
+/* Content headers use their outer accent only; inner frames compete with copy. */
+body[data-design-scope="shared-historical"] .page-header:not(.configurator-hero)::before,
+body[data-design-scope="shared-historical"] .page-header.configurator-hero::before {
+  display: none;
+  border: 0;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ART DIRECTION PASS 3 — the remaining rooms of the Admiralty              */
+/* ------------------------------------------------------------------------- */
+
+/* The market office: a compact exchange register rather than a generic UI. */
+body[data-page-family="market-data"]:not([data-page-world="history"]) {
+  --exchange-paper: #e4e4ca;
+  --exchange-paper-bright: #f4f0d9;
+  --exchange-ink: #183c37;
+  --exchange-muted: #5d675c;
+  --exchange-rule: #759085;
+  --exchange-seal: #9b4d3f;
+  --paper: var(--exchange-paper);
+  --paper-strong: var(--exchange-paper-bright);
+  --ink: var(--exchange-ink);
+  --muted: var(--exchange-muted);
+  --line: var(--exchange-rule);
+  --theme-heading: #183c37;
+  --theme-surface: var(--exchange-paper-bright);
+  --theme-surface-soft: #d5dac1;
+  --theme-input-bg: #fbf7e5;
+  --theme-control-text: #1d352f;
+  --theme-table-head-bg: #244f48;
+  --theme-table-head-text: #fff1cc;
+  --historical-page-accent: #477b70;
+  color-scheme: light;
+}
+
+body[data-page-family="market-data"]:not([data-page-world="history"]) main {
+  background:
+    linear-gradient(90deg, rgb(87 113 103 / 10%) 0 1px, transparent 1px 100%),
+    linear-gradient(115deg, var(--exchange-paper-bright), var(--exchange-paper));
+  color: var(--exchange-ink);
+}
+
+body[data-page-family="market-data"][data-design-scope="shared-historical"]:not([data-page-world="history"]) .page-header:not(.configurator-hero) {
+  background:
+    linear-gradient(90deg, rgb(9 35 32 / 96%), rgb(29 73 66 / 92%)),
+    url("base-map-v4-engraved-full.webp") center 54% / cover;
+}
+
+body[data-page-family="market-data"]:not([data-page-world="history"]) :is(
+  .filter-panel,
+  .metrics article,
+  .table-shell,
+  .notice,
+  .empty-state
+) {
+  border-color: var(--exchange-rule);
+  border-top: 3px solid #477b70;
+  background: var(--exchange-paper-bright);
+  color: var(--exchange-ink);
+  box-shadow: .32rem .45rem 1rem rgb(44 55 43 / 14%);
+}
+
+body[data-page-family="market-data"]:not([data-page-world="history"]) .metrics article {
+  box-shadow:
+    inset .24rem 0 var(--exchange-seal),
+    .2rem .3rem .65rem rgb(44 55 43 / 12%);
+}
+
+body[data-page-family="market-data"]:not([data-page-world="history"]) :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #71867b;
+  background: #fbf7e5;
+  color: #1d352f;
+}
+
+html[data-theme="dark"] body[data-page-family="market-data"]:not([data-page-world="history"]) {
+  --exchange-paper: #0b1d1a;
+  --exchange-paper-bright: #122a25;
+  --exchange-ink: #e6ead8;
+  --exchange-muted: #b4c2b4;
+  --exchange-rule: #526f65;
+  --exchange-seal: #c26f5c;
+  --paper: var(--exchange-paper);
+  --paper-strong: var(--exchange-paper-bright);
+  --ink: var(--exchange-ink);
+  --muted: var(--exchange-muted);
+  --line: var(--exchange-rule);
+  --theme-heading: #f0ddae;
+  --theme-surface: var(--exchange-paper-bright);
+  --theme-surface-soft: #10241f;
+  --theme-input-bg: #071713;
+  --theme-control-text: var(--exchange-ink);
+  --theme-table-head-bg: #163b33;
+  --theme-table-head-text: #f5e2b5;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body[data-page-family="market-data"]:not([data-page-world="history"]) main {
+  background:
+    radial-gradient(circle at 78% 0, rgb(205 163 81 / 7%), transparent 25rem),
+    linear-gradient(115deg, #122a25, #081714);
+}
+
+html[data-theme="dark"] body[data-page-family="market-data"]:not([data-page-world="history"]) :is(
+  .filter-panel,
+  .metrics article,
+  .table-shell,
+  .notice,
+  .empty-state
+) {
+  border-color: var(--exchange-rule);
+  background: var(--exchange-paper-bright);
+  color: var(--exchange-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="market-data"]:not([data-page-world="history"]) :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #607970;
+  background: #071713;
+  color: var(--exchange-ink);
+}
+
+/* The shipwright's yard book: timber, ochre chalk and clean job sheets. */
+body:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) {
+  --yard-paper: #e4cfa3;
+  --yard-paper-bright: #f6e9ca;
+  --yard-ink: #33291c;
+  --yard-muted: #675b49;
+  --yard-rule: #9e8254;
+  --yard-timber: #75502d;
+  --yard-chalk: #af7c32;
+  --paper: var(--yard-paper);
+  --paper-strong: var(--yard-paper-bright);
+  --ink: var(--yard-ink);
+  --muted: var(--yard-muted);
+  --line: var(--yard-rule);
+  --theme-heading: #3a2d1d;
+  --theme-surface: var(--yard-paper-bright);
+  --theme-surface-soft: #dac092;
+  --theme-input-bg: #fff3d7;
+  --theme-control-text: #33291c;
+  --theme-table-head-bg: #493b29;
+  --theme-table-head-text: #f8e8c4;
+  --historical-page-accent: var(--yard-chalk);
+  color-scheme: light;
+}
+
+body:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) main {
+  background:
+    linear-gradient(90deg, rgb(117 80 45 / 12%) 0 .28rem, transparent .28rem),
+    linear-gradient(112deg, var(--yard-paper-bright), var(--yard-paper));
+  color: var(--yard-ink);
+}
+
+body[data-design-scope="shared-historical"]:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) .page-header:not(.configurator-hero) {
+  border-top-color: #c18d3f;
+  background:
+    linear-gradient(120deg, rgb(51 31 16 / 96%), rgb(104 72 38 / 91%)),
+    linear-gradient(90deg, transparent 0 68%, rgb(237 198 118 / 10%) 68% 69%, transparent 69%);
+}
+
+body:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) :is(
+  .crafting-workflow-step,
+  .crafting-workbench,
+  .crafting-workspace-overview,
+  .crafting-workspace-projects,
+  .crafting-project-kind-panel,
+  .crafting-project-settings,
+  .crafting-workbench-summary-rail,
+  .recipe-cost-panel,
+  .recipe-cost-section,
+  .recipe-cost-quote-settings,
+  .quote-summary,
+  .table-shell,
+  .notice
+) {
+  border-color: var(--yard-rule);
+  border-radius: 2px;
+  background: var(--yard-paper-bright);
+  color: var(--yard-ink);
+  box-shadow:
+    inset .3rem 0 rgb(117 80 45 / 14%),
+    .34rem .46rem 1rem rgb(60 40 18 / 16%);
+}
+
+body:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #94784e;
+  background: #fff3d7;
+  color: var(--yard-ink);
+}
+
+body[data-page-family="crafting"] :is(.crafting-workflow-nav a, .crafting-stage-navigation a) {
+  border-left: 3px solid var(--yard-chalk);
+  background: rgb(255 246 222 / 66%);
+  color: #4a3822;
+  font-family: Georgia, "Palatino Linotype", serif;
+}
+
+body[data-page-world="recipe-cost"] :is(.recipe-cost-metric, .recipe-cost-summary, .recipe-cost-snapshot) {
+  border-color: var(--yard-rule);
+  background: #f1dfb8;
+  box-shadow: inset 0 3px var(--yard-chalk);
+}
+
+html[data-theme="dark"] body:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) {
+  --yard-paper: #12191a;
+  --yard-paper-bright: #1d2726;
+  --yard-ink: #f0e3c5;
+  --yard-muted: #c0b397;
+  --yard-rule: #655f4f;
+  --yard-timber: #9a6d3d;
+  --yard-chalk: #d1a153;
+  --paper: var(--yard-paper);
+  --paper-strong: var(--yard-paper-bright);
+  --ink: var(--yard-ink);
+  --muted: var(--yard-muted);
+  --line: var(--yard-rule);
+  --theme-heading: #f1d9a6;
+  --theme-surface: var(--yard-paper-bright);
+  --theme-surface-soft: #18201f;
+  --theme-input-bg: #0b1314;
+  --theme-control-text: var(--yard-ink);
+  --theme-table-head-bg: #30291f;
+  --theme-table-head-text: #f6dfb2;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) main {
+  background:
+    linear-gradient(90deg, rgb(209 161 83 / 14%) 0 .28rem, transparent .28rem),
+    radial-gradient(circle at 76% 0, rgb(209 161 83 / 7%), transparent 24rem),
+    linear-gradient(112deg, #1d2726, #0d1516);
+}
+
+html[data-theme="dark"] body:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) :is(
+  .crafting-workflow-step,
+  .crafting-workbench,
+  .crafting-workspace-overview,
+  .crafting-workspace-projects,
+  .crafting-project-kind-panel,
+  .crafting-project-settings,
+  .crafting-workbench-summary-rail,
+  .recipe-cost-panel,
+  .recipe-cost-section,
+  .recipe-cost-quote-settings,
+  .quote-summary,
+  .table-shell,
+  .notice
+) {
+  border-color: var(--yard-rule);
+  background: var(--yard-paper-bright);
+  color: var(--yard-ink);
+}
+
+html[data-theme="dark"] body:is(
+  [data-page-family="crafting"],
+  [data-page-family="crafting-log"],
+  [data-page-family="crafting-evidence"]
+) :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #746a56;
+  background: #0b1314;
+  color: var(--yard-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="crafting"] :is(.crafting-workflow-nav a, .crafting-stage-navigation a) {
+  background: #182220;
+  color: #ebd9b8;
+}
+
+html[data-theme="dark"] body[data-page-world="recipe-cost"] :is(.recipe-cost-metric, .recipe-cost-summary, .recipe-cost-snapshot) {
+  border-color: #6c6552;
+  background: #252b27;
+}
+
+/* Ships & Cannons: an architect's blue draughting table. */
+body[data-page-family="configurator"] {
+  --draft-paper: #dbe6e1;
+  --draft-paper-bright: #eef2e9;
+  --draft-ink: #173747;
+  --draft-muted: #526a70;
+  --draft-rule: #6f99a4;
+  --draft-mark: #b68038;
+  --paper: var(--draft-paper);
+  --paper-strong: var(--draft-paper-bright);
+  --ink: var(--draft-ink);
+  --muted: var(--draft-muted);
+  --line: var(--draft-rule);
+  --theme-heading: #173747;
+  --theme-surface: var(--draft-paper-bright);
+  --theme-surface-soft: #cadbd6;
+  --theme-input-bg: #f6f6ea;
+  --theme-control-text: #173747;
+  --theme-table-head-bg: #1b4c60;
+  --theme-table-head-text: #fff0c9;
+  --historical-page-accent: #4a91aa;
+  color-scheme: light;
+}
+
+body[data-page-family="configurator"] main {
+  background:
+    linear-gradient(rgb(51 102 119 / 7%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(51 102 119 / 7%) 1px, transparent 1px),
+    linear-gradient(120deg, var(--draft-paper-bright), var(--draft-paper));
+  background-size: 2rem 2rem, 2rem 2rem, auto;
+  color: var(--draft-ink);
+}
+
+body[data-page-family="configurator"][data-design-scope="shared-historical"] .page-header.configurator-hero {
+  border-top-color: #4a91aa;
+  background:
+    linear-gradient(rgb(122 184 199 / 8%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(122 184 199 / 8%) 1px, transparent 1px),
+    linear-gradient(110deg, #0c2c3b, #174b5c);
+  background-size: 2rem 2rem, 2rem 2rem, auto;
+}
+
+body[data-page-family="configurator"] :is(
+  .configurator-alpha-window,
+  .configurator-workroom,
+  .configurator-build,
+  .configurator-comparison,
+  .configurator-cannon-comparison,
+  .configurator-quick-start,
+  .configurator-scope,
+  .table-shell
+) {
+  border-color: var(--draft-rule);
+  border-radius: 1px;
+  background: var(--draft-paper-bright);
+  color: var(--draft-ink);
+  box-shadow:
+    inset 0 3px #4a91aa,
+    .35rem .48rem 1rem rgb(23 55 71 / 15%);
+}
+
+body[data-page-family="configurator"] :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #6b919a;
+  background: #f6f6ea;
+  color: var(--draft-ink);
+}
+
+body[data-page-family="configurator"] .configurator-workflow-nav {
+  overflow-y: hidden;
+}
+
+body[data-page-family="configurator"] :is(.configurator-alpha-badge, .configurator-tab[aria-selected="true"]) {
+  border-color: #9a6a2a;
+  background: #e4b95f;
+  color: #1e2830;
+}
+
+body[data-page-family="configurator"] .configurator-alpha-titlebar {
+  border-bottom-color: #6f99a4;
+  background: #173f4f;
+}
+
+body[data-page-family="configurator"] :is(
+  .configurator-alpha-heading,
+  .configurator-alpha-essential,
+  .configurator-alpha-details > summary
+) {
+  color: #fff2d2;
+}
+
+body[data-page-family="configurator"] .configurator-alpha-essential {
+  border-inline-start-color: #e4b95f;
+  background: #245465;
+}
+
+body[data-page-family="configurator"] .configurator-alpha-details {
+  border-top-color: #7aa4ad;
+  background: #d9e5e0;
+}
+
+body[data-page-family="configurator"] .configurator-alpha-details > summary {
+  color: var(--draft-ink);
+}
+
+body[data-page-family="configurator"] .configurator-alpha-details > summary:hover,
+body[data-page-family="configurator"] .configurator-alpha-details[open] > summary {
+  background: rgb(56 112 130 / 10%);
+}
+
+html[data-theme="dark"] body[data-page-family="configurator"] {
+  --draft-paper: #071923;
+  --draft-paper-bright: #102b38;
+  --draft-ink: #e8eee5;
+  --draft-muted: #aabec0;
+  --draft-rule: #4d7480;
+  --draft-mark: #d6a351;
+  --paper: var(--draft-paper);
+  --paper-strong: var(--draft-paper-bright);
+  --ink: var(--draft-ink);
+  --muted: var(--draft-muted);
+  --line: var(--draft-rule);
+  --theme-heading: #f0ddae;
+  --theme-surface: var(--draft-paper-bright);
+  --theme-surface-soft: #0d222c;
+  --theme-input-bg: #06151d;
+  --theme-control-text: var(--draft-ink);
+  --theme-table-head-bg: #0b2532;
+  --theme-table-head-text: #f3dfae;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body[data-page-family="configurator"] main {
+  background:
+    linear-gradient(rgb(89 154 171 / 6%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(89 154 171 / 6%) 1px, transparent 1px),
+    radial-gradient(circle at 78% 0, rgb(214 163 81 / 7%), transparent 24rem),
+    linear-gradient(120deg, #102b38, #06151d);
+  background-size: 2rem 2rem, 2rem 2rem, auto, auto;
+}
+
+html[data-theme="dark"] body[data-page-family="configurator"] :is(
+  .configurator-alpha-window,
+  .configurator-workroom,
+  .configurator-build,
+  .configurator-comparison,
+  .configurator-cannon-comparison,
+  .configurator-quick-start,
+  .configurator-scope,
+  .table-shell
+) {
+  border-color: var(--draft-rule);
+  background: var(--draft-paper-bright);
+  color: var(--draft-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="configurator"] :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #567c87;
+  background: #06151d;
+  color: var(--draft-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="configurator"] .configurator-alpha-titlebar {
+  border-bottom-color: #4d7480;
+  background: #0b2532;
+}
+
+html[data-theme="dark"] body[data-page-family="configurator"] .configurator-alpha-essential {
+  background: #123542;
+}
+
+html[data-theme="dark"] body[data-page-family="configurator"] .configurator-alpha-details {
+  border-top-color: #4d7480;
+  background: #0c222c;
+}
+
+html[data-theme="dark"] body[data-page-family="configurator"] .configurator-alpha-details > summary {
+  color: var(--draft-ink);
+}
+
+/* Warehouse tools: a harbour master's stock registry and tally board. */
+body[data-page-family="browser-storage"] {
+  --store-paper: #ddcfaa;
+  --store-paper-bright: #f3e7c6;
+  --store-ink: #263d34;
+  --store-muted: #5f685d;
+  --store-rule: #718678;
+  --store-stamp: #945044;
+  --paper: var(--store-paper);
+  --paper-strong: var(--store-paper-bright);
+  --ink: var(--store-ink);
+  --muted: var(--store-muted);
+  --line: var(--store-rule);
+  --theme-heading: #263d34;
+  --theme-surface: var(--store-paper-bright);
+  --theme-surface-soft: #d3c091;
+  --theme-input-bg: #fff4d9;
+  --theme-control-text: #263d34;
+  --theme-table-head-bg: #29453c;
+  --theme-table-head-text: #f8e6bc;
+  --historical-page-accent: #537967;
+  color-scheme: light;
+}
+
+body[data-page-family="browser-storage"] main {
+  background:
+    linear-gradient(90deg, rgb(84 66 38 / 12%) 0 .3rem, transparent .3rem),
+    linear-gradient(115deg, var(--store-paper-bright), var(--store-paper));
+  color: var(--store-ink);
+}
+
+body[data-page-family="browser-storage"][data-design-scope="shared-historical"] .page-header.warehouse-page-header {
+  border-top-color: #537967;
+  background:
+    linear-gradient(90deg, rgb(20 45 37 / 97%), rgb(49 82 66 / 92%)),
+    repeating-linear-gradient(90deg, transparent 0 12rem, rgb(240 216 162 / 8%) 12rem calc(12rem + 2px));
+}
+
+body[data-page-family="browser-storage"] :is(
+  .inventory-context,
+  .inventory-section-nav,
+  .inventory-sidebar-profiles,
+  .inventory-overview-statistics,
+  .inventory-current-warehouse,
+  .inventory-bulk-editor,
+  .inventory-target-editor,
+  .inventory-section,
+  .shared-warehouse-card,
+  .shared-warehouse-collection,
+  .table-shell,
+  .notice
+) {
+  border-color: var(--store-rule);
+  background: var(--store-paper-bright);
+  color: var(--store-ink);
+  box-shadow:
+    inset .3rem 0 rgb(148 80 68 / 14%),
+    .3rem .42rem .9rem rgb(48 42 27 / 15%);
+}
+
+body[data-page-family="browser-storage"] :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #7a8b7b;
+  background: #fff4d9;
+  color: var(--store-ink);
+}
+
+body[data-page-family="browser-storage"] :is(.inventory-context-fact, .inventory-overview-statistics article) {
+  border-bottom: 2px solid #537967;
+}
+
+html[data-theme="dark"] body[data-page-family="browser-storage"] {
+  --store-paper: #0b1b17;
+  --store-paper-bright: #152a23;
+  --store-ink: #e9e3cf;
+  --store-muted: #b5bdab;
+  --store-rule: #536c61;
+  --store-stamp: #c36e5d;
+  --paper: var(--store-paper);
+  --paper-strong: var(--store-paper-bright);
+  --ink: var(--store-ink);
+  --muted: var(--store-muted);
+  --line: var(--store-rule);
+  --theme-heading: #f1d9a6;
+  --theme-surface: var(--store-paper-bright);
+  --theme-surface-soft: #10221c;
+  --theme-input-bg: #07140f;
+  --theme-control-text: var(--store-ink);
+  --theme-table-head-bg: #17372d;
+  --theme-table-head-text: #f4dfad;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body[data-page-family="browser-storage"] main {
+  background:
+    linear-gradient(90deg, rgb(195 110 93 / 12%) 0 .3rem, transparent .3rem),
+    radial-gradient(circle at 77% 0, rgb(211 170 89 / 6%), transparent 23rem),
+    linear-gradient(115deg, #152a23, #07140f);
+}
+
+html[data-theme="dark"] body[data-page-family="browser-storage"] :is(
+  .inventory-context,
+  .inventory-section-nav,
+  .inventory-sidebar-profiles,
+  .inventory-overview-statistics,
+  .inventory-current-warehouse,
+  .inventory-bulk-editor,
+  .inventory-target-editor,
+  .inventory-section,
+  .shared-warehouse-card,
+  .shared-warehouse-collection,
+  .table-shell,
+  .notice
+) {
+  border-color: var(--store-rule);
+  background: var(--store-paper-bright);
+  color: var(--store-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="browser-storage"] :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #60766c;
+  background: #07140f;
+  color: var(--store-ink);
+}
+
+/* The captain's log: ruled observations with a restrained compass accent. */
+body[data-page-family="trip-log"] {
+  --log-paper: #e0d8bc;
+  --log-paper-bright: #f5eed9;
+  --log-ink: #263d45;
+  --log-muted: #647176;
+  --log-rule: #80949a;
+  --log-red: #985247;
+  --paper: var(--log-paper);
+  --paper-strong: var(--log-paper-bright);
+  --ink: var(--log-ink);
+  --muted: var(--log-muted);
+  --line: var(--log-rule);
+  --theme-heading: #263d45;
+  --theme-surface: var(--log-paper-bright);
+  --theme-surface-soft: #d1c8aa;
+  --theme-input-bg: #fff9e7;
+  --theme-control-text: #263d45;
+  --historical-page-accent: #537887;
+  color-scheme: light;
+}
+
+body[data-page-family="trip-log"] main {
+  background:
+    linear-gradient(90deg, transparent 0 2.1rem, rgb(152 82 71 / 46%) 2.1rem calc(2.1rem + 2px), transparent calc(2.1rem + 2px)),
+    linear-gradient(112deg, var(--log-paper-bright), var(--log-paper));
+  color: var(--log-ink);
+}
+
+body[data-page-family="trip-log"][data-design-scope="shared-historical"] .page-header:not(.configurator-hero) {
+  background:
+    linear-gradient(90deg, rgb(13 37 46 / 96%), rgb(39 76 84 / 91%)),
+    url("base-map-v4-engraved-full.webp") center 54% / cover;
+}
+
+body[data-page-family="trip-log"] :is(
+  .feedback-form-card,
+  .feedback-privacy-card,
+  .trip-completion,
+  .notice
+) {
+  border-color: var(--log-rule);
+  background: var(--log-paper-bright);
+  color: var(--log-ink);
+  box-shadow:
+    inset .28rem 0 rgb(152 82 71 / 16%),
+    .32rem .44rem .9rem rgb(47 48 37 / 15%);
+}
+
+body[data-page-family="trip-log"] :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #80949a;
+  background: #fff9e7;
+  color: var(--log-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="trip-log"] {
+  --log-paper: #0b181d;
+  --log-paper-bright: #142830;
+  --log-ink: #ece8d7;
+  --log-muted: #b5bdba;
+  --log-rule: #526d74;
+  --log-red: #ca7465;
+  --paper: var(--log-paper);
+  --paper-strong: var(--log-paper-bright);
+  --ink: var(--log-ink);
+  --muted: var(--log-muted);
+  --line: var(--log-rule);
+  --theme-heading: #f0dbaa;
+  --theme-surface: var(--log-paper-bright);
+  --theme-surface-soft: #102128;
+  --theme-input-bg: #07141a;
+  --theme-control-text: var(--log-ink);
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body[data-page-family="trip-log"] main {
+  background:
+    linear-gradient(90deg, transparent 0 2.1rem, rgb(202 116 101 / 34%) 2.1rem calc(2.1rem + 2px), transparent calc(2.1rem + 2px)),
+    radial-gradient(circle at 78% 0, rgb(211 170 89 / 6%), transparent 23rem),
+    linear-gradient(112deg, #142830, #07141a);
+}
+
+html[data-theme="dark"] body[data-page-family="trip-log"] :is(
+  .feedback-form-card,
+  .feedback-privacy-card,
+  .trip-completion,
+  .notice
+) {
+  border-color: var(--log-rule);
+  background: var(--log-paper-bright);
+  color: var(--log-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="trip-log"] :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #5f7980;
+  background: #07141a;
+  color: var(--log-ink);
+}
+
+/* Developer reports: clipped Admiralty dispatches, not a developer console. */
+body[data-page-family="developer-updates"] {
+  --dispatch-paper: #ddd8c8;
+  --dispatch-paper-bright: #f3eee0;
+  --dispatch-ink: #283845;
+  --dispatch-muted: #657079;
+  --dispatch-rule: #7b8990;
+  --dispatch-seal: #954b42;
+  --paper: var(--dispatch-paper);
+  --paper-strong: var(--dispatch-paper-bright);
+  --ink: var(--dispatch-ink);
+  --muted: var(--dispatch-muted);
+  --line: var(--dispatch-rule);
+  --theme-heading: #283845;
+  --theme-surface: var(--dispatch-paper-bright);
+  --theme-surface-soft: #cec8b7;
+  --theme-input-bg: #fbf7e9;
+  --theme-control-text: #283845;
+  --historical-page-accent: #536f81;
+  color-scheme: light;
+}
+
+body[data-page-family="developer-updates"] main {
+  background: linear-gradient(114deg, var(--dispatch-paper-bright), var(--dispatch-paper));
+  color: var(--dispatch-ink);
+}
+
+body[data-page-family="developer-updates"][data-design-scope="shared-historical"] .page-header.developer-hero {
+  border-top-color: #536f81;
+  background:
+    linear-gradient(102deg, rgb(22 39 52 / 97%), rgb(61 81 94 / 91%)),
+    url("base-map-v4-engraved-full.webp") center 54% / cover;
+}
+
+body[data-page-family="developer-updates"] :is(
+  .developer-report,
+  .developer-player-panel,
+  .developer-evidence-panel,
+  .developer-official-summary,
+  .developer-highlight,
+  .developer-metric,
+  .developer-notice
+) {
+  border-color: var(--dispatch-rule);
+  border-radius: 1px;
+  background: var(--dispatch-paper-bright);
+  color: var(--dispatch-ink);
+  box-shadow:
+    inset .3rem 0 rgb(149 75 66 / 14%),
+    .35rem .48rem 1rem rgb(46 48 48 / 15%);
+}
+
+body[data-page-family="developer-updates"] .developer-section-label {
+  color: var(--dispatch-seal);
+  letter-spacing: .13em;
+}
+
+body[data-page-family="developer-updates"] :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #7b8990;
+  background: #fbf7e9;
+  color: var(--dispatch-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="developer-updates"] {
+  --dispatch-paper: #0c151d;
+  --dispatch-paper-bright: #172531;
+  --dispatch-ink: #ede7d6;
+  --dispatch-muted: #b4bdc1;
+  --dispatch-rule: #536b78;
+  --dispatch-seal: #d07b6c;
+  --paper: var(--dispatch-paper);
+  --paper-strong: var(--dispatch-paper-bright);
+  --ink: var(--dispatch-ink);
+  --muted: var(--dispatch-muted);
+  --line: var(--dispatch-rule);
+  --theme-heading: #f2dca8;
+  --theme-surface: var(--dispatch-paper-bright);
+  --theme-surface-soft: #111f29;
+  --theme-input-bg: #071119;
+  --theme-control-text: var(--dispatch-ink);
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body[data-page-family="developer-updates"] main {
+  background:
+    radial-gradient(circle at 80% 0, rgb(211 170 89 / 7%), transparent 24rem),
+    linear-gradient(114deg, #172531, #071119);
+}
+
+html[data-theme="dark"] body[data-page-family="developer-updates"] :is(
+  .developer-report,
+  .developer-player-panel,
+  .developer-evidence-panel,
+  .developer-official-summary,
+  .developer-highlight,
+  .developer-metric,
+  .developer-notice
+) {
+  border-color: var(--dispatch-rule);
+  background: var(--dispatch-paper-bright);
+  color: var(--dispatch-ink);
+}
+
+html[data-theme="dark"] body[data-page-family="developer-updates"] :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #607582;
+  background: #071119;
+  color: var(--dispatch-ink);
+}
+
+/* Reading and correspondence pages: one bound folio, distinct chapter marks. */
+body[data-design-scope="shared-historical"]:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) {
+  --folio-paper: #e5d4ad;
+  --folio-paper-bright: #f8efd9;
+  --folio-ink: #332c23;
+  --folio-muted: #696050;
+  --folio-rule: #a18a61;
+  --folio-red: #914b42;
+  --paper: var(--folio-paper);
+  --paper-strong: var(--folio-paper-bright);
+  --ink: var(--folio-ink);
+  --muted: var(--folio-muted);
+  --line: var(--folio-rule);
+  --theme-heading: #3a3025;
+  --theme-surface: var(--folio-paper-bright);
+  --theme-surface-soft: #dbc79e;
+  --theme-input-bg: #fff8e8;
+  --theme-control-text: #332c23;
+  --historical-page-accent: var(--folio-red);
+  color-scheme: light;
+}
+
+body[data-page-family="help"] { --folio-red: #3f726e; }
+body[data-page-family="legal"] { --folio-red: #6b6254; }
+body[data-page-family="roadmap"] { --folio-red: #8f6043; }
+body[data-page-family="support"] { --folio-red: #a36e36; }
+body[data-page-family="feedback"] { --folio-red: #7f4d5d; }
+
+body:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) main {
+  background:
+    linear-gradient(90deg, rgb(145 75 66 / 28%) 0 .22rem, transparent .22rem),
+    linear-gradient(115deg, var(--folio-paper-bright), var(--folio-paper));
+  color: var(--folio-ink);
+}
+
+body:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) .page-header:not(.configurator-hero) {
+  border-top-color: var(--folio-red);
+  background:
+    radial-gradient(circle at 82% 42%, rgb(235 201 127 / 11%), transparent 19rem),
+    linear-gradient(108deg, #30241c, #5d3c2a 72%, #3a2920);
+}
+
+body:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) :is(
+  .release-notes,
+  .release-hero,
+  .handbook-topic,
+  .ux-quick-start,
+  .prose-grid > section,
+  .future-ideas > section,
+  .support-card,
+  .support-action-panel,
+  .feedback-form-card,
+  .feedback-explainer > section,
+  .table-shell,
+  .notice
+) {
+  border-color: var(--folio-rule);
+  border-radius: 1px;
+  background: var(--folio-paper-bright);
+  color: var(--folio-ink);
+  box-shadow:
+    inset .28rem 0 color-mix(in srgb, var(--folio-red) 22%, transparent),
+    .34rem .46rem 1rem rgb(59 42 24 / 14%);
+}
+
+body:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #9e8863;
+  background: #fff8e8;
+  color: var(--folio-ink);
+}
+
+body[data-page-family="changelog"] .changelog-table tbody tr {
+  background: var(--folio-paper-bright);
+}
+
+body[data-page-family="changelog"] .changelog-table td:first-child {
+  border-left: 3px solid var(--folio-red);
+  font-family: Georgia, "Palatino Linotype", serif;
+}
+
+body[data-page-family="help"] .handbook-topic summary {
+  border-bottom: 1px solid color-mix(in srgb, var(--folio-red) 42%, transparent);
+}
+
+body[data-page-family="feedback"] .feedback-form-card {
+  border-top: 3px solid var(--folio-red);
+}
+
+html[data-theme="dark"] body:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) {
+  --folio-paper: #100e0c;
+  --folio-paper-bright: #211d18;
+  --folio-ink: #eee4cc;
+  --folio-muted: #bcb19d;
+  --folio-rule: #6d6251;
+  --paper: var(--folio-paper);
+  --paper-strong: var(--folio-paper-bright);
+  --ink: var(--folio-ink);
+  --muted: var(--folio-muted);
+  --line: var(--folio-rule);
+  --theme-heading: #f1d9a6;
+  --theme-surface: var(--folio-paper-bright);
+  --theme-surface-soft: #191612;
+  --theme-input-bg: #0c0b09;
+  --theme-control-text: var(--folio-ink);
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) main {
+  background:
+    linear-gradient(90deg, rgb(195 107 92 / 26%) 0 .22rem, transparent .22rem),
+    radial-gradient(circle at 78% 0, rgb(211 170 89 / 7%), transparent 24rem),
+    linear-gradient(115deg, #211d18, #0c0b09);
+}
+
+html[data-theme="dark"] body:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) :is(
+  .release-notes,
+  .release-hero,
+  .handbook-topic,
+  .ux-quick-start,
+  .prose-grid > section,
+  .future-ideas > section,
+  .support-card,
+  .support-action-panel,
+  .feedback-form-card,
+  .feedback-explainer > section,
+  .table-shell,
+  .notice
+) {
+  border-color: var(--folio-rule);
+  background: var(--folio-paper-bright);
+  color: var(--folio-ink);
+}
+
+html[data-theme="dark"] body:is(
+  [data-page-family="changelog"],
+  [data-page-family="help"],
+  [data-page-family="legal"],
+  [data-page-family="roadmap"],
+  [data-page-family="support"],
+  [data-page-family="feedback"]
+) :is(input, select, textarea, .nam-dropdown-trigger) {
+  border-color: #766a56;
+  background: #0c0b09;
+  color: var(--folio-ink);
+}
+
+@media (max-width: 760px) {
+  body:is(
+    [data-page-family="crafting"],
+    [data-page-family="crafting-log"],
+    [data-page-family="crafting-evidence"],
+    [data-page-family="browser-storage"],
+    [data-page-family="trip-log"],
+    [data-page-family="changelog"],
+    [data-page-family="help"],
+    [data-page-family="legal"],
+    [data-page-family="roadmap"],
+    [data-page-family="support"],
+    [data-page-family="feedback"]
+  ) main {
+    background-position: 0 0;
+  }
+}
+
+@media (forced-colors: active) {
+  body:is(
+    [data-page-family="market-data"],
+    [data-page-family="crafting"],
+    [data-page-family="crafting-log"],
+    [data-page-family="crafting-evidence"],
+    [data-page-family="configurator"],
+    [data-page-family="browser-storage"],
+    [data-page-family="trip-log"],
+    [data-page-family="developer-updates"],
+    [data-page-family="changelog"],
+    [data-page-family="help"],
+    [data-page-family="legal"],
+    [data-page-family="roadmap"],
+    [data-page-family="support"],
+    [data-page-family="feedback"]
+  ) main,
+  body:is(
+    [data-page-family="market-data"],
+    [data-page-family="crafting"],
+    [data-page-family="crafting-log"],
+    [data-page-family="crafting-evidence"],
+    [data-page-family="configurator"],
+    [data-page-family="browser-storage"],
+    [data-page-family="trip-log"],
+    [data-page-family="developer-updates"],
+    [data-page-family="changelog"],
+    [data-page-family="help"],
+    [data-page-family="legal"],
+    [data-page-family="roadmap"],
+    [data-page-family="support"],
+    [data-page-family="feedback"]
+  ) :is(section, article, .table-shell) {
+    background: Canvas;
+    color: CanvasText;
+  }
+}

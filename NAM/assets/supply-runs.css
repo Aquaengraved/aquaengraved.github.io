@@ -1,0 +1,17 @@
+.supply-runs { margin-block: 2rem; padding: 1.25rem; border: 1px solid var(--line, #7776); border-radius: .75rem; }
+.supply-run-content, .supply-run-current { display: grid; gap: 1rem; min-width: 0; }
+.supply-run-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: .75rem; margin-block: 1rem; }
+.supply-run-field { display: grid; gap: .35rem; min-width: 0; margin-block: .65rem; }
+.supply-run-field > input, .supply-run-field > select { box-sizing: border-box; max-width: 100%; width: 100%; }
+.supply-run-source { display: flex; align-items: center; gap: .5rem; margin-block: .5rem; }
+.supply-run-source input[type="checkbox"] { flex: 0 0 auto; width: 1.05rem; height: 1.05rem; min-height: 0; margin: 0; }
+.supply-run-next, .supply-run-preview { padding: 1rem; border: 1px solid var(--line, #7776); border-radius: .6rem; min-width: 0; }
+.supply-run-details { margin-block: .5rem; }
+.supply-run-details summary { cursor: pointer; padding-block: .6rem; }
+.supply-run-preview .button { margin: .5rem .5rem 0 0; }
+.supply-runs .button { box-sizing: border-box; max-width: 100%; white-space: normal; }
+.supply-run-preview[hidden] { display: none; }
+.supply-run-preview .table-shell { overflow-x: auto; }
+.supply-runs table { min-width: 0; }
+.supply-runs :is(th, td) { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 600px) { .supply-runs { padding: .8rem; } .supply-run-next, .supply-run-preview { padding: .75rem; } }

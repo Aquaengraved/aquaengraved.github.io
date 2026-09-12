@@ -1,0 +1,19 @@
+Browser-local screenshot recognition uses these pinned third-party components:
+
+- Tesseract.js 7.0.0 (Apache License 2.0)
+  https://github.com/naptha/tesseract.js
+- tesseract.js-core 7.0.0, LSTM browser builds (Apache License 2.0)
+  https://github.com/naptha/tesseract.js-core
+- @tesseract.js-data/eng, /fra, /deu and /spa 1.0.0, 4.0.0_best_int
+  English, French, German and Spanish trained data
+  (package metadata declares the MIT License)
+  https://github.com/naptha/tessdata
+
+Pinned SHA-256 checksums:
+- eng.traineddata.gz: 45b4cb346724ac1774f1c36f42f182b887bcdb28ebe63e6fff90ac41f3fcff91
+- fra.traineddata.gz: d611139672b3752c7097e671e4a1d9209dfd37f2aeb081ef6487fba3351e9255
+- deu.traineddata.gz: 306c4280d0cbed46fbff727486bd43b92730181bae80f56941a091f363bdf28b
+- spa.traineddata.gz: 40be52f97b5d4eb7460073dc1f94cd546b27150333c0bf854ed7e7132db6bceb
+
+All runtime files are served from this same static site. The application does not use
+the default CDN paths exposed by Tesseract.js.

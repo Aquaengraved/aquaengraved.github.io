@@ -1,0 +1,54 @@
+#shipbuilding-supplies { min-width:0; }
+#shipbuilding-supplies [hidden] { display:none!important; }
+#shipbuilding-supplies .sb-controls { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; padding:1.15rem; border:1px solid var(--ux-border); border-radius:var(--ux-radius); background:var(--ux-surface); margin-block:1rem; }
+#shipbuilding-supplies .sb-field { display:flex; flex-direction:column; gap:.4rem; min-width:0; }
+#shipbuilding-supplies .sb-field > span { font-weight:650; }
+#shipbuilding-supplies :is(input,select) { width:100%; min-width:0; max-width:100%; font:inherit; }
+#shipbuilding-supplies input[type=checkbox] { width:1rem; height:1rem; min-width:1rem; min-height:1rem; padding:0; margin:0; }
+#shipbuilding-supplies .sb-profiles { display:flex; flex-wrap:wrap; gap:.65rem 1.3rem; padding:1rem; border:1px solid var(--ux-border); }
+#shipbuilding-supplies .sb-profiles label { display:flex; align-items:center; gap:.5rem; }
+#shipbuilding-supplies .sb-profile-area { margin-block:1rem; }
+#shipbuilding-supplies .sb-help { color:var(--ux-muted); margin-block:.75rem; }
+#shipbuilding-supplies .sb-controls .sb-help { grid-column:1/-1; margin:0; }
+#shipbuilding-supplies .sb-metrics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-block:1.2rem; }
+#shipbuilding-supplies .sb-metrics article { display:flex; flex-direction:column; gap:.3rem; padding:1rem; border:1px solid var(--ux-border); border-radius:var(--ux-radius); background:var(--ux-surface); }
+#shipbuilding-supplies .sb-metrics strong { font-size:1.65rem; }
+#shipbuilding-supplies .sb-table-shell { overflow-x:auto; border:1px solid var(--ux-border); border-radius:var(--ux-radius); }
+#shipbuilding-supplies table { width:100%; min-width:0; font-variant-numeric:tabular-nums; }
+#shipbuilding-supplies :is(th,td) { white-space:normal; overflow-wrap:anywhere; padding:.9rem; vertical-align:top; }
+#shipbuilding-supplies small { display:block; margin-top:.35rem; color:var(--ux-muted); }
+#shipbuilding-supplies tr[data-highlighted=true] { background:color-mix(in srgb,var(--ux-positive) 10%,var(--ux-surface)); }
+#shipbuilding-supplies tr[data-highlighted=true] td:first-child { border-inline-start:.25rem solid var(--ux-positive); }
+#shipbuilding-supplies .sb-signals { display:flex; flex-wrap:wrap; gap:.35rem; }
+#shipbuilding-supplies .sb-badge { display:inline-block; border:1px solid var(--ux-border); border-radius:.35rem; padding:.2rem .4rem; font-size:.84rem; }
+#shipbuilding-supplies :is(.sb-record_low,.sb-at_game_min,.sb-below_game_min) { border-color:var(--ux-positive); font-weight:700; }
+#shipbuilding-supplies .sb-below_game_min { border-style:double; }
+#shipbuilding-supplies .sb-offers { display:grid; gap:.65rem; padding-inline-start:1rem; }
+#shipbuilding-supplies .sb-offers span { display:block; color:var(--ux-muted); font-size:.9rem; }
+#shipbuilding-supplies td p { margin:0 0 .5rem; }
+#shipbuilding-supplies summary { cursor:pointer; font-weight:650; }
+#shipbuilding-supplies .sb-port-card { padding:1.2rem; margin-block:1rem; background:var(--ux-surface); border:1px solid var(--ux-border); border-radius:var(--ux-radius); }
+#shipbuilding-supplies .sb-port-materials { padding:0; list-style:none; }
+#shipbuilding-supplies .sb-port-materials li { display:grid; grid-template-columns:1fr 1.5fr 1fr; gap:.8rem; padding:.8rem 0; border-top:1px solid var(--ux-border); }
+#shipbuilding-supplies .sb-notes { margin-block:1.4rem; padding:1rem; border:1px solid var(--ux-border); border-radius:var(--ux-radius); color:var(--ux-muted); }
+#shipbuilding-supplies :is(input,select,button,summary,a):focus-visible { outline:3px solid var(--ux-focus); outline-offset:3px; }
+@media(max-width:850px) {
+  #shipbuilding-supplies .sb-controls { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #shipbuilding-supplies .sb-port-materials li { grid-template-columns:1fr; gap:.4rem; }
+}
+@media(max-width:620px) {
+  #shipbuilding-supplies .sb-controls { grid-template-columns:minmax(0,1fr); }
+  #shipbuilding-supplies .sb-metrics { gap:.4rem; }
+  #shipbuilding-supplies .sb-metrics article { padding:.7rem; overflow-wrap:anywhere; }
+  #shipbuilding-supplies :is(table,tbody,tr,td) { display:block; width:100%; min-width:0; }
+  #shipbuilding-supplies thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  #shipbuilding-supplies td[data-label] { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:.5rem; padding:.65rem; }
+  #shipbuilding-supplies td[data-label]::before { content:attr(data-label); font-weight:650; color:var(--ux-muted); grid-column:1; grid-row:1/5; }
+  #shipbuilding-supplies td[data-label] > * { grid-column:2; }
+  #shipbuilding-supplies tr { border-bottom:2px solid var(--ux-border); }
+}
+@media(forced-colors:active) {
+  #shipbuilding-supplies tr[data-highlighted=true] { background:Canvas; }
+  #shipbuilding-supplies tr[data-highlighted=true] td:first-child { border-color:Highlight; }
+  #shipbuilding-supplies .sb-badge { border-color:CanvasText; }
+}

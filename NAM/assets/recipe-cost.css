@@ -1,0 +1,436 @@
+/* Recipe Cost uses NAM's theme tokens; load after ux-polish.css. */
+#recipe-cost {
+  display: grid;
+  gap: .75rem;
+  inline-size: min(100%, 90rem);
+  margin-inline: auto;
+  color: var(--ux-text);
+  min-inline-size: 0;
+  --recipe-material: #0072b2;
+  --recipe-fees: #a35f00;
+  --recipe-tax: #7a4ca5;
+  --recipe-total: #087f5b;
+  --recipe-unit: #3465a4;
+}
+
+html[data-theme="dark"] #recipe-cost {
+  --recipe-material: #56b4e9;
+  --recipe-fees: #f0b542;
+  --recipe-tax: #d49ad6;
+  --recipe-total: #66d1ad;
+  --recipe-unit: #8ab8ff;
+}
+
+#recipe-cost,
+#recipe-cost * {
+  box-sizing: border-box;
+}
+
+#recipe-cost > *,
+#recipe-cost :is(.recipe-cost-field, .recipe-cost-metric, .recipe-cost-section) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+#recipe-cost :is(.recipe-cost-controls, .recipe-cost-quote-settings, .recipe-cost-section, .recipe-cost-details) {
+  padding: clamp(.7rem, 1.2vw, 1rem);
+  background: var(--ux-surface);
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+#recipe-cost :is(.recipe-cost-controls, .recipe-cost-quote-settings, .recipe-cost-summary) {
+  display: grid;
+  gap: .7rem;
+}
+
+body[data-page-family="crafting"] main:has(> #recipe-cost) > .page-header {
+  inline-size: min(100%, 90rem);
+  margin-inline: auto;
+  margin-block-end: .75rem;
+  padding: clamp(.85rem, 1.4vw, 1.2rem) clamp(1rem, 1.6vw, 1.35rem) !important;
+}
+
+body[data-page-family="crafting"] main:has(> #recipe-cost) > .page-header h1 {
+  margin-block: 0 .4rem;
+  font-size: clamp(2rem, 2.6vw, 2.7rem) !important;
+}
+
+body[data-page-family="crafting"] main:has(> #recipe-cost) > .page-header > p {
+  margin: 0;
+  max-inline-size: 72rem;
+}
+
+#recipe-cost .recipe-cost-controls {
+  grid-template-columns: minmax(16rem, 2fr) minmax(8rem, .7fr) repeat(2, minmax(10rem, 1fr));
+  align-items: end;
+  border-block-start: .2rem solid var(--recipe-material);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--recipe-material) 7%, transparent), transparent 34%),
+    var(--ux-surface);
+}
+
+#recipe-cost .recipe-cost-quote-settings {
+  grid-template-columns: minmax(18rem, 1.45fr) repeat(2, minmax(10rem, 1fr));
+  align-items: start;
+  inline-size: min(100%, 72rem);
+  border-block-start: .2rem solid var(--recipe-fees);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--recipe-fees) 7%, transparent), transparent 34%),
+    var(--ux-surface);
+}
+
+#recipe-cost .recipe-cost-quote-settings > :is(h2, p) {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+#recipe-cost .recipe-cost-snapshot {
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  margin: 0;
+  padding: .5rem .75rem;
+  background: var(--ux-surface-muted);
+  border-inline-start: .3rem solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+  font-weight: 700;
+}
+
+#recipe-cost :is(.recipe-cost-field, .recipe-cost-controls > label) {
+  display: grid;
+  align-content: start;
+  gap: .4rem;
+  font-weight: 650;
+}
+
+#recipe-cost .recipe-cost-field--wide {
+  grid-column: 1 / -1;
+}
+
+#recipe-cost .recipe-cost-controls > .recipe-cost-field--wide {
+  inline-size: min(100%, 44rem);
+}
+
+#recipe-cost :is(input, select) {
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 2.5rem;
+  padding: .48rem .65rem;
+  color: var(--ux-text);
+  background: var(--ux-control-bg);
+  border: 1px solid var(--ux-control-border);
+  border-radius: var(--ux-radius);
+}
+
+#recipe-cost .recipe-cost-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ux-space-2);
+  grid-column: 1 / -1;
+}
+
+#recipe-cost .recipe-cost-actions .button {
+  min-block-size: 2.5rem;
+  white-space: normal;
+  text-align: center;
+}
+
+#recipe-cost .recipe-cost-quote {
+  display: grid;
+  gap: .7rem;
+  border-block-start: .2rem solid var(--recipe-total);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--recipe-total) 7%, transparent), transparent 34%),
+    var(--ux-surface);
+}
+
+#recipe-cost .recipe-cost-requirements {
+  border-inline-start: .3rem solid var(--recipe-fees);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--recipe-fees) 9%, transparent), transparent 36%),
+    var(--ux-surface);
+}
+
+#recipe-cost .recipe-cost-requirements .recipe-cost-table-wrap {
+  inline-size: min(100%, 58rem);
+}
+
+#recipe-cost .recipe-cost-quote > :is(h2, p) {
+  margin-block: 0;
+}
+
+#recipe-cost .recipe-cost-quote tbody td:first-child {
+  color: var(--theme-heading, var(--ux-text));
+  font-weight: 750;
+}
+
+#recipe-cost .recipe-cost-quote .recipe-cost-table-wrap table {
+  min-inline-size: 52rem;
+}
+
+#recipe-cost-results {
+  display: grid;
+  gap: .7rem;
+}
+
+#recipe-cost .recipe-cost-summary {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.25rem), 1fr));
+}
+
+#recipe-cost .recipe-cost-metric {
+  --recipe-tone: var(--ux-border);
+  display: grid;
+  align-content: start;
+  gap: .25rem;
+  padding: .6rem .7rem;
+  background: color-mix(in srgb, var(--recipe-tone) 8%, var(--ux-surface-muted));
+  border: 1px solid var(--ux-border);
+  border-inline-start: .28rem solid var(--recipe-tone);
+  border-radius: var(--ux-radius);
+  overflow-wrap: anywhere;
+}
+
+#recipe-cost .recipe-cost-metric[data-tone="materials"] { --recipe-tone: var(--recipe-material); }
+#recipe-cost .recipe-cost-metric[data-tone="fees"] { --recipe-tone: var(--recipe-fees); }
+#recipe-cost .recipe-cost-metric[data-tone="tax"] { --recipe-tone: var(--recipe-tax); }
+#recipe-cost .recipe-cost-metric[data-tone="total"] { --recipe-tone: var(--recipe-total); }
+#recipe-cost .recipe-cost-metric[data-tone="unit"] { --recipe-tone: var(--recipe-unit); }
+
+#recipe-cost .recipe-cost-metric--total {
+  background: color-mix(in srgb, var(--recipe-tone) 13%, var(--ux-surface));
+  border-color: var(--recipe-tone);
+  border-inline-start-width: .38rem;
+}
+
+#recipe-cost .recipe-cost-metric :is(p, h2, h3) {
+  margin: 0;
+  font-size: 1rem;
+}
+
+#recipe-cost .recipe-cost-metric > strong,
+#recipe-cost .recipe-cost-value {
+  font-size: clamp(1.2rem, 1.05rem + .55vw, 1.55rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+#recipe-cost :is(.recipe-cost-help, .recipe-cost-metric small) {
+  color: var(--ux-muted);
+  font-size: .9rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+#recipe-cost .recipe-cost-section > :is(h2, h3):first-child {
+  margin-block-start: 0;
+  margin-block-end: .5rem;
+  font-size: clamp(1.15rem, 1rem + .45vw, 1.4rem);
+}
+
+#recipe-cost .recipe-cost-status {
+  inline-size: min(100%, 72rem);
+  margin: 0;
+  padding: .6rem .75rem;
+  color: var(--ux-text);
+  background: var(--ux-surface-muted);
+  border-inline-start: .3rem solid var(--ux-accent);
+  border-radius: var(--ux-radius);
+  line-height: 1.4;
+}
+
+#recipe-cost :is(.recipe-cost-status, .recipe-cost-help):empty {
+  display: none;
+}
+
+#recipe-cost :is(.recipe-cost-status, .recipe-cost-metric)[data-status="partial"],
+#recipe-cost :is(.recipe-cost-status, .recipe-cost-metric)[data-status="unavailable"] {
+  border-inline-start: .3rem solid var(--ux-warning);
+}
+
+#recipe-cost .recipe-cost-status[data-status="complete"] {
+  border-inline-start-color: var(--ux-positive);
+}
+
+#recipe-cost .recipe-cost-details > summary {
+  padding-block: .25rem;
+  font-weight: 700;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+#recipe-cost .recipe-cost-details > :not(summary) {
+  margin-block-start: .7rem;
+}
+
+#recipe-cost .recipe-cost-table-wrap {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--ux-border);
+  border-radius: var(--ux-radius);
+}
+
+#recipe-cost table {
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+#recipe-cost :is(th, td) {
+  padding: .46rem .58rem;
+  font-size: .95rem;
+  line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+#recipe-cost thead {
+  background: color-mix(in srgb, var(--ux-accent) 10%, var(--ux-surface-muted));
+}
+
+#recipe-cost tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--recipe-material) 4%, transparent);
+}
+
+#recipe-cost tbody tr:hover {
+  background: color-mix(in srgb, var(--ux-accent) 9%, var(--ux-surface-muted));
+}
+
+#recipe-cost [data-numeric] {
+  text-align: end;
+}
+
+#recipe-cost :is(input, select, button, summary, a):focus-visible {
+  outline: 3px solid var(--ux-focus);
+  outline-offset: 3px;
+}
+
+#recipe-cost [hidden] {
+  display: none !important;
+}
+
+@media (min-width: 900px) {
+  #recipe-cost .recipe-cost-field--recipe {
+    grid-column: auto;
+  }
+}
+
+#recipe-cost > .button {
+  justify-self: start;
+  inline-size: auto;
+}
+
+@media (max-width: 980px) {
+  #recipe-cost .recipe-cost-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #recipe-cost .recipe-cost-controls > .recipe-cost-field--wide,
+  #recipe-cost .recipe-cost-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  #recipe-cost .recipe-cost-quote-settings {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  #recipe-cost :is(.recipe-cost-controls, .recipe-cost-quote-settings, .recipe-cost-summary) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #recipe-cost .recipe-cost-actions > .button {
+    flex: 1 1 auto;
+  }
+
+  /* Optional labelled cards retain the table's original headings and values. */
+  #recipe-cost table[data-recipe-cost-card-table],
+  #recipe-cost table[data-recipe-cost-card-table] :is(tbody, tr, td) {
+    display: block;
+    inline-size: 100%;
+    min-inline-size: 0;
+    min-width: 0;
+  }
+
+  #recipe-cost .recipe-cost-quote .recipe-cost-table-wrap table[data-recipe-cost-card-table] {
+    min-inline-size: 0;
+  }
+
+  #recipe-cost table[data-recipe-cost-card-table] thead {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  #recipe-cost table[data-recipe-cost-card-table] tbody tr {
+    padding: .45rem;
+    border-block-end: 1px solid var(--ux-border);
+  }
+
+  #recipe-cost table[data-recipe-cost-card-table] td[data-label] {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: var(--ux-space-3);
+    text-align: start;
+  }
+
+  #recipe-cost table[data-recipe-cost-card-table] td[data-label]::before {
+    content: attr(data-label);
+    color: var(--ux-muted);
+    font-weight: 650;
+  }
+}
+
+@media (prefers-contrast: more) {
+  #recipe-cost .recipe-cost-metric,
+  #recipe-cost .recipe-cost-table-wrap {
+    border-width: 2px;
+  }
+
+  #recipe-cost .recipe-cost-metric {
+    background: var(--ux-surface);
+  }
+}
+
+@media (forced-colors: active) {
+  #recipe-cost :is(.recipe-cost-controls, .recipe-cost-quote-settings, .recipe-cost-section, .recipe-cost-details,
+    .recipe-cost-metric, .recipe-cost-status, .recipe-cost-table-wrap) {
+    color: CanvasText;
+    background: Canvas;
+    border-color: CanvasText;
+  }
+
+  #recipe-cost .recipe-cost-metric {
+    border-inline-start-color: Highlight;
+  }
+
+  #recipe-cost :is(input, select) {
+    color: FieldText;
+    background: Field;
+    border-color: ButtonText;
+  }
+}
+
+@media print {
+  #recipe-cost .recipe-cost-actions {
+    display: none;
+  }
+
+  #recipe-cost :is(.recipe-cost-metric, .recipe-cost-details) {
+    break-inside: avoid;
+  }
+
+  #recipe-cost .recipe-cost-table-wrap {
+    overflow: visible;
+  }
+}

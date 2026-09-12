@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Konfigurera och jämför Naval Action-fartyg, däckskanoner, träslag, uppgraderingar och kunskap från aktuell API-data.">
+  
+  
+  <meta name="theme-color" content="#102b3f">
+  <meta name="google-site-verification" content="5gpouqjukLFw_-ZCaFuPjT7PvcS5OxkbR8GPeXZUf7Q">
+  <meta name="naval-action-content-sha256" content="eca0b596bcfdb779648e1092dc9f123c11718a5c81a2ec716d0e0982b0092334">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js; style-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <meta name="nam-analytics" content="{&quot;token&quot;:&quot;24bcaca218604c8f91a3f90c11a8d535&quot;,&quot;origin&quot;:&quot;https://aquaengraved.github.io&quot;,&quot;pathPrefix&quot;:&quot;/NAM/&quot;}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fartygs- och kanonkonfigurator · Naval Action Automation">
+  <meta property="og:description" content="Konfigurera och jämför Naval Action-fartyg, däckskanoner, träslag, uppgraderingar och kunskap från aktuell API-data.">
+  <meta property="og:url" content="https://aquaengraved.github.io/NAM/sv/configurator">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image" content="https://aquaengraved.github.io/NAM/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aquaengraved.github.io/NAM/sv/configurator">
+  <link rel="alternate" hreflang="en" href="https://aquaengraved.github.io/NAM/configurator">
+  <link rel="alternate" hreflang="nl" href="https://aquaengraved.github.io/NAM/nl/configurator">
+  <link rel="alternate" hreflang="sv" href="https://aquaengraved.github.io/NAM/sv/configurator">
+  <link rel="alternate" hreflang="fr" href="https://aquaengraved.github.io/NAM/fr/configurator">
+  <link rel="alternate" hreflang="de" href="https://aquaengraved.github.io/NAM/de/configurator">
+  <link rel="alternate" hreflang="es" href="https://aquaengraved.github.io/NAM/es/configurator">
+  <link rel="alternate" hreflang="x-default" href="https://aquaengraved.github.io/NAM/configurator">
+  <script src="../assets/theme-init.min.js?v=cc25b3e26e4e65a2"></script>
+  <link rel="stylesheet" href="../assets/styles.css?v=f032b64fc1da8812">
+  <link rel="stylesheet" href="../assets/ux-polish.css?v=bdf31641aa3dbf5f">
+  <link rel="stylesheet" href="../assets/horizontal-dropdowns.css?v=db8d17429d9d8e4c">
+  
+  <link rel="stylesheet" href="../assets/admiralty-theme.css?v=784f2d9b8f467d1f">
+  <link rel="stylesheet" href="../assets/admiralty-page-worlds.css?v=617b2e8023abaf14">
+  <script src="../assets/common.min.js?v=e935456ef3c49333" defer></script>
+  <script src="../assets/configurator-data.js?v=2d19058de74ce687" defer></script>
+  <script src="../assets/crafting-data.js?v=205337a9bad82c75" defer></script>
+  <script src="../assets/page-configurator.min.js?v=6f85b9562c5424e4" defer></script>
+  <title>Fartygs- och kanonkonfigurator · Naval Action Automation</title>
+</head>
+<body class="historical-page-shell historical-page-configurator" data-page-family="configurator" data-page-world="configurator" data-design-scope="shared-historical">
+  <a class="skip-link" href="#main">Hoppa till innehållet</a>
+  <header class="site-header">
+    <div class="brand-lockup">
+      <a class="brand" href="./" aria-label="Naval Action Automation — översikt">
+        <span class="brand-mark" aria-hidden="true">NA</span>
+        <span><strong>Naval Action Automation</strong><small>EU3 · kontrolleras dagligen</small></span>
+      </a>
+      <a class="brand-version" href="changelog.html" rel="nofollow" aria-label="Öppna projektets ändringslogg för version 0.4.33">v0.4.33</a>
+    </div>
+    <div class="header-actions">
+      <button class="configurator-global-nav-toggle button compact" type="button" data-global-nav-toggle data-navigation-open="Öppna navigering" data-navigation-close="Stäng navigering" aria-controls="global-navigation" aria-expanded="false">Öppna navigering</button>
+      <nav id="global-navigation" class="site-nav configurator-global-nav-target" aria-label="Huvudnavigering"><a href="./">Översikt</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Marknad</summary><div class="nav-submenu"><a href="market">Aktuell marknad</a><a href="shipbuilding-supplies">Material för skeppsbygge</a><a href="changes">I dag</a><a href="history">Historik</a></div></details>
+<a href="atlas">Karibiska kartan</a>
+<details class="nav-disclosure nav-section-current" name="site-navigation"><summary>Tillverkning &amp; försörjning</summary><div class="nav-submenu"><a href="crafting">Tillverkningsprojekt</a><a href="recipe-cost">Tillverkningskostnad &amp; offert</a><a href="planner">Försörjning &amp; last</a><a href="configurator" aria-current="page">Fartyg och kanoner</a></div></details>
+<a href="trade">Handelsplanerare</a>
+<details class="nav-disclosure" name="site-navigation"><summary>Lagerhantering</summary><div class="nav-submenu"><a href="inventory">Hantera lager</a><a href="shared-warehouse">Delat lager</a></div></details>
+<a href="future">Framtida idéer</a></nav>
+      <div class="preference-controls">
+        <a class="help-nav-link button compact" href="about">Hjälp &amp; guide</a>
+        <a class="feedback-nav-link button compact" href="feedback" aria-label="Öppna formuläret för feedback och kontakt">Feedback</a>
+        <a class="support-nav-link button compact" href="support">Stöd</a>
+        <button class="theme-toggle button compact" type="button" data-theme-toggle data-theme-toggle-light="Byt till ljust läge" data-theme-toggle-dark="Byt till mörkt läge" aria-label="Byt till mörkt läge">
+          <span class="theme-toggle-icon" aria-hidden="true" data-theme-toggle-icon></span>
+          <span data-theme-toggle-text>Byt till mörkt läge</span>
+        </button>
+        <nav class="language-switch" aria-label="Språk"><a href="../configurator" hreflang="en" lang="en" aria-label="English">EN</a><a href="../nl/configurator" hreflang="nl" lang="nl" aria-label="Nederlands">NL</a><a href="configurator" hreflang="sv" lang="sv" aria-label="Svenska" aria-current="true">SV</a><a href="../fr/configurator" hreflang="fr" lang="fr" aria-label="Français">FR</a><a href="../de/configurator" hreflang="de" lang="de" aria-label="Deutsch">DE</a><a href="../es/configurator" hreflang="es" lang="es" aria-label="Español">ES</a></nav>
+      </div>
+    </div>
+  </header>
+  
+<main id="main" class="configurator-page">
+  <header class="page-header configurator-hero">
+    <p class="eyebrow">Kaptenens jämförelserum · offentlig alfa</p>
+    <h1>Fartygs- och kanonkonfigurator</h1>
+    <p class="lede">Bygg och jämför upp till tre experimentella fartygskonfigurationer från aktuell Naval Action-API-data, eller granska kanoner direkt. Välj däckskanoner, konstruktionsvirke, uppgraderingar och kunskap och jämför tydliga rådata utan någon totalvinnare.</p>
+  </header>
+  <section class="configurator-workroom" aria-label="Konfigurera och jämför">
+    <aside class="configurator-scope configurator-alpha-window" role="note" aria-labelledby="configurator-alpha-title">
+      <div class="configurator-alpha-titlebar">
+        <span class="configurator-alpha-badge">Configurator Alpha 0.2</span>
+        <h3 id="configurator-alpha-title" class="configurator-alpha-heading">Utökad jämförelseverkstad</h3>
+      </div>
+      <p class="configurator-alpha-essential"><strong>Jämför fartygskort:</strong> hastigheten och övriga kortvärden beräknas från fartyget och valda träslag. Rating tar även hänsyn till valda kanoner. Böcker, uppgraderingar, trim, förmåner och lasteffekter ingår inte; deras källmodifierare visas separat.</p>
+      <details class="configurator-alpha-details">
+        <summary>Alfadetaljer</summary>
+        <div class="configurator-alpha-copy">
+          <p>Konfiguration A är referensen. Jämför B eller C med tillgängliga absoluta och procentuella skillnader och visa endast ändrade uppgifter vid behov. Högre och lägre betyder aldrig automatiskt bättre eller sämre.</p>
+          <p><strong>Tillgängligt i denna alfa:</strong> tre fartygskonfigurationer, tillgängliga absoluta och procentuella skillnader, konfigurationskontroller, detaljerade rådata om skrov och logistik samt en separat jämförelse av tre kanoner med belägg för däckkompatibilitet.</p>
+          <p><strong>Källbaserade konfigurationer:</strong> välj kanoner för varje däck, spant- och bordläggningsvirke, permanenta uppgraderingar och kunskap. Kompatibel, inkompatibel och okänd förblir separata belägg; saknade värden förblir otillgängliga och blir aldrig noll.</p>
+          <nav class="configurator-quick-start" aria-label="Snabbstart för konfiguratorn">
+            <p><strong>Snabbstart</strong></p>
+            <ol>
+              <li>Välj ett fartyg i A och bestycka sedan dess däck och valfria utrustning.</li>
+              <li>Kopiera A till B eller C för en snabb variant, eller välj ett annat fartyg.</li>
+              <li>Granska skillnaderna nedan och jämför sedan enskilda kanoner vid behov.</li>
+            </ol>
+            <p class="subtle">Dina konfigurationsval laddas inte upp. Använd ”Spara konfigurationer i den här webbläsaren” endast om du vill återställa valen på den här enheten.</p>
+          </nav>
+        </div>
+      </details>
+    </aside>
+    <script id="ship-configurator-data" type="application/json"></script><p class="noscript-note"><noscript>Enable JavaScript to use the ship and cannon configurator.</noscript></p>
+    <div data-ship-configurator></div>
+    <nav class="journey-shortcuts" data-journey-nav="configurator" aria-label="Fortsätt planera"><p><strong>Fortsätt planera</strong> Gå vidare till nästa verktyg utan att börja om sökningen.</p><div class="home-tool-links"><a href="crafting" data-journey-target="crafting">Tillverkningsprojekt</a><a href="atlas" data-journey-target="map">Karibisk karta</a><a href="planner" data-journey-target="supply">Försörjning &amp; last</a></div></nav>
+  </section>
+</main>
+  <footer class="site-footer">
+    <p><strong>Naval Action Automation</strong> är ett fristående spelarverktyg för Naval Action och är inte anslutet till eller godkänt av Bermuda Computer Club.</p>
+    <p>Inga kakor, konton eller spårning mellan webbplatser. Cloudflare Web Analytics ger aggregerad trafikstatistik.</p>
+    <p class="footer-feedback"><a href="feedback">Feedback och kontakt</a></p>
+    <p class="footer-support"><a href="support">Stöd utvecklingen</a></p>
+    <p>Copyright © 2026 Aquaengraved. All rights reserved.</p>
+    <nav class="footer-links" aria-label="Juridisk information"><a href="privacy">Integritetspolicy</a><a href="terms">Användarvillkor</a></nav>
+  </footer>
+</body>
+</html>

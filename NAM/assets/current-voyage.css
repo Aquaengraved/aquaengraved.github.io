@@ -1,0 +1,368 @@
+.current-voyage-page {
+  --voyage-rule: color-mix(in srgb, var(--historical-page-accent) 76%, var(--line));
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.current-voyage-header {
+  background:
+    linear-gradient(90deg, transparent 0 72%, color-mix(in srgb, var(--gold-500) 13%, transparent)),
+    repeating-linear-gradient(0deg, transparent 0 2rem, color-mix(in srgb, var(--line) 22%, transparent) 2rem calc(2rem + 1px)),
+    var(--theme-surface-soft) !important;
+}
+
+.current-voyage-privacy {
+  margin-block: 0 .85rem;
+}
+
+.current-voyage-privacy h2 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.current-voyage-privacy p {
+  margin-top: .35rem;
+}
+
+.current-voyage-workspace {
+  display: grid;
+  gap: .85rem;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+}
+
+.current-voyage-top-grid {
+  display: grid;
+  gap: .85rem;
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, .8fr);
+  min-width: 0;
+}
+
+.current-voyage-card {
+  background:
+    linear-gradient(130deg, color-mix(in srgb, var(--theme-panel-highlight) 30%, transparent), transparent 44%),
+    var(--theme-surface);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--voyage-rule);
+  box-shadow: var(--theme-panel-shadow);
+  min-width: 0;
+  padding: clamp(.9rem, 1.7vw, 1.3rem);
+}
+
+.current-voyage-card h2 {
+  color: var(--theme-heading);
+  font-family: Georgia, "Palatino Linotype", serif;
+  font-size: clamp(1.25rem, 1.8vw, 1.7rem);
+  margin: 0 0 .35rem;
+}
+
+.current-voyage-card > .subtle {
+  color: var(--theme-muted-text-weak);
+  font-size: .88rem;
+  line-height: 1.45;
+  margin: 0 0 .8rem;
+}
+
+.current-voyage-orders-grid,
+.current-voyage-add-grid {
+  display: grid;
+  gap: .65rem;
+}
+
+.current-voyage-orders-grid {
+  grid-template-columns: repeat(3, minmax(10rem, 1fr));
+}
+
+.current-voyage-add-grid {
+  align-items: end;
+  grid-template-columns: minmax(15rem, 1.55fr) minmax(7rem, .45fr) minmax(9rem, .65fr) minmax(13rem, 1fr) auto;
+}
+
+.current-voyage-field {
+  display: grid;
+  font-weight: 750;
+  gap: .3rem;
+  min-width: 0;
+}
+
+.current-voyage-field > span {
+  font-size: .82rem;
+}
+
+.current-voyage-field :is(select, input),
+.current-voyage-table-shell input {
+  min-width: 0;
+  width: 100%;
+}
+
+.current-voyage-actions,
+.current-voyage-row-actions,
+.current-voyage-link-grid {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.current-voyage-actions {
+  margin-top: .8rem;
+}
+
+.current-voyage-source {
+  border-top: 1px solid var(--line);
+  color: var(--theme-muted-text-weak);
+  font-size: .82rem;
+  line-height: 1.45;
+  margin: .8rem 0 0;
+  padding-top: .65rem;
+}
+
+.current-voyage-source.is-current::before {
+  content: "✓ ";
+  font-weight: 900;
+}
+
+.current-voyage-readiness-heading {
+  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  justify-content: space-between;
+}
+
+.current-voyage-readiness-overall {
+  border: 1px solid currentColor;
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1.35;
+  margin: 0;
+  padding: .35rem .55rem;
+}
+
+.current-voyage-readiness-overall.is-ready {
+  background: var(--theme-status-ok-bg);
+  color: var(--theme-status-ok-text);
+}
+
+.current-voyage-readiness-overall.is-warning {
+  background: var(--theme-warning-bg);
+  color: var(--theme-warning-text);
+}
+
+.current-voyage-readiness-list {
+  display: grid;
+  gap: .4rem;
+  list-style: none;
+  margin: .7rem 0 0;
+  padding: 0;
+}
+
+.current-voyage-readiness-list li {
+  align-items: center;
+  border: 1px solid var(--line);
+  border-inline-start-width: 4px;
+  display: grid;
+  gap: .55rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding: .5rem .6rem;
+}
+
+.current-voyage-readiness-list li.is-ready {
+  background: var(--theme-status-ok-bg);
+  border-inline-start-color: var(--theme-status-ok-border);
+}
+
+.current-voyage-readiness-list li.is-warning {
+  background: var(--theme-warning-bg);
+  border-inline-start-color: var(--theme-warning-strong);
+}
+
+.current-voyage-readiness-icon {
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  display: inline-flex;
+  font-weight: 900;
+  height: 1.45rem;
+  justify-content: center;
+  width: 1.45rem;
+}
+
+.current-voyage-readiness-detail {
+  display: grid;
+  gap: .08rem;
+  min-width: 0;
+}
+
+.current-voyage-readiness-detail strong {
+  overflow-wrap: anywhere;
+}
+
+.current-voyage-readiness-label,
+.current-voyage-readiness-state {
+  color: var(--theme-muted-text-weak);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.current-voyage-summary-heading {
+  border-top: 1px solid var(--line);
+  font-size: 1rem;
+  margin: .8rem 0 .2rem;
+  padding-top: .7rem;
+}
+
+.current-voyage-readiness-note {
+  border-inline-start: 4px solid var(--theme-warning-strong);
+  color: var(--ink);
+  font-size: .82rem;
+  line-height: 1.45;
+  margin: .75rem 0 .55rem;
+  padding: .2rem 0 .2rem .65rem;
+}
+
+.current-voyage-facts {
+  display: grid;
+  gap: 0;
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 1.15fr);
+  margin: 0;
+}
+
+.current-voyage-facts :is(dt, dd) {
+  border-bottom: 1px solid var(--line);
+  margin: 0;
+  padding: .42rem .2rem;
+}
+
+.current-voyage-facts dt {
+  color: var(--theme-muted-text-weak);
+  font-size: .78rem;
+  font-weight: 750;
+}
+
+.current-voyage-facts dd {
+  color: var(--ink);
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.current-voyage-table-shell {
+  margin-top: .8rem;
+  max-height: min(36rem, 62vh);
+}
+
+.current-voyage-table-shell table {
+  min-width: 58rem;
+}
+
+.current-voyage-table-shell th:nth-child(3),
+.current-voyage-table-shell td:nth-child(3) {
+  width: 9rem;
+}
+
+.current-voyage-table-shell input {
+  min-height: 2.25rem;
+}
+
+.current-voyage-stop-add {
+  align-items: end;
+  display: grid;
+  gap: .65rem;
+  grid-template-columns: minmax(14rem, 1fr) auto;
+  max-width: 48rem;
+}
+
+.current-voyage-stop-list {
+  display: grid;
+  gap: .45rem;
+  list-style-position: inside;
+  margin: .85rem 0 0;
+  padding: 0;
+}
+
+.current-voyage-stop-list li {
+  align-items: center;
+  background: color-mix(in srgb, var(--theme-surface-soft) 82%, transparent);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: .65rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: .55rem .65rem;
+}
+
+.current-voyage-stop-name {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.current-voyage-link-grid {
+  align-items: stretch;
+}
+
+.current-voyage-link-grid .button {
+  flex: 1 1 13rem;
+}
+
+.current-voyage-empty {
+  background: color-mix(in srgb, var(--theme-surface-soft) 80%, transparent);
+  border: 1px dashed var(--theme-control-border);
+  color: var(--theme-muted-text-weak);
+  margin: .8rem 0 0;
+  padding: .8rem;
+}
+
+.current-voyage-feedback {
+  border: 1px solid var(--theme-status-muted-border);
+  border-inline-start: 5px solid var(--theme-status-muted-border);
+  color: var(--ink);
+  margin: 0;
+  padding: .75rem .9rem;
+}
+
+.current-voyage-feedback.is-ok {
+  background: var(--theme-status-ok-bg);
+  border-color: var(--theme-status-ok-border);
+  color: var(--theme-status-ok-text);
+}
+
+.current-voyage-feedback.is-warning {
+  background: var(--theme-warning-bg);
+  border-color: var(--theme-warning-strong);
+  color: var(--theme-warning-text);
+}
+
+.current-voyage-feedback.is-error {
+  background: color-mix(in srgb, var(--theme-danger-bg) 12%, var(--theme-surface));
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+@media (max-width: 980px) {
+  .current-voyage-top-grid { grid-template-columns: 1fr; }
+  .current-voyage-orders-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .current-voyage-add-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .current-voyage-add-grid > .button { justify-self: stretch; }
+}
+
+@media (max-width: 620px) {
+  .current-voyage-orders-grid,
+  .current-voyage-add-grid,
+  .current-voyage-stop-add,
+  .current-voyage-stop-list li { grid-template-columns: 1fr; }
+  .current-voyage-actions > *,
+  .current-voyage-row-actions > *,
+  .current-voyage-stop-add > .button { width: 100%; }
+  .current-voyage-stop-list { list-style-position: outside; padding-inline-start: 1.4rem; }
+  .current-voyage-readiness-list li { grid-template-columns: auto minmax(0, 1fr); }
+  .current-voyage-readiness-state { grid-column: 2; }
+}
+
+@media (forced-colors: active) {
+  .current-voyage-card,
+  .current-voyage-feedback,
+  .current-voyage-empty,
+  .current-voyage-stop-list li,
+  .current-voyage-readiness-list li,
+  .current-voyage-readiness-overall { background: Canvas; border-color: CanvasText; color: CanvasText; }
+}

@@ -1,0 +1,66 @@
+.atlas-v5-port-actions-menu {
+  position: fixed;
+  z-index: 1200;
+  width: min(28rem, calc(100vw - 1rem));
+  max-height: min(42rem, calc(100vh - 1rem));
+  overflow-y: auto;
+  padding: .7rem;
+  border: 1px solid var(--chart-room-trim, #a88b52);
+  border-radius: .45rem;
+  background: var(--chart-room-wood, #211913);
+  color: var(--chart-room-heading, #f3e7cb);
+  box-shadow: 0 .55rem 1.5rem #120a06aa;
+}
+
+.atlas-v5-port-actions-menu[hidden] { display: none; }
+.atlas-v5-port-actions-title { margin: 0 0 .55rem; font-weight: 700; }
+.atlas-v5-port-actions-heading {
+  margin: .65rem 0 .25rem;
+  color: var(--chart-room-muted, #d5c3a3);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.atlas-v5-port-actions-group { display: grid; gap: .25rem; }
+.atlas-v5-port-actions-more {
+  width: 100%;
+  margin-top: .65rem;
+  padding: .42rem .55rem;
+  border: 1px solid var(--chart-room-trim, #a88b52);
+  border-radius: .3rem;
+  background: transparent;
+  color: var(--chart-room-heading, #f3e7cb);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.atlas-v5-port-actions-secondary[hidden] { display: none; }
+.atlas-v5-port-actions-more:focus-visible { outline: 2px solid #f0d78c; outline-offset: 2px; }
+.atlas-v5-port-action,
+.atlas-v5-port-actions-trigger {
+  border: 1px solid var(--chart-room-trim, #a88b52);
+  border-radius: .3rem;
+  background: #172e34;
+  color: #fff8e7;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.atlas-v5-port-action { padding: .42rem .55rem; }
+.atlas-v5-port-actions-trigger { padding: .35rem .6rem; }
+.atlas-v5-port-action:hover,
+.atlas-v5-port-actions-trigger:hover { background: #29454d; }
+.atlas-v5-port-action:focus-visible,
+.atlas-v5-port-actions-trigger:focus-visible { outline: 2px solid #f0d78c; outline-offset: 2px; }
+.atlas-v5-port-action:disabled { cursor: not-allowed; opacity: .58; }
+.atlas-v5-port-actions-status { margin: .5rem 0 0; color: var(--chart-room-muted, #d5c3a3); }
+
+@media (max-width: 38rem) {
+  .atlas-v5-port-actions-menu { width: calc(100vw - 1rem); }
+}
+
+@media (forced-colors: active) {
+  .atlas-v5-port-actions-menu,
+  .atlas-v5-port-action,
+  .atlas-v5-port-actions-trigger { forced-color-adjust: auto; }
+}

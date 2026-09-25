@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /NAM/changelog
+Disallow: /NAM/nostalgia/changelog
+Sitemap: https://aquaengraved.github.io/sitemap.xml
